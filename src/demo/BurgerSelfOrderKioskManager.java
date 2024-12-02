@@ -7,7 +7,7 @@ import urjc.UrjcBankServer;
 
 /**
  *
- * @author jvelez
+ * @author jvelezggg
  */
 class BurgerSelfOrderKioskManager {
     BurgerSelfOrderKiosk dispenser = new BurgerSelfOrderKiosk();    
