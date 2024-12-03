@@ -12,11 +12,12 @@ package Manager;
  */
 public class Menu {
     private int discount;
-
+    private IndividualProduct[] products;
+    
     public void setDiscount(int discount) {
         this.discount = /*aqui tenemos que poner algo que lo lea del fichero*/
     }
-    private IndividualProduct[] products;
+   
     
     public int getPrice(){
         int i, total=0;
