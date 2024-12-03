@@ -2,7 +2,7 @@ package demo;
 
 /**
  *
- * @author jvelez
+ * @author jvelez y otros
  */
 public class BurgerSelfOrderKioskExample {
 
