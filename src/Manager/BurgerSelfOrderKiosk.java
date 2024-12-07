@@ -9,7 +9,7 @@ package Manager;
  * @author am.machuca.2023
  */
 public class BurgerSelfOrderKiosk {
-    public static void main{
+    public void main{
     
     }
 }
