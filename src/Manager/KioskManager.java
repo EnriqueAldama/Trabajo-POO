@@ -11,7 +11,14 @@ import Manager.Context;
  * @author am.machuca.2023
  */
 public class KioskManager {
-    public void start{
-        Context c=new Context();
+    private Context context;
+    public void KioskManager(){
+        Context context=new Context();
+    }
+
+    public void start(){
+        Screen screen= new WelcomeScreeN();
+        while(true)
+            screen=screen.show(context);
     }
 }

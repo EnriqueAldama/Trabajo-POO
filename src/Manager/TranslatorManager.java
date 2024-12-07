@@ -23,6 +23,8 @@ public class TranslatorManager {
     
     public List getIdioms(){
         
+        return null;
+        
     }
     
     public String translate(String s){

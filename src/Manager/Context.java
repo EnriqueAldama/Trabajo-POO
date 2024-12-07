@@ -4,11 +4,14 @@
  */
 package Manager;
 
+import Data.MenuCard;
+import Data.Order;
+
 /**
  *
  * @author am.machuca.2023
  */
-class Context {
+public class Context {
     private SimpleKiosk kiosk;
     private TranslatorManager translator;
     private Order order;

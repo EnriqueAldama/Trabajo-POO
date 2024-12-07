@@ -10,7 +10,7 @@ import urjc.UrjcBankServer;
  *
  * @author jvelez
  */
-class SimpleKiosk {
+public class SimpleKiosk {
     
     BurgerSelfOrderKiosk kiosk = new BurgerSelfOrderKiosk();    
     
