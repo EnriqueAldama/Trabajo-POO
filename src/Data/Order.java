@@ -4,7 +4,7 @@
  */
 package Data;
 
-import Manager.Product;
+import Data.Product;
 import java.util.Iterator;
 import java.util.List;
 
