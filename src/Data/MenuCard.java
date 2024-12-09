@@ -4,7 +4,7 @@
  */
 package products;
 
-import Data.MenuCardSection;
+import products.MenuCardSection;
 import java.util.List;
 
 /**
