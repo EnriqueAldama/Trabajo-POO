@@ -22,7 +22,7 @@ public class MenuCard {
         
     }
     
-    public MenuCard loadFromDisk(){
+    public static MenuCard loadFromDisk(){
         
     }
 
