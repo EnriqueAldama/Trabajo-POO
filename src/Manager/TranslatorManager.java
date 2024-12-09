@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public class TranslatorManager {
     private Translator currentDictionary;
-    private Map<String,Dictionary> dictionaries;
+    private Map<String,Translator> dictionaries;
     
     public void setCurrentIdiom(String s){
         
