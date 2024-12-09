@@ -15,10 +15,10 @@ public class IndividualProduct {
     private int price;
 
     public IndividualProduct(String name, String description, String imageFileName, int price) {
-        this.name = ;
-        this.description = ;
-        this.imageFileName = ;
-        this.price = ;  /*Todo esto se tiene que leer de fichero*/
+        this.name = name;
+        this.description = description ;
+        this.imageFileName = imageFileName ;
+        this.price = price;  /*Todo esto se tiene que leer de fichero*/
     }
 
     public String getName() {
