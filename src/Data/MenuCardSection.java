@@ -16,9 +16,9 @@ public class MenuCardSection {
     private List<IndividualProduct> productList;
 
     public MenuCardSection(String sectionName, String imageFileName, <any> productList) {
-        this.sectionName = ;
-        this.imageFileName = ;
-        this.productList = ;  /*AQUI HAY QUE LEERLO DE FICHERO*/
+        this.sectionName = sectionName ;
+        this.imageFileName = imageFileName ;
+        this.productList = imageFileName;  /*AQUI HAY QUE LEERLO DE FICHERO*/
     }
 
     public String getSectionName() {
