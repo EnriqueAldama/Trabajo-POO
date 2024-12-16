@@ -8,6 +8,6 @@ package Screens;
  *
  * @author Alfa
  */
-public class SectionScreen implements CarouselScreen{
+public class ProductScreen implements CarouselScreen{
     
 }

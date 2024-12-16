@@ -8,7 +8,7 @@ package products;
  *
  * @author am.machuca.2023
  */
-public class IndividualProduct {
+public class IndividualProduct implements Product{
     private String name;
     private String description;
     private String imageFileName;

@@ -10,7 +10,7 @@ package products;
  *
  * @author am.machuca.2023
  */
-public class Menu {
+public class Menu implements Product {
     private int discount;
     private IndividualProduct[] products;
     
