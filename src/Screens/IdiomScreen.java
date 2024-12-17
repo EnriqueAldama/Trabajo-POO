@@ -76,7 +76,8 @@ public class IdiomScreen implements CarouselScreen {
     @Override
     public void configureScreenButtons(SimpleKiosk k) {
         k.clearScreen();
+        k.setMenuMode();
         k.setTitle("Cambiar idioma");
-        k.setOption('C', "Seleccionar este idioma");
+        k.setOption('D', "Seleccionar este idioma");
     }  
 }
