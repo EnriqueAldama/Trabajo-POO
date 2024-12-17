@@ -37,7 +37,9 @@ public class SimpleKiosk {
     public void setMenuMode(){
         kiosk.setMenuMode();
     }
-    
+    public void setMessageMode(){
+        kiosk.setMessageMode();
+    }
     public char waitEvent(int i){
         char c=kiosk.waitEvent(i);
         return c;        
