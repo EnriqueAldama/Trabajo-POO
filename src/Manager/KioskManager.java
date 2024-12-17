@@ -4,7 +4,7 @@
  */
 package Manager;
 
-import Manager.Context;
+import Screens.WelcomeScreen;
 
 /**
  *
@@ -17,7 +17,7 @@ public class KioskManager {
     }
 
     public void start(){
-        Screen screen= new WelcomeScreeN();
+        KioskScreen screen= (KioskScreen) new WelcomeScreen();
         while(true)
             screen=screen.show(context);
     }
