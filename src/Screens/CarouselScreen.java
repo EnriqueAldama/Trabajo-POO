@@ -5,7 +5,7 @@ package Screens;
  * @author Alfa
  */
 
-interface Carousel implements KioskScreen{
+interface Carousel extends KioskScreen{
 
     public show KioskScreen (Context c);
 
