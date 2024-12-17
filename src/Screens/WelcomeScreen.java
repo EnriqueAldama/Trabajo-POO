@@ -28,6 +28,6 @@ public class WelcomeScreen implements KioskScreen {
         k.clearScreen();
         k.setMessageMode();
         k.setOption('A', "Iniciar nuevo pedido");
-        k.setOption('B', "Cambiar idoma");
+        k.setOption('B', "Cambiar idioma");
     }    
 }

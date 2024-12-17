@@ -16,5 +16,4 @@ public class BurgerSelfOrderKioskAplication {
         KioskManager kioskManager = new KioskManager();
         kioskManager.start();
     }
-    
 }

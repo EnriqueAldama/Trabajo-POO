@@ -19,10 +19,10 @@ public class TranslatorManager {
     
     public TranslatorManager(){
         this.dictionaries = new HashMap<>();
-        this.dictionaries.put("español", new Translator("A"));
-        this.dictionaries.put("inglés", new Translator("A"));
-        this.dictionaries.put("francés", new Translator("A"));
-        this.dictionaries.put("alemán", new Translator("A"));
+        this.dictionaries.put("español", new Translator("languages/español.xml"));
+        this.dictionaries.put("inglés", new Translator("languages/inglés.xml"));
+        this.dictionaries.put("francés", new Translator("languages/francés.xml"));
+        this.dictionaries.put("alemán", new Translator("languages/alemán.xml"));
         this.currentDictionary = dictionaries.getOrDefault("español", this.currentDictionary);
     }
     

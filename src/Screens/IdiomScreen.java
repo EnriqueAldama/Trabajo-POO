@@ -37,7 +37,7 @@ public class IdiomScreen implements CarouselScreen {
             char response = kiosk.waitEvent(30);
             switch (response) {
                 // Botón cambiar idioma
-                case 'A' -> {
+                case 'D' -> {
                     t.setCurrentIdiom(currentIdiom);
                     return new WelcomeScreen();
                 }
