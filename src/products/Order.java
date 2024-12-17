@@ -17,13 +17,7 @@ public class Order {
     private List<Product> products;
     
     public int getTotalAmount(){
-        int i=0;
-        Iterator<Product> iterator= products.iterator();
-        while (iterator.hasNext()){
-            Product product= iterator.next();
-            i+=product.getPrice();
-        }
-        return i;      
+        return products.size();  
     }
     
     public String getOrderText(){ /*No se de que va este metodo*/

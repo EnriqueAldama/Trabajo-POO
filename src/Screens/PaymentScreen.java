@@ -56,7 +56,7 @@ public class PaymentScreen implements KioskScreen {
                     writeOrderToFile(); //hay que implementar este metodo
                     print(orderText + " - Total " + totalAmount + " €"); //imprimimos ticket con ifnormacion
 
-                    boolean opStatus = bank.doOperation(creditCardNumb);
+                    boolean opStatus = bank.doOperation(creditCardNumb, totalAmount);
                     if opStatus {
                         expelCreditCard(12); //el int no se cual meter, lo elijo arbitrariamente
 
@@ -88,7 +88,7 @@ public class PaymentScreen implements KioskScreen {
 
     }
 
-    private int incrementOrderNumber() {
+    private int incrementOrderNumber(){
 
     }
 
@@ -99,9 +99,7 @@ public class PaymentScreen implements KioskScreen {
         setOption('A', "Modificar pedido");
         setOption('B', "Cancelar pago");
 
-        k.setDescription("Introduce la tarjeta de credito para 
-                 confirmar el pedido o pulsa alguno de los botones inferiores" 
-                 + ordertext + String.valueOf(totalAmount));   //Hecho acorde a enunc pract diseño
+        k.setDescription("Introduce la tarjeta de credito para confirmar el pedido o pulsa alguno de los botones inferiores" + ordertext + String.valueOf(totalAmount));   //Hecho acorde a enunc pract diseño
     }
 
 }
