@@ -6,40 +6,31 @@ package Screens;
 
 import Manager.Context;
 import Manager.SimpleKiosk;
-import Manager.TranslatorManager;
 
 /**
  *
  * @author Alfa
  */
 public class WelcomeScreen implements KioskScreen {
-
-   
     @Override
     public KioskScreen show(Context c) {
-        SimpleKiosk k=c.getKiosk();
-        TranslatorManager t=c.getTranslator();
-        configureScreenButtons(k,t);
-        char response=k.waitEvent(30);
+        SimpleKiosk kiosk = c.getKiosk();
+        kiosk.clearScreen();
+        configureScreenButtons(kiosk);
+        char response = kiosk.waitEvent(30);
         switch (response){
             case 'A': 
-                return new OrderScreen(c);
+                return new OrderScreen();
             case 'B':
-             return new IdiomScreen(c);
+             return new IdiomScreen();
             default:
                 return this;
         }       
     }
     
-    private void configureScreenButtons(SimpleKiosk k, TranslatorManager t) {
+    private void configureScreenButtons(SimpleKiosk k) {
         k.clearScreen();
-        k.setMenuMode('0');
-        String optA=t.translate("Iniciar nuevo pedido");
-        String optB=t.translate("Cambiar idoma");
-        k.setOption('A', optA);
-        k.setOption('B', optB);
-    }
-    
-   
-    
+        k.setOption('A', "Iniciar nuevo pedido");
+        k.setOption('B', "Cambiar idoma");
+    }    
 }

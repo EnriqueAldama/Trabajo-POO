@@ -1,17 +1,17 @@
 package Screens;
+import Manager.Context;
+import Manager.SimpleKiosk;
 
 /**
  *
  * @author Alfa
  */
 
-interface Carousel extends KioskScreen{
+public interface CarouselScreen extends KioskScreen {
 
-    public show KioskScreen (Context c);
+    void adjustCarruselButton(int CurrentElement, int numberOfElements);
 
-    adjustCarruselButton(int CurrentElement, int numberOfElements);
-
-    configureScreenButtons();
+    void configureScreenButtons();
 
 
 }

@@ -4,9 +4,8 @@
  */
 package Manager;
 
-import Data.MenuCard;
-import Data.Order;
-
+import products.MenuCard;
+import products.Order;
 /**
  *
  * @author am.machuca.2023
@@ -17,6 +16,13 @@ public class Context {
     private Order order;
     private MenuCard menuCard;
 
+    
+    public Context(){
+        this.translator = new TranslatorManager(); // TODO: Añadir lectura de idioma
+        this.kiosk = new SimpleKiosk(this.translator);
+        // this.menuCard = MenuCard.loadFromDisk(); // TODO: Implementar eso
+    }
+    
     public SimpleKiosk getKiosk() {
         return kiosk;
     }
@@ -32,7 +38,7 @@ public class Context {
     public MenuCard getMenuCard() {
         return menuCard;
     }
-    
+
     public void setOrder(Order o){
             
     }

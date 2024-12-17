@@ -10,7 +10,7 @@ import Manager.Context;
  *
  * @author am.machuca.2023
  */
-interface KioskScreen {
+public interface KioskScreen {
      
      public KioskScreen show(Context c);
             

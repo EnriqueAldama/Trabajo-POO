@@ -16,34 +16,30 @@ public class OrderScreen implements KioskScreen {
     
     @Override
     public KioskScreen show(Context c) {
-        SimpleKiosk k=c.getKiosk();
-        TranslatorManager t=c.getTranslator();
-        configureScreenButtons(k,t);
-        char response=k.waitEvent(30);
+        SimpleKiosk kiosk = c.getKiosk();
+        configureScreenButtons(kiosk);
+        char response = kiosk.waitEvent(30);
         switch (response){
             case 'A': 
-                return new MenuScreen(c);
+                return new MenuScreen();
             case 'B':
-             return new SectionScreen(c);
+                return new SectionScreen();
             case 'C':
-                return new PaymentScreen(c);
+                return new PaymentScreen();
             case 'D':
-                return new ConfirmCancelScreen(c);
+                // TODO: Este botón es la cancelación, hay que implementar la eliminación de todos los datos
+                return new WelcomeScreen();
             default:
                 return this;    
         }       
     }
     
-    private void configureScreenButtons(SimpleKiosk k, TranslatorManager t) {
-        k.clearScreen();
-        k.setMenuMode('0');
-        String optA=t.translate("Añadir menú a pedido");
-        String optB=t.translate("Añadir producto individual a pedido");
-        String optC=t.translate("Finalizar pedido y pagar");
-        String optD=t.translate("Cancelar pedido");
-        k.setOption('A', optA);
-        k.setOption('B', optB);
-        k.setOption('C', optC);
-        k.setOption('D', optD);
+    private void configureScreenButtons(SimpleKiosk kiosk) {
+        kiosk.clearScreen();
+        kiosk.setMenuMode();
+        kiosk.setOption('A', "Añadir menú a pedido");
+        kiosk.setOption('B', "Añadir producto individual a pedido");
+        kiosk.setOption('C', "Finalizar pedido y pagar");
+        kiosk.setOption('D', "Cancelar pedido");
     }
 }

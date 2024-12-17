@@ -17,7 +17,7 @@ public class Translator {
 
     public Translator(String fileName) {
         this.palabras = new HashMap<>();
-        loadFromFile(fileName); /*ESTE LOADFROMFILE ES LO QUE NOS EXPLICAN ESTA SEMANA*/
+        // loadFromFile(fileName); // TODO: Añadir funcionalidad a esto
     }
    
     public String translate(String s){

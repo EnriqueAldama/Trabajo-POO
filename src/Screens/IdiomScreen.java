@@ -13,7 +13,7 @@ import Manager.TranslatorManager;
  */
 public class IdiomScreen implements KioskScreen {
 
-    public IdiomScreen(Context c) {
+    public IdiomScreen() {
     }
     
 }

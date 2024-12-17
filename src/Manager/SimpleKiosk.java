@@ -12,22 +12,30 @@ import urjc.UrjcBankServer;
  */
 public class SimpleKiosk {
     
-    BurgerSelfOrderKiosk kiosk = new BurgerSelfOrderKiosk();    
+    private BurgerSelfOrderKiosk kiosk = new BurgerSelfOrderKiosk();    
+    private TranslatorManager translatorManager; // TODO: Ver si es necesaria esta propiedad (no está en el diseño)
+            
+    public SimpleKiosk(TranslatorManager t) {
+        this.translatorManager = t;
+    }
     
     public void setOption(char a, String s){
-        kiosk.setOption(a,s);
+        String translatedS = translatorManager.translate(s);
+        kiosk.setOption(a,translatedS);
     }
     
     public void setTitle(String s){
-        kiosk.setTitle(s);
+        String translatedS = translatorManager.translate(s);
+        kiosk.setTitle(translatedS);
     }
     
     public void setDescription(String s){
-        kiosk.setDescription(s);
+        String translatedS = translatorManager.translate(s);
+        kiosk.setDescription(translatedS);
     }
     
-    public void setMenuMode(char c){ /*HAY QUE DECIRLE QUE ESTA MAL IMPLEMENTADO EL SETMODE EN LA DE SIENENS*/
-        kiosk.setMenuMode=c;
+    public void setMenuMode(){
+        kiosk.setMenuMode();
     }
     
     public char waitEvent(int i){
@@ -62,10 +70,4 @@ public class SimpleKiosk {
         for (char cont = 'A'; cont <= 'H'; cont++)
             kiosk.setOption(cont, null);
     }
-    
-    
-    
-    
-    
-   
 }

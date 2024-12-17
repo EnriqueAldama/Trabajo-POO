@@ -4,6 +4,7 @@
  */
 package Manager;
 
+import Screens.KioskScreen;
 import Screens.WelcomeScreen;
 
 /**
@@ -12,13 +13,11 @@ import Screens.WelcomeScreen;
  */
 public class KioskManager {
     private Context context;
-    public void KioskManager(){
-        Context context=new Context();
-    }
 
     public void start(){
-        KioskScreen screen= (KioskScreen) new WelcomeScreen();
+        this.context = new Context();
+        KioskScreen screen = (KioskScreen) new WelcomeScreen();
         while(true)
-            screen=screen.show(context);
+            screen = screen.show(context);
     }
 }
