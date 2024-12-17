@@ -5,6 +5,7 @@
 package Manager;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,26 +16,21 @@ import java.util.Map;
 public class TranslatorManager {
     private Translator currentDictionary;
     private Map<String,Translator> dictionaries;
-    private String prueba;
     
     public TranslatorManager(){
-        this.prueba = "a";  // TODO: Leer el archivo, crear los translators y poner currentDictionary
-        this.currentDictionary = new Translator("Prueba");  // TODO: Leer el archivo, crear los translators y poner currentDictionary
+        this.dictionaries = new HashMap<>();
+        this.dictionaries.put("español", new Translator("A"));
+        this.dictionaries.put("inglés", new Translator("A"));
+        this.dictionaries.put("francés", new Translator("A"));
+        this.dictionaries.put("alemán", new Translator("A"));
+        this.currentDictionary = dictionaries.getOrDefault("español", this.currentDictionary);
     }
     
     public void setCurrentIdiom(String newLanguage){
-        this.prueba = newLanguage;  // TODO: Cuando esté creado el mapa con los translators, descomentar el código
-        /*
-        this.currentDictionary = getOrDefault(newLanguage, this.currentDictionary);
-        */
+        this.currentDictionary = dictionaries.getOrDefault(newLanguage, this.currentDictionary);
     }
     
-    // TODO: Eliminar cuando este la prueba
-    public String getPrueba(){
-        return this.prueba;
-    }
-    
-    public List getIdioms(){
+    public List<String> getIdioms(){
         List<String> idioms = new ArrayList<>(this.dictionaries.keySet());
         return idioms;
     }

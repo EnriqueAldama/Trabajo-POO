@@ -6,7 +6,6 @@ package Screens;
 
 import Manager.Context;
 import Manager.SimpleKiosk;
-import Manager.TranslatorManager;
 
 /**
  *
@@ -19,19 +18,14 @@ public class OrderScreen implements KioskScreen {
         SimpleKiosk kiosk = c.getKiosk();
         configureScreenButtons(kiosk);
         char response = kiosk.waitEvent(30);
-        switch (response){
-            case 'A': 
-                return new MenuScreen();
-            case 'B':
-                return new SectionScreen();
-            case 'C':
-                return new PaymentScreen();
-            case 'D':
-                // TODO: Este botón es la cancelación, hay que implementar la eliminación de todos los datos
-                return new WelcomeScreen();
-            default:
-                return this;    
-        }       
+        return switch (response) {
+            case 'A' -> new MenuScreen();
+            case 'B' -> new SectionScreen();
+            case 'C' -> new PaymentScreen();
+            // TODO: El botón D es la cancelación, hay que implementar la eliminación de todos los datos
+            case 'D' -> new WelcomeScreen();
+            default -> this;
+        }; 
     }
     
     private void configureScreenButtons(SimpleKiosk kiosk) {

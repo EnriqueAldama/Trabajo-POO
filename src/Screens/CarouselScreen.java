@@ -1,5 +1,5 @@
 package Screens;
-import Manager.Context;
+
 import Manager.SimpleKiosk;
 
 /**
@@ -8,10 +8,11 @@ import Manager.SimpleKiosk;
  */
 
 public interface CarouselScreen extends KioskScreen {
+    
+//    void adjustCarruselButton(int CurrentElement, int numberOfElements);    // TODO: ¿Porque se tiene que pasar el número de elementos?
+    
+    public void adjustCarruselButton(SimpleKiosk kiosk);
 
-    void adjustCarruselButton(int CurrentElement, int numberOfElements);
-
-    void configureScreenButtons();
-
+    public void configureScreenButtons(SimpleKiosk kiosk);
 
 }

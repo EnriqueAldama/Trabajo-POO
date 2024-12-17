@@ -16,14 +16,11 @@ public class PaymentScreen implements KioskScreen {
         kiosk.clearScreen();
         configureScreenButtons(kiosk);
         char response = kiosk.waitEvent(30);
-        switch (response){
-            case 'A': 
-                return new OrderScreen();
-            case 'B':
-             return new IdiomScreen();
-            default:
-                return this;
-        }       
+        return switch (response) {
+            case 'A' -> new OrderScreen();
+            case 'B' -> new IdiomScreen();
+            default -> this;
+        };       
     }
     
     private void configureScreenButtons(SimpleKiosk k) {
