@@ -36,6 +36,22 @@ public class IndividualProduct implements Product{
     public int getPrice() {
         return price;
     }
+
+    public void setName(String s){
+        this.name=s;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setImageFileName(String imageFileName) {
+        this.imageFileName = imageFileName;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
     
     
 }

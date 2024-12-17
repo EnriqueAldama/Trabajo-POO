@@ -4,8 +4,11 @@
  */
 package products;
 
+import java.beans.XMLDecoder;
+import java.io.FileInputStream;
 import products.MenuCardSection;
 import java.util.List;
+import javax.management.RuntimeErrorException;
 
 /**
  *
@@ -14,19 +17,35 @@ import java.util.List;
 public class MenuCard {
     private List<MenuCardSection> sectionList;
     
-    public Section getSection(int c){
-        
+    public MenuCardSection getSection(int c){
+        return sectionList.get(c);
     }
     
     public int getNumberOfSections(){
-        
+        return sectionList.size();
     }
     
     public static MenuCard loadFromDisk(){
-        
+        try {
+            FileInputStream file= new FileInputStream("Catalog.xml");
+            XMLDecoder decoder=new XMLDecoder(file);
+            MenuCard mc= (MenuCard) decoder.readObject();
+            decoder.close();
+            file.close();
+        } catch (Exception e) {
+            throw new RuntimeException("Error al cargar el archivo, llame a un informatico");
+        }
     }
 
     public MenuCard(List<MenuCardSection> sectionList) {
+        this.sectionList = sectionList;
+    }
+
+    public List<MenuCardSection> getSectionList() {
+        return sectionList;
+    }
+
+    public void setSectionList(List<MenuCardSection> sectionList) {
         this.sectionList = sectionList;
     }
 }

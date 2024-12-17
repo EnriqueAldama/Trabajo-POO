@@ -32,5 +32,21 @@ public class MenuCardSection {
     public int GetNumberOfProducts(){
         return this.productList.size();
     }
+
+    public void setSectionName(String sectionName) {
+        this.sectionName = sectionName;
+    }
+
+    public void setImageFileName(String imageFileName) {
+        this.imageFileName = imageFileName;
+    }
+
+    public List<IndividualProduct> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<IndividualProduct> productList) {
+        this.productList = productList;
+    }
     
 }
