@@ -62,7 +62,7 @@ public class PaymentScreen implements KioskScreen {
                     ArrayList <String> ticketStringList = new ArrayList<>(); //**Encpasulac bien?? */
 
                     ticketStringList.add(orderText);
-                    ticketStringList.add(totalAmount);
+                    ticketStringList.add(String.valueOf(totalAmount));
 
                     sk.print(ticketStringList); //imprimimos ticket con ifnormacion. Hay que pasar lista de Strings
 
