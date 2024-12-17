@@ -20,7 +20,7 @@ public class IndividualProduct implements Product{
         this.imageFileName = imageFileName ;
         this.price = price;  /*Todo esto se tiene que leer de fichero*/
     }
-
+    @Override
     public String getName() {
         return name;
     }
@@ -32,9 +32,25 @@ public class IndividualProduct implements Product{
     public String getImageFileName() {
         return imageFileName;
     }
-
+    @Override
     public int getPrice() {
         return price;
+    }
+
+    public void setName(String s){
+        this.name=s;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setImageFileName(String imageFileName) {
+        this.imageFileName = imageFileName;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
     
     

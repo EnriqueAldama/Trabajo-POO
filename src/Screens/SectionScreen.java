@@ -1,82 +1,83 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Screens;
+
 import Manager.Context;
 import Manager.SimpleKiosk;
-import Manager.TranslatorManager;
 import java.util.List;
+import products.MenuCard;
+import products.MenuCardSection;
 
 /**
  *
  * @author Alfa
  */
-public class SectionScreen implements CarouselScreen{
-        private int currentItem;
+public class SectionScreen implements CarouselScreen {
+    private int currentItem;
 
     public SectionScreen() {
         this.currentItem = 0;
     }
 
     @Override
-    public KioskScreen show(Context c){
+    public KioskScreen show(Context c) {
         SimpleKiosk kiosk = c.getKiosk();
-        TranslatorManager t = c.getTranslator();
-        List<String> idioms = t.getIdioms();
+        MenuCard mc = MenuCard.loadFromDisk();  // Proporcionar la ruta del archivo
+        List<MenuCardSection> sections = mc.getSectionList();
+        
+        if (sections == null || sections.isEmpty()) {
+            throw new RuntimeException("Error: No hay secciones disponibles.");
+        }
+        
         configureScreenButtons(kiosk);
         adjustCarruselButton(kiosk);
+
         // Bucle del carrusel
         while (true) { 
-            String currentIdiom = idioms.get(currentItem);
-            String description = "Seleccionar el idioma " + currentIdiom;
-            String im = currentIdiom +".png";
+            MenuCardSection currentSection = sections.get(this.currentItem);  // Usar 'sections' en lugar de 'mc.getSection'
+            String description = "Sección: " + currentSection.getSectionName();  // Corregir descripción
+            String im = currentSection.getImageFileName();
             kiosk.setDescription(description);
             kiosk.setImage(im);
+            
             char response = kiosk.waitEvent(30);
             switch (response) {
-                // Botón cambiar idioma
+                // Botón cambiar idioma o volver a la pantalla principal
                 case 'A' -> {
-                    t.setCurrentIdiom(currentIdiom);
-                    return new WelcomeScreen();
+                    return new WelcomeScreen(); // Retornar la pantalla de bienvenida
                 }
                 // Botón anterior
                 case 'G' -> {
-                    if(currentItem - 1 < 0) { // Comprueba se intenta ir al -1 y va al final
-                        currentItem = idioms.size()-1;
-                    }
-                    else {
+                    if (currentItem - 1 < 0) { // Comprueba si intenta ir al -1 y va al final
+                        currentItem = sections.size() - 1;
+                    } else {
                         currentItem--;
                     }
                 }
                 // Botón siguiente
                 case 'H' -> {
-                    if(currentItem + 1 >= idioms.size()) { // Comprueba si intenta ir al 5 y vuelve al inicio
+                    if (currentItem + 1 >= sections.size()) { // Comprueba si intenta ir más allá y vuelve al inicio
                         currentItem = 0;
-                    }
-                    else {
+                    } else {
                         currentItem++;
                     }
                 }
                 default -> {
-                    return this;
+                    return this; // Mantener la pantalla actual
                 }
             }
         }
     }
-    
-    /* TODO: ¿ESTO ESTÁ BIEN O ES MEJOR USAR SOLO configureScreenButtons?*/ /*Todo esto nos lo deja a nosotros */
+
     @Override
-    public void adjustCarruselButton(SimpleKiosk k){
+    public void adjustCarruselButton(SimpleKiosk k) {
         k.setOption('G', "<");
         k.setOption('H', ">");
     }
-    
+
     @Override
     public void configureScreenButtons(SimpleKiosk k) {
         k.clearScreen();
         k.setMenuMode();
-        k.setTitle("Cambiar idioma");
-        k.setOption('C', "Seleccionar este idioma");
-    }  
+        k.setTitle("SECCIONES");
+        k.setOption('C', "Seleccionar esta sección");
+    }
 }

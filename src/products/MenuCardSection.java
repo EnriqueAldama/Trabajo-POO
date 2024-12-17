@@ -15,10 +15,10 @@ public class MenuCardSection {
     private String imageFileName;
     private List<IndividualProduct> productList;
 
-    public MenuCardSection(String sectionName, String imageFileName, <any> productList) {
+    public MenuCardSection(String sectionName, String imageFileName, List<IndividualProduct> productList) {
         this.sectionName = sectionName ;
         this.imageFileName = imageFileName ;
-        this.productList = imageFileName;  /*AQUI HAY QUE LEERLO DE FICHERO*/
+        this.productList = productList;  /*AQUI HAY QUE LEERLO DE FICHERO*/
     }
 
     public String getSectionName() {
@@ -31,6 +31,22 @@ public class MenuCardSection {
     
     public int GetNumberOfProducts(){
         return this.productList.size();
+    }
+
+    public void setSectionName(String sectionName) {
+        this.sectionName = sectionName;
+    }
+
+    public void setImageFileName(String imageFileName) {
+        this.imageFileName = imageFileName;
+    }
+
+    public List<IndividualProduct> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<IndividualProduct> productList) {
+        this.productList = productList;
     }
     
 }
