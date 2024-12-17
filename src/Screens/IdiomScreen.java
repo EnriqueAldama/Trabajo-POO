@@ -31,7 +31,9 @@ public class IdiomScreen implements CarouselScreen {
         while (true) { 
             String currentIdiom = idioms.get(currentItem);
             String description = "Seleccionar el idioma " + currentIdiom;
+            String im = currentIdiom +".png";
             kiosk.setDescription(description);
+            kiosk.setImage(im);
             char response = kiosk.waitEvent(30);
             switch (response) {
                 // Botón cambiar idioma
@@ -64,17 +66,18 @@ public class IdiomScreen implements CarouselScreen {
         }
     }
     
-    // TODO: ¿ESTO ESTÁ BIEN O ES MEJOR USAR SOLO configureScreenButtons?
+    /* TODO: ¿ESTO ESTÁ BIEN O ES MEJOR USAR SOLO configureScreenButtons?*/ /*Todo esto nos lo deja a nosotros */
     @Override
     public void adjustCarruselButton(SimpleKiosk k){
-        k.setOption('G', "Anterior");
-        k.setOption('H', "Siguiente");
+        k.setOption('G', "<");
+        k.setOption('H', ">");
     }
     
     @Override
     public void configureScreenButtons(SimpleKiosk k) {
         k.clearScreen();
+        k.setMenuMode();
         k.setTitle("Cambiar idioma");
-        k.setOption('A', "Seleccionar este idioma");
+        k.setOption('D', "Seleccionar este idioma");
     }  
 }

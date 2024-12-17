@@ -26,6 +26,7 @@ public class WelcomeScreen implements KioskScreen {
     
     private void configureScreenButtons(SimpleKiosk k) {
         k.clearScreen();
+        k.setMessageMode();
         k.setOption('A', "Iniciar nuevo pedido");
         k.setOption('B', "Cambiar idoma");
     }    
