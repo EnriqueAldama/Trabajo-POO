@@ -6,9 +6,8 @@ package products;
 
 import java.beans.XMLDecoder;
 import java.io.FileInputStream;
-import products.MenuCardSection;
+import java.io.IOException;
 import java.util.List;
-import javax.management.RuntimeErrorException;
 
 /**
  *
@@ -27,12 +26,14 @@ public class MenuCard {
     
     public static MenuCard loadFromDisk(){
         try {
-            FileInputStream file= new FileInputStream("Catalog.xml");
-            XMLDecoder decoder=new XMLDecoder(file);
-            MenuCard mc= (MenuCard) decoder.readObject();
-            decoder.close();
-            file.close();
-        } catch (Exception e) {
+            MenuCard mc;
+            try (FileInputStream file = new FileInputStream("PRODUCTOS/Catalog.xml")) {
+                XMLDecoder decoder=new XMLDecoder(file);
+                mc = (MenuCard) decoder.readObject();
+                decoder.close();
+            }
+            return mc;
+        } catch (IOException e) {
             throw new RuntimeException("Error al cargar el archivo, llame a un informatico");
         }
     }

@@ -15,10 +15,10 @@ public class MenuCardSection {
     private String imageFileName;
     private List<IndividualProduct> productList;
 
-    public MenuCardSection(String sectionName, String imageFileName, <any> productList) {
+    public MenuCardSection(String sectionName, String imageFileName, List<IndividualProduct> productList) {
         this.sectionName = sectionName ;
         this.imageFileName = imageFileName ;
-        this.productList = imageFileName;  /*AQUI HAY QUE LEERLO DE FICHERO*/
+        this.productList = productList;  /*AQUI HAY QUE LEERLO DE FICHERO*/
     }
 
     public String getSectionName() {
