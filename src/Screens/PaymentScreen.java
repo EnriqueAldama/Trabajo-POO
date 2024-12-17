@@ -1,16 +1,21 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * bhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Screens;
+
 import Manager.Context;
 import Manager.SimpleKiosk;
+import Manager.TranslatorManager;
+import products.Order;
+import urjc.UrjcBankServer;
+
 /**
  *
  * @author Alfa
  */
 public class PaymentScreen implements KioskScreen {
-    
+
     @Override
     public KioskScreen show(Context c) {
 
@@ -22,43 +27,28 @@ public class PaymentScreen implements KioskScreen {
         UrjcBankServer bank = new UrjcBankServer();
 
         sk.setMenuMode();
-
-        setOption('A', "Modificar pedido");
-        setOption('B', "Cancelar pago");
-
         
         String orderText = order.getOrderText();
         int totalAmount = order.getTotalAmount();
 
-        sk.setDescription("Introduce la tarjeta de credito para 
-                        confirmar el pedido o pulsa alguno de los botones inferiores" 
-                        + ordertext + String.valueOf(totalAmount));   //Hecho acorde a enunc pract diseño
-
         //configureScreenButtons(k,t);
 
-        char response = k.waitEvent(30);
-        SimpleKiosk kiosk = c.getKiosk();
-        kiosk.clearScreen();
-        configureScreenButtons(kiosk);
-        char response = kiosk.waitEvent(30);
+        configureScreenButtons(sk);
+        char response = sk.waitEvent(30);
+
         switch (response){
             case 'A':           //Boton modifiar pedido. Devolvemos pantalla de menu
-                return new MenuScreen(c);
+                return new OrderScreen(); // antes menuScreen
+            break;
 
             case 'B':           //Boton cancelar pedido. devolv a pantalla bienvenida
-             return new WelcomeScreen(c);
-
-            case 'A': 
-                return new OrderScreen();
-            case 'B':
-             return new IdiomScreen();
-            default:
-                return this;
+                return new IdiomScreen(); //antes welcomeScreen
+            break;
 
             case '1': //se detecta la tarjeta de credito
 
-                sk.retainCard(false); //false, puede ser expulsada con expelCreditCard/()
-                long creditCardNumb = sk.getCardNumber;
+                sk.retainCreditCard(false); //false, puede ser expulsada con expelCreditCard/()
+                long creditCardNumb = sk.getCardNumber();
 
                 if (bank.communicationAvailable() == true){
                     newOrderNumber = incrementOrderNumber(); //hay que implementar este metodo
@@ -70,28 +60,48 @@ public class PaymentScreen implements KioskScreen {
                     if opStatus {
                         expelCreditCard(12); //el int no se cual meter, lo elijo arbitrariamente
 
-                        return new WelcomeScreen(c);
-
-                    }
+                        return new WelcomeScreen(); //se vuelve a pantalla de inicio
+                    }//operac realizada
                     else{
-                        
+ 
 
-                    }
+                        sk.setDescription("Error: no se puedo efectuar el pago");
+                    }//operac no realiz
 
+                } //comm available
 
+                else { 
+                    sk.setDescription("Error: no se pudo establecer conexion con el servidor");
 
+                }//comm not available
+            break;
 
-
-                }
+            default:
+                return this;
 
         
 
         }       
     }
-    
+
+    private void writeOrderToFile() {
+
+    }
+
+    private int incrementOrderNumber() {
+
+    }
+
     private void configureScreenButtons(SimpleKiosk k) {
         k.clearScreen();
         k.setTitle("Introduce la tarjeta de crédito");
-        k.setDescription("RESUMEN DEL PEDIDO, NO IMPLEMENTADO");
+
+        setOption('A', "Modificar pedido");
+        setOption('B', "Cancelar pago");
+
+        k.setDescription("Introduce la tarjeta de credito para 
+                 confirmar el pedido o pulsa alguno de los botones inferiores" 
+                 + ordertext + String.valueOf(totalAmount));   //Hecho acorde a enunc pract diseño
     }
+
 }

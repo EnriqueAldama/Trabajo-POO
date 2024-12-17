@@ -11,58 +11,58 @@ import urjc.UrjcBankServer;
  * @author jvelez
  */
 public class SimpleKiosk {
-    
-    private BurgerSelfOrderKiosk kiosk = new BurgerSelfOrderKiosk();    
+
+    private BurgerSelfOrderKiosk kiosk = new BurgerSelfOrderKiosk();
     private TranslatorManager translatorManager; // TODO: Ver si es necesaria esta propiedad (no está en el diseño)
-            
+
     public SimpleKiosk(TranslatorManager t) {
         this.translatorManager = t;
     }
-    
-    public void setOption(char a, String s){
+
+    public void setOption(char a, String s) {
         String translatedS = translatorManager.translate(s);
-        kiosk.setOption(a,translatedS);
+        kiosk.setOption(a, translatedS);
     }
-    
-    public void setTitle(String s){
+
+    public void setTitle(String s) {
         String translatedS = translatorManager.translate(s);
         kiosk.setTitle(translatedS);
     }
-    
-    public void setDescription(String s){
+
+    public void setDescription(String s) {
         String translatedS = translatorManager.translate(s);
         kiosk.setDescription(translatedS);
     }
-    
-    public void setMenuMode(){
+
+    public void setMenuMode() {
         kiosk.setMenuMode();
     }
-    
-    public char waitEvent(int i){
-        char c=kiosk.waitEvent(i);
-        return c;        
+
+    public char waitEvent(int i) {
+        char c = kiosk.waitEvent(i);
+        return c;
     }
-    
-    public void print(List<String> s){
+
+    public void print(List<String> s) {
         kiosk.print(s);
     }
-    
-    public void retainCreditCard(boolean b){
+
+    public void retainCreditCard(boolean b) {
         kiosk.retainCreditCard(b);
     }
-    
-    public void expelCreditCard(int i){
+
+    public void expelCreditCard(int i) {
         kiosk.expelCreditCard(i);
     }
-    
-    public void setImage(String s){
+
+    public void setImage(String s) {
         kiosk.setImage(s);
     }
-    
-    public void getCardNumber(){
-        kiosk.getCardNumber();
+
+    public long getCardNumber() {
+        return kiosk.getCardNumber();
     }
-    
+
     public void clearScreen() {
         kiosk.setTitle(null);
         kiosk.setImage(null);
