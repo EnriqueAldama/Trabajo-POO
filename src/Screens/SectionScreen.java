@@ -20,7 +20,7 @@ public class SectionScreen implements CarouselScreen {
     @Override
     public KioskScreen show(Context c) {
         SimpleKiosk kiosk = c.getKiosk();
-        MenuCard mc = MenuCard.loadFromDisk();  // Proporcionar la ruta del archivo
+        MenuCard mc = MenuCard.loadFromDisk();  
         List<MenuCardSection> sections = mc.getSectionList();
         
         if (sections == null || sections.isEmpty()) {
@@ -32,17 +32,18 @@ public class SectionScreen implements CarouselScreen {
 
         // Bucle del carrusel
         while (true) { 
-            MenuCardSection currentSection = sections.get(this.currentItem);  // Usar 'sections' en lugar de 'mc.getSection'
-            String description = "Sección: " + currentSection.getSectionName();  // Corregir descripción
+            MenuCardSection currentSection = sections.get(this.currentItem);  
+            String description = "Sección: " + currentSection.getSectionName();  
             String im = currentSection.getImageFileName();
             kiosk.setDescription(description);
             kiosk.setImage(im);
             
             char response = kiosk.waitEvent(30);
             switch (response) {
-                // Botón cambiar idioma o volver a la pantalla principal
+                // Botón seleccionar seccion
                 case 'A' -> {
-                    return new WelcomeScreen(); // Retornar la pantalla de bienvenida
+                    return new WelcomeScreen(); // Retornar la pantalla de los productos de la seccion elegida
+
                 }
                 // Botón anterior
                 case 'G' -> {

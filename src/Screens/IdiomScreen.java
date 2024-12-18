@@ -31,7 +31,7 @@ public class IdiomScreen implements CarouselScreen {
         while (true) { 
             String currentIdiom = idioms.get(currentItem);
             String description = "Seleccionar el idioma " + currentIdiom;
-            String im = currentIdiom +".png";
+            String im = "languages/"+currentIdiom +".png";
             kiosk.setDescription(description);
             kiosk.setImage(im);
             char response = kiosk.waitEvent(30);

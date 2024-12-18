@@ -57,5 +57,21 @@
    <string>Introduce la tarjeta de credito para confirmar el pedido o pulsa alguno de los botones inferiores</string>
    <string>Enter your credit card to confirm the order or press one of the buttons below</string>
   </void>
+  <void method="put">
+   <string>Seleccionar idioma español</string>
+   <string>Select language Spanish</string>
+  </void>
+  <void method="put">
+   <string>Seleccionar idioma inglés</string>
+   <string>Select lenguage English</string>
+  </void>
+  <void method="put">
+   <string>Seleccionar idioma francés</string>
+   <string>Select lenguage French</string>
+  </void>
+  <void method="put">
+   <string>Seleccionar idioma alemán</string>
+   <string>Select lenguage German</string>
+  </void>
  </object>
 </java>
