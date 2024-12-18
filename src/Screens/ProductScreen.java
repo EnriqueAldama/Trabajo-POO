@@ -51,6 +51,7 @@ public class ProductScreen implements CarouselScreen{
             switch (response) {
                 // Botón seleccionar seccion
                 case 'A' -> {
+                    c.getOrder().addProduct(currentProduct);
                     c.getKiosk().setMessageMode();
                     c.getKiosk().setDescription("Producto añadido con exito");
                     Thread.sleep(30);
