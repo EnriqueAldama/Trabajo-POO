@@ -58,20 +58,40 @@
    <string>Enter your credit card to confirm the order or press one of the buttons below</string>
   </void>
   <void method="put">
-   <string>Seleccionar idioma español</string>
+   <string>Seleccionar el idioma español</string>
    <string>Select language Spanish</string>
   </void>
   <void method="put">
-   <string>Seleccionar idioma inglés</string>
+   <string>Seleccionar el idioma inglés</string>
    <string>Select lenguage English</string>
   </void>
   <void method="put">
-   <string>Seleccionar idioma francés</string>
+   <string>Seleccionar el idioma francés</string>
    <string>Select lenguage French</string>
   </void>
   <void method="put">
-   <string>Seleccionar idioma alemán</string>
+   <string>Seleccionar el idioma alemán</string>
    <string>Select lenguage German</string>
+  </void>
+  <void method="put">
+   <string>SECCIONES</string>
+   <string>SECTIONS</string>
+  </void>
+  <void method="put">
+   <string>Sección: BEBIDAS</string>
+   <string>Section: DRINKS</string>
+  </void>
+  <void method="put">
+   <string>Seleccionar esta sección</string>
+   <string>Select this section</string>
+  </void>
+  <void method="put">
+   <string>Sección: HAMBURGUESAS</string>
+   <string>Section: BURGERS</string>
+  </void>
+  <void method="put">
+   <string>Sección: COMPLEMENTOS</string>
+   <string>Section: SIDE DISHES</string>
   </void>
  </object>
 </java>

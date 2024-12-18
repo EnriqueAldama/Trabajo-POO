@@ -18,9 +18,9 @@ public class Context {
 
     
     public Context(){
-        this.translator = new TranslatorManager(); // TODO: Añadir lectura de idioma
+        this.translator = new TranslatorManager(); 
         this.kiosk = new SimpleKiosk(this.translator);
-        // this.menuCard = MenuCard.loadFromDisk(); // TODO: Implementar eso
+        this.menuCard = MenuCard.loadFromDisk(); 
     }
     
     public SimpleKiosk getKiosk() {

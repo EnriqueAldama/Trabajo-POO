@@ -20,7 +20,7 @@ public class SectionScreen implements CarouselScreen {
     @Override
     public KioskScreen show(Context c) {
         SimpleKiosk kiosk = c.getKiosk();
-        MenuCard mc = MenuCard.loadFromDisk();  
+        MenuCard mc=c.getMenuCard();
         List<MenuCardSection> sections = mc.getSectionList();
         
         if (sections == null || sections.isEmpty()) {
@@ -42,7 +42,7 @@ public class SectionScreen implements CarouselScreen {
             switch (response) {
                 // Botón seleccionar seccion
                 case 'A' -> {
-                    return new WelcomeScreen(); // Retornar la pantalla de los productos de la seccion elegida
+                    return new ProductScreen(currentItem); // Retornar la pantalla de los productos de la seccion elegida
 
                 }
                 // Botón anterior

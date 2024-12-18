@@ -20,7 +20,9 @@ public class MenuCardSection {
         this.imageFileName = imageFileName ;
         this.productList = productList;  /*AQUI HAY QUE LEERLO DE FICHERO*/
     }
-
+    public IndividualProduct getIndividualProduct(int i){
+        return this.productList.get(i);
+    }
     public String getSectionName() {
         return sectionName;
     }
