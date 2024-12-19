@@ -52,16 +52,16 @@ public class ProductScreen implements CarouselScreen{
                     c.getKiosk().clearScreen();
                     c.getKiosk().setMessageMode();
                     c.getKiosk().setDescription("Producto añadido con exito");
-                    kiosk.waitEvent(20);
+                    kiosk.waitEvent(1);
                     this.configureScreenButtons(kiosk);
-
-                    return this;
+                    this.adjustCarruselButton(kiosk);
+                    return  new OrderScreen();
                 }
                 case 'B' -> {
-                    
+                    c.getOrder().removeProduct(currentProduct);
                 }
                 case 'C' -> {
-                   
+                   return new OrderScreen();
                 }
 
                 

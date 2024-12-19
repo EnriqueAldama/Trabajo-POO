@@ -34,9 +34,9 @@ public class PaymentScreen implements KioskScreen {
         
         
         //String orderText = order.getOrderText();
-        //int totalAmount = order.getTotalAmount();
+        int totalAmount = order.getTotalAmount();
         String orderText = "ordertext";
-        int totalAmount = 99;
+        //int totalAmount = 99;
 
         //configureScreenButtons(k,t);
 

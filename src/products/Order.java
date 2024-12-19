@@ -35,4 +35,8 @@ public class Order {
     public void addProduct(Product p){
         this.products.add(p);
     }
+
+    public void removeProduct(Product p){
+        this.products.remove(p);
+    }
 }
