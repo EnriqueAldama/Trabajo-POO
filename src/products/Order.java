@@ -20,13 +20,21 @@ public class Order {
     }
     
     public int getTotalAmount(){
-        return products.size();  
+        int s=0; 
+        for (Product p : this.products) { 
+            s+=p.getPrice(); 
+        }
+        return s;
     }
     
-    public String getOrderText(){ /*No se de que va este metodo*/
-        return null;
-        
+    public String getOrderText() {
+        StringBuilder s = new StringBuilder(); 
+        for (Product p : this.products) { 
+            s.append(p.getName()).append("\n"); 
+        }
+        return s.toString(); 
     }
+    
     
     public int GetNumProducts(){
         return this.products.size();
