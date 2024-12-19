@@ -4,13 +4,9 @@
  */
 package Screens;
 
-import java.util.List;
 
 import Manager.Context;
 import Manager.SimpleKiosk;
-import java.util.spi.CurrencyNameProvider;
-import javax.crypto.MacSpi;
-import products.MenuCard;
 import products.MenuCardSection;
 
 /**
@@ -46,7 +42,8 @@ public class ProductScreen implements CarouselScreen{
             String im = currentProduct.getImageFileName();
             kiosk.setDescription(description);
             kiosk.setImage(im);
-            
+            String title="Selecciona la "+sc.getSectionName();
+            kiosk.setTitle(title);
             char response = kiosk.waitEvent(30);
             switch (response) {
                 // Botón seleccionar seccion
@@ -54,7 +51,7 @@ public class ProductScreen implements CarouselScreen{
                     c.getOrder().addProduct(currentProduct);
                     c.getKiosk().setMessageMode();
                     c.getKiosk().setDescription("Producto añadido con exito");
-                    Thread.sleep(30);
+                    kiosk.waitEvent(50);
                     c.getKiosk().setMenuMode();
                     return this;
                 }
@@ -99,7 +96,6 @@ public class ProductScreen implements CarouselScreen{
     public void configureScreenButtons(SimpleKiosk k) {
         k.clearScreen();
         k.setMenuMode();
-        k.setTitle("Selecciona la "+sc.getSectionName());
         k.setOption('A', "Añadir producto al pedido");
         k.setOption('B', "Cancelar producto del pedido");
         k.setOption('C', "Cancelar pedido");
