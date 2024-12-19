@@ -4,8 +4,7 @@
  */
 package products;
 
-import products.Product;
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,12 +14,17 @@ import java.util.List;
 public class Order {
     private int orderNumber;
     private List<Product> products;
+
+    public Order(){
+        this.products= new ArrayList<Product>();
+    }
     
     public int getTotalAmount(){
         return products.size();  
     }
     
     public String getOrderText(){ /*No se de que va este metodo*/
+        return null;
         
     }
     
