@@ -44,7 +44,7 @@ public class Order {
         this.products.add(p);
     }
 
-    public void removeProduct(Product p){
-        this.products.remove(p);
+    public void cancelOrder(){
+            this.products.removeAll(products);
     }
 }

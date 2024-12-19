@@ -51,14 +51,17 @@ public class ProductScreen implements CarouselScreen{
                     c.getOrder().addProduct(currentProduct);
                     c.getKiosk().clearScreen();
                     c.getKiosk().setMessageMode();
-                    c.getKiosk().setDescription("Producto añadido con exito");
+                    c.getKiosk().setDescription("Producto añadido al pedido");
                     kiosk.waitEvent(1);
-                    this.configureScreenButtons(kiosk);
-                    this.adjustCarruselButton(kiosk);
                     return  new OrderScreen();
                 }
                 case 'B' -> {
-                    c.getOrder().removeProduct(currentProduct);
+                    c.getOrder().cancelOrder();
+                    c.getKiosk().clearScreen();
+                    c.getKiosk().setMessageMode();
+                    c.getKiosk().setDescription("Pedido cancelado");
+                    kiosk.waitEvent(1);
+                    return new OrderScreen();
                 }
                 case 'C' -> {
                    return new OrderScreen();
@@ -99,8 +102,7 @@ public class ProductScreen implements CarouselScreen{
         k.clearScreen();
         k.setMenuMode();
         k.setOption('A', "Añadir producto al pedido");
-        k.setOption('B', "Cancelar producto del pedido");
-        k.setOption('C', "Cancelar pedido");
+        k.setOption('B', "Cancelar pedido");
     }
     
 }
