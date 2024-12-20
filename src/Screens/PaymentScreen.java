@@ -36,17 +36,19 @@ public class PaymentScreen implements KioskScreen {
         TranslatorManager t = c.getTranslator();
         UrjcBankServer bank = new UrjcBankServer();
 
-        System.out.println("Hola mundo");
         
         
         String orderText = order.getOrderText();
         int totalAmount = order.getTotalAmount();
+        float totalAmountFloat = ((float) order.getTotalAmount())/100;
+        
+
         //int totalAmount = 99;
 
         //configureScreenButtons(k,t);
 
         configureScreenButtons(sk);
-        //sk.setDescription("Introduce la tarjeta de credito para confirmar el pedido o pulsa alguno de los botones inferiores" + orderText + String.valueOf(totalAmount));   //Hecho acorde a enunc pract diseño
+        sk.setDescription(orderText +"\n Total: "+ String.valueOf(totalAmountFloat) + " € \n Introduce la tarjeta de credito para confirmar el pedido o pulsa alguno de los botones inferiores");   //Hecho acorde a enunc pract diseño
 
         char response = sk.waitEvent(30);
 
@@ -69,8 +71,9 @@ public class PaymentScreen implements KioskScreen {
 
                 if (bank.comunicationAvaiable() == true){
                     int newOrderNumber;
+
                     try {
-                        newOrderNumber = incrementOrderNumber();
+                        newOrderNumber = incrementOrderNumber(); //#Hay que gestionar esto mejor con un Throw hacia arriba
                     } catch (IOException e) {
                         System.out.println("Archivo no encontrado");
                         newOrderNumber = -1;
@@ -79,12 +82,14 @@ public class PaymentScreen implements KioskScreen {
                     writeOrderToFile(); //hay que implementar este metodo
 
                     ArrayList <String> ticketStringList = new ArrayList<>(); //**Encpasulac bien?? */
-
-                    ticketStringList.add("Numero de ticket: " + String.valueOf(newOrderNumber));
+                    
+                    ticketStringList.add(String.valueOf(newOrderNumber));
                     ticketStringList.add("-----------------------------------");
                     ticketStringList.add(orderText);
-                    ticketStringList.add(String.valueOf(totalAmount));
+                    ticketStringList.add("-----------------------------------");
+                    ticketStringList.add(String.valueOf(totalAmountFloat) + " €");
                     
+                    //Habria que añadir texto auxiliares traducidos
 
                     sk.print(ticketStringList); //imprimimos ticket con ifnormacion. Hay que pasar lista de Strings
 
@@ -92,26 +97,39 @@ public class PaymentScreen implements KioskScreen {
 
                     try {
                         bank.doOperation(creditCardNumb, totalAmount);
+
                     } catch (CommunicationException e) {
                         // Auto-generated catch block
-                        e.printStackTrace();
-                        sk.setDescription("Error: no se puedo efectuar el pago");
+                        //e.printStackTrace();
+                        sk.clearScreen();
+                        sk.setMessageMode();
+                        sk.setDescription("Error: no se pudo efectuar el pago");
+                        sk.waitEvent(1);
+                        //return new WelcomeScreen();
+                        
                         //Añadir boton de vovler a welcomeScreen??
                     }
                     
                     sk.expelCreditCard(12); //el int no se cual meter, lo elijo arbitrariamente
 
-                    return new WelcomeScreen(); //se vuelve a pantalla de inicio
+                    //return new WelcomeScreen(); se vuelve a pantalla de inicio
                     //operac realizada
 
                 } //comm available
                 
                 else { 
+                    sk.clearScreen();
+                    sk.setMessageMode();
                     sk.setDescription("Error: no se pudo establecer conexion con el servidor");
+                    sk.waitEvent(1);
+                    //return new WelcomeScreen();
+                    
 
                 }//comm not available
-                return new WelcomeScreen();
-            }
+
+                return new WelcomeScreen(); //Pase lo que pase se vuelve a WelcomeScreen
+            
+            } //final case 1
 
             default -> {
                 return this;
@@ -156,7 +174,7 @@ public class PaymentScreen implements KioskScreen {
         
 
         k.clearScreen();
-        k.setMenuMode();
+        k.setMessageMode();
         k.setTitle("Introduce la tarjeta de crédito");
 
         k.setOption('A', "Modificar pedido");
