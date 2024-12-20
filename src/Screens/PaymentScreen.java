@@ -7,6 +7,12 @@ package Screens;
 import Manager.Context;
 import Manager.SimpleKiosk;
 import Manager.TranslatorManager;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.naming.CommunicationException;
@@ -20,8 +26,8 @@ import urjc.UrjcBankServer;
  */
 public class PaymentScreen implements KioskScreen {
 
-    @Override
-    public KioskScreen show(Context c) {
+    @Override //HABRIA QUE AÑADIR UN THROW IOEXCEPTION POR SI NO SE ENCUENTRA FICHEROS Y PONER TRY Y CATCH EN CREACION DE PANTALLA DE PAGO
+    public KioskScreen show(Context c){
 
         //Metodo principal de la clase, desde el cual se produce la totalidad del proceso de pago
 
@@ -63,14 +69,23 @@ public class PaymentScreen implements KioskScreen {
                 long creditCardNumb = sk.getCardNumber();
 
                 if (bank.comunicationAvaiable() == true){
-                    int newOrderNumber = incrementOrderNumber(); //hay que implementar este metodo
+                    int newOrderNumber;
+                    try {
+                        newOrderNumber = incrementOrderNumber();
+                    } catch (IOException e) {
+                        System.out.println("Archivo no encontrado");
+                        newOrderNumber = -1;
+                    } //hay que implementar este metodo
 
                     writeOrderToFile(); //hay que implementar este metodo
 
                     ArrayList <String> ticketStringList = new ArrayList<>(); //**Encpasulac bien?? */
 
+                    ticketStringList.add("Numero de ticket: " + String.valueOf(newOrderNumber));
+                    ticketStringList.add("-----------------------------------");
                     ticketStringList.add(orderText);
                     ticketStringList.add(String.valueOf(totalAmount));
+                    
 
                     sk.print(ticketStringList); //imprimimos ticket con ifnormacion. Hay que pasar lista de Strings
 
@@ -111,8 +126,30 @@ public class PaymentScreen implements KioskScreen {
 
     }
 
-    private int incrementOrderNumber() {
-        return 10;
+    private int incrementOrderNumber() throws IOException {
+
+        String rutaArchivo = "COMANDAS\\numTicket.txt";
+        
+        FileReader in = new FileReader(rutaArchivo); //Usamos buffered Reader para no tener que ir leyendo uno a uno los caracteres
+        BufferedReader bufr = new BufferedReader(in); //default size. Pasamos el fileReader
+        String linea;
+        int numTicket = 0;
+        linea = bufr.readLine(); //leemos la linea con el numero de ticket
+        numTicket = Integer.valueOf(linea) + 1; //lo incrementamos  en 1 y si es 100 lo ponemos a 0
+
+        if (numTicket == 100) {
+            numTicket = 0;
+        }
+
+        FileWriter out = new FileWriter(rutaArchivo); //Ahora escribimos la linea con el num ticket actualiz
+        BufferedWriter bufw = new BufferedWriter(out);
+        linea = Integer.toString(numTicket);
+        bufw.write(linea);
+
+        bufr.close();
+        bufw.close();
+        
+        return numTicket;
     }
 
     
