@@ -18,14 +18,28 @@ public class OrderScreen implements KioskScreen {
         SimpleKiosk kiosk = c.getKiosk();
         configureScreenButtons(kiosk);
         char response = kiosk.waitEvent(30);
-        return switch (response) {
-            case 'A' -> new MenuScreen();
-            case 'B' -> new SectionScreen();
-            case 'C' -> new PaymentScreen();
-            // TODO: El botón D es la cancelación, hay que implementar la eliminación de todos los datos
-            case 'D' -> new WelcomeScreen();
-            default -> this;
-        }; 
+         switch (response) {
+            case 'A' -> {
+               return new MenuScreen();
+            }
+            case 'B' -> {
+               return new SectionScreen();
+            } 
+            case 'C' ->{
+                return new PaymentScreen();
+            } 
+            case 'D' ->{
+                c.getOrder().cancelOrder();
+                c.getKiosk().clearScreen();
+                c.getKiosk().setMessageMode();
+                c.getKiosk().setDescription("Pedido cancelado");
+                kiosk.waitEvent(1);
+                return new OrderScreen();
+            }
+            default -> {
+                return this;
+            }
+        }
     }
     
     private void configureScreenButtons(SimpleKiosk kiosk) {

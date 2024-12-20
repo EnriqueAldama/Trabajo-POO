@@ -4,8 +4,7 @@
  */
 package products;
 
-import products.Product;
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,14 +14,27 @@ import java.util.List;
 public class Order {
     private int orderNumber;
     private List<Product> products;
+
+    public Order(){
+        this.products= new ArrayList<Product>();
+    }
     
     public int getTotalAmount(){
-        return products.size();  
+        int s=0; 
+        for (Product p : this.products) { 
+            s+=p.getPrice(); 
+        }
+        return s;
     }
     
-    public String getOrderText(){ /*No se de que va este metodo*/
-        
+    public String getOrderText() {
+        StringBuilder s = new StringBuilder(); 
+        for (Product p : this.products) { 
+            s.append(p.getName()).append("\n"); 
+        }
+        return s.toString(); 
     }
+    
     
     public int GetNumProducts(){
         return this.products.size();
@@ -30,5 +42,9 @@ public class Order {
     
     public void addProduct(Product p){
         this.products.add(p);
+    }
+
+    public void cancelOrder(){
+            this.products.removeAll(products);
     }
 }

@@ -41,7 +41,7 @@ public class SectionScreen implements CarouselScreen {
             char response = kiosk.waitEvent(30);
             switch (response) {
                 // Botón seleccionar seccion
-                case 'A' -> {
+                case 'C' -> {
                     return new ProductScreen(currentItem); // Retornar la pantalla de los productos de la seccion elegida
 
                 }

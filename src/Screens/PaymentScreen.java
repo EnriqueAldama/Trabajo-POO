@@ -32,17 +32,16 @@ public class PaymentScreen implements KioskScreen {
         //Metodo principal de la clase, desde el cual se produce la totalidad del proceso de pago
 
         SimpleKiosk sk = c.getKiosk();
-        //Order order = c.getOrder(); //No hay Order de momento en context
+        Order order = c.getOrder(); //No hay Order de momento en context
         TranslatorManager t = c.getTranslator();
         UrjcBankServer bank = new UrjcBankServer();
 
         System.out.println("Hola mundo");
         
         
-        //String orderText = order.getOrderText();
-        //int totalAmount = order.getTotalAmount();
-        String orderText = "ordertext";
-        int totalAmount = 99;
+        String orderText = order.getOrderText();
+        int totalAmount = order.getTotalAmount();
+        //int totalAmount = 99;
 
         //configureScreenButtons(k,t);
 

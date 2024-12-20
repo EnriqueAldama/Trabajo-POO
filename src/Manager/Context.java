@@ -21,6 +21,7 @@ public class Context {
         this.translator = new TranslatorManager(); 
         this.kiosk = new SimpleKiosk(this.translator);
         this.menuCard = MenuCard.loadFromDisk(); 
+        this.order= new Order();
     }
     
     public SimpleKiosk getKiosk() {

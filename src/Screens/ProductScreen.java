@@ -4,13 +4,9 @@
  */
 package Screens;
 
-import java.util.List;
 
 import Manager.Context;
 import Manager.SimpleKiosk;
-import java.util.spi.CurrencyNameProvider;
-import javax.crypto.MacSpi;
-import products.MenuCard;
 import products.MenuCardSection;
 
 /**
@@ -46,23 +42,29 @@ public class ProductScreen implements CarouselScreen{
             String im = currentProduct.getImageFileName();
             kiosk.setDescription(description);
             kiosk.setImage(im);
-            
+            String title="Selecciona la "+sc.getSectionName();
+            kiosk.setTitle(title);
             char response = kiosk.waitEvent(30);
             switch (response) {
                 // Botón seleccionar seccion
                 case 'A' -> {
                     c.getOrder().addProduct(currentProduct);
+                    c.getKiosk().clearScreen();
                     c.getKiosk().setMessageMode();
-                    c.getKiosk().setDescription("Producto añadido con exito");
-                    Thread.sleep(30);
-                    c.getKiosk().setMenuMode();
-                    return this;
+                    c.getKiosk().setDescription("Producto añadido al pedido");
+                    kiosk.waitEvent(1);
+                    return  new OrderScreen();
                 }
                 case 'B' -> {
-                    
+                    c.getOrder().cancelOrder();
+                    c.getKiosk().clearScreen();
+                    c.getKiosk().setMessageMode();
+                    c.getKiosk().setDescription("Pedido cancelado");
+                    kiosk.waitEvent(1);
+                    return new OrderScreen();
                 }
                 case 'C' -> {
-                   
+                   return new OrderScreen();
                 }
 
                 
@@ -99,10 +101,8 @@ public class ProductScreen implements CarouselScreen{
     public void configureScreenButtons(SimpleKiosk k) {
         k.clearScreen();
         k.setMenuMode();
-        k.setTitle("Selecciona la "+sc.getSectionName());
         k.setOption('A', "Añadir producto al pedido");
-        k.setOption('B', "Cancelar producto del pedido");
-        k.setOption('C', "Cancelar pedido");
+        k.setOption('B', "Cancelar pedido");
     }
     
 }
