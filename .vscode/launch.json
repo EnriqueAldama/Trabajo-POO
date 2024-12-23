@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "BurgerSelfOrderKioskAplication",
+            "request": "launch",
+            "mainClass": "Manager.BurgerSelfOrderKioskAplication",
+            "projectName": "Trabajo-POO_345c5d33"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"

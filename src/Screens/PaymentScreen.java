@@ -10,9 +10,13 @@ import Manager.TranslatorManager;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 
 import javax.naming.CommunicationException;
@@ -79,7 +83,7 @@ public class PaymentScreen implements KioskScreen {
                         newOrderNumber = -1;
                     } //hay que implementar este metodo
 
-                    writeOrderToFile(); //hay que implementar este metodo
+                    writeOrderToFile(order); //hay que implementar este metodo
 
                     ArrayList <String> ticketStringList = new ArrayList<>(); //**Encpasulac bien?? */
                     
@@ -139,9 +143,8 @@ public class PaymentScreen implements KioskScreen {
         }       
     }
 
-    private void writeOrderToFile() {
-
-    }
+   
+    
 
     private int incrementOrderNumber() throws IOException {
 
@@ -183,4 +186,36 @@ public class PaymentScreen implements KioskScreen {
         
     }
 
+ private void  writeOrderToFile(Order Order){
+        try{
+    int number=incrementOrderNumber();
+    File FicheroCocina = new File("KitchenOrders.txt");
+        }
+    catch(FileNotFoundException e)
+        {
+            FicheroCocina.createNewFile();
+            System.out.println("listado de cocina no encontrado, creando uno nuevo");
+        }
+        
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime limit= LocalDateTime.now().withHour(5).withMinute(0);
+        LocalDateTime ultimaMod= Instant.ofEpochMilli(FicheroCocina.lastModified())
+        .atZone(ZoneId.systemDefault())  //uso la zona horaria por defecto
+        .toLocalDateTime();
+        if(ultimaMod.isBefore(limit) && now.isAfter(limit)){
+            FicheroCocina.delete();
+            FicheroCocina.createNewFile();
+        }
+
+        
+    
+    BufferedWriter buff=new BufferedWriter(new FileWriter(FicheroCocina), 10);
+    
+    buff.write("Numero de pedido: " + number);
+    buff.newLine();
+    buff.write("Productos: ");
+    buff.newLine();
+    buff.write(Order.getOrderText());
+    buff.newLine();
+}
 }
