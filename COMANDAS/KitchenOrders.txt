@@ -1,0 +1,8 @@
+Numero de pedido: 19
+Productos: 
+ANGUS
+
+Numero de pedido: 20
+Productos: 
+COCA COLA NORMAL
+
