@@ -4,3 +4,9 @@ POLLO
 CERVEZA
 SUNDAE CHOCOLATE
 
+Numero de pedido: 23
+Productos: 
+ANGUS
+AGUA
+PIÑA
+

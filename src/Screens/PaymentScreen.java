@@ -65,7 +65,7 @@ public class PaymentScreen implements KioskScreen {
 
             case 'B' -> {
                 // Boton cancelar pedido. devolv a pantalla bienvenida
-                return new IdiomScreen(); // antes welcomeScreen
+                return new WelcomeScreen(); // antes welcomeScreen
             }
 
             case '1' -> {
