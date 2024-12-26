@@ -7,9 +7,9 @@ package Screens;
 import Manager.Context;
 import Manager.SimpleKiosk;
 import Manager.TranslatorManager;
+import products.Menu;
 import products.MenuCard;
 import products.MenuCardSection;
-
 /**
  *
  * @author Alfa
@@ -22,6 +22,7 @@ public class MenuScreen implements CarouselScreen {
         MenuCard mc = c.getMenuCard();
         MenuCardSection sc;
         TranslatorManager t = c.getTranslator();
+        Menu menu= new Menu();
 
         // configureScreenButtons(sk);
         // adjustCarruselButton(sk);
@@ -55,7 +56,7 @@ public class MenuScreen implements CarouselScreen {
                 switch (response) {
                     // Botón seleccionar
                     case 'A' -> {
-                        c.getOrder().addProduct(currentProduct);
+                        menu.addIndProduct(currentProduct);
                         c.getKiosk().clearScreen();
                         c.getKiosk().setMessageMode();
                         c.getKiosk().setDescription("Producto añadido al pedido");
@@ -98,10 +99,9 @@ public class MenuScreen implements CarouselScreen {
             }
 
         }
+        menu.setDiscount(20);
+        c.getOrder().addProduct(menu);
         return new OrderScreen();
-
-        // CALCULAR DESCUENTO FALTA
-
     }
 
     @Override
