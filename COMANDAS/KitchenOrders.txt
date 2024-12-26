@@ -1,8 +1,6 @@
-Numero de pedido: 19
+Numero de pedido: 22
 Productos: 
-ANGUS
-
-Numero de pedido: 20
-Productos: 
-COCA COLA NORMAL
+POLLO
+CERVEZA
+SUNDAE CHOCOLATE
 

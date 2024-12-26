@@ -15,20 +15,24 @@ import java.util.List;
  */
 public class MenuCard {
     private List<MenuCardSection> sectionList;
-    
-    public MenuCardSection getSection(int c){
+
+    public MenuCard(List<MenuCardSection> sectionList) {
+        this.sectionList = sectionList;
+    }
+
+    public MenuCardSection getSection(int c) {
         return sectionList.get(c);
     }
-    
-    public int getNumberOfSections(){
+
+    public int getNumberOfSections() {
         return sectionList.size();
     }
-    
-    public static MenuCard loadFromDisk(){
+
+    public static MenuCard loadFromDisk() {
         try {
             MenuCard mc;
             try (FileInputStream file = new FileInputStream("PRODUCTOS/Catalog.xml")) {
-                XMLDecoder decoder=new XMLDecoder(file);
+                XMLDecoder decoder = new XMLDecoder(file);
                 mc = (MenuCard) decoder.readObject();
                 decoder.close();
             }
@@ -36,10 +40,6 @@ public class MenuCard {
         } catch (IOException e) {
             throw new RuntimeException("Error al cargar el archivo, llame a un informatico");
         }
-    }
-
-    public MenuCard(List<MenuCardSection> sectionList) {
-        this.sectionList = sectionList;
     }
 
     public List<MenuCardSection> getSectionList() {

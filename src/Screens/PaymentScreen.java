@@ -32,6 +32,7 @@ public class PaymentScreen implements KioskScreen {
 
     @Override // HABRIA QUE AÑADIR UN THROW IOEXCEPTION POR SI NO SE ENCUENTRA FICHEROS Y
               // PONER TRY Y CATCH EN CREACION DE PANTALLA DE PAGO
+
     public KioskScreen show(Context c) {
 
         // Metodo principal de la clase, desde el cual se produce la totalidad del
