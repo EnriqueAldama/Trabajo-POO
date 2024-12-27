@@ -5,6 +5,7 @@
 package products;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 
 
@@ -26,11 +27,12 @@ public class Menu implements Product {
     
     @Override
     public int getPrice(){
-        int i, total=0;
-        for (i=0;i<this.prod.size() ;i++){
-            total+=this.getProduct(i).getPrice();
+        int s=0; 
+        for (IndividualProduct p : this.prod) { 
+            s+=p.getPrice();
         }
-        return total*=(100-this.discount)/100;/*descuento del 30, 100-30=70 el precio es el 70 del precio, entonces precio*0,7*/
+        //return s=s*((100-this.discount)/100);/*descuento del 30, 100-30=70 el precio es el 70 del precio, entonces precio*0,7*/
+        return s=s*(100-this.discount)/100;
     }
     
     public IndividualProduct getProduct(int i){
@@ -48,7 +50,7 @@ public class Menu implements Product {
     public String getName() {
         String s= "Menu:";
         for (int i=0;i<this.prod.size() ;i++){
-            s+= "1x "+this.getProduct(i).getName()+ "  ";
+            s+= "1x "+this.getProduct(i).getName()+ " ";
         }
        return s;
     }
