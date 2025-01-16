@@ -23,6 +23,10 @@ public class TranslatorManager {
         this.dictionaries.put("inglés", new Translator("languages/inglés.xml"));
         this.dictionaries.put("francés", new Translator("languages/francés.xml"));
         this.dictionaries.put("alemán", new Translator("languages/alemán.xml"));
+        this.dictionaries.put("catalán", new Translator("languages/catalán.xml"));
+        this.dictionaries.put("gallego", new Translator("languages/gallego.xml"));
+        this.dictionaries.put("vasco", new Translator("languages/vasco.xml"));
+
         this.currentDictionary = dictionaries.getOrDefault("español", this.currentDictionary);
     }
     

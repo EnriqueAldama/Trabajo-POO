@@ -53,7 +53,7 @@ public class PaymentScreen implements KioskScreen {
 
         configureScreenButtons(sk);
         sk.setDescription(orderText + "\n Total: " + String.valueOf(totalAmountFloat)
-                + " € \n Introduce la tarjeta de credito para confirmar el pedido o pulsa alguno de los botones inferiores");
+                + " € \n" + t.translate("Introduce la tarjeta de credito para confirmar el pedido o pulsa alguno de los botones inferiores"));
 
         char response = sk.waitEvent(30);
 

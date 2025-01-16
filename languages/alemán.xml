@@ -2,16 +2,180 @@
 <java version="23.0.1" class="java.beans.XMLDecoder">
  <object class="java.util.HashMap">
   <void method="put">
-   <string>bienvenido</string>
-   <string>welSSSScome</string>
+   <string>Seleccionar este idioma</string>
+   <string>Diese Sprache auswählen</string>
   </void>
   <void method="put">
-   <string>hola</string>
-   <string>helSSSlo</string>
+   <string>Añadir menú a pedido</string>
+   <string>Menü zur Bestellung hinzufügen</string>
   </void>
   <void method="put">
-   <string>adios</string>
-   <string>goodSSSSbye</string>
+   <string>Añadir producto individual a pedido</string>
+   <string>Einzelnes Produkt zur Bestellung hinzufügen</string>
+  </void>
+  <void method="put">
+   <string>Finalizar pedido y pagar</string>
+   <string>Bestellung abschließen und bezahlen</string>
+  </void>
+  <void method="put">
+   <string>Cancelar pedido</string>
+   <string>Bestellung stornieren</string>
+  </void>
+  <void method="put">
+   <string>Modificar pedido</string>
+   <string>Bestellung ändern</string>
+  </void>
+  <void method="put">
+   <string>Cancelar pago</string>
+   <string>Zahlung abbrechen</string>
+  </void>
+  <void method="put">
+   <string>Iniciar nuevo pedido</string>
+   <string>Neue Bestellung starten</string>
+  </void>
+  <void method="put">
+   <string>Cambiar idioma</string>
+   <string>Sprache ändern</string>
+  </void>
+  <void method="put">
+   <string>Introduce la tarjeta de crédito</string>
+   <string>Geben Sie die Kreditkarte ein</string>
+  </void>
+  <void method="put">
+   <string>Error: no se puedo efectuar el pago</string>
+   <string>Fehler: Zahlung konnte nicht durchgeführt werden</string>
+  </void>
+  <void method="put">
+   <string>Error: no se pudo establecer conexion con el servidor</string>
+   <string>Fehler: Verbindung zum Server konnte nicht hergestellt werden</string>
+  </void>
+  <void method="put">
+   <string>Introduce la tarjeta de credito para confirmar el pedido o pulsa alguno de los botones inferiores</string>
+   <string>Geben Sie Ihre Kreditkarte ein, um die Bestellung zu bestätigen, oder drücken Sie auf eine der unteren Tasten</string>
+  </void>
+  <void method="put">
+   <string>Seleccionar el idioma español</string>
+   <string>Sprache Spanisch auswählen</string>
+  </void>
+  <void method="put">
+   <string>Seleccionar el idioma inglés</string>
+   <string>Sprache Englisch auswählen</string>
+  </void>
+  <void method="put">
+   <string>Seleccionar el idioma francés</string>
+   <string>Sprache Französisch auswählen</string>
+  </void>
+  <void method="put">
+   <string>Seleccionar el idioma alemán</string>
+   <string>Sprache Deutsch auswählen</string>
+  </void>
+  <void method="put">
+   <string>SECCIONES</string>
+   <string>SEKTIONEN</string>
+  </void>
+  <void method="put">
+   <string>Sección: BEBIDAS</string>
+   <string>Sektion: GETRÄNKE</string>
+  </void>
+  <void method="put">
+   <string>Seleccionar esta sección</string>
+   <string>Diese Sektion auswählen</string>
+  </void>
+  <void method="put">
+   <string>Sección: HAMBURGUESAS</string>
+   <string>Sektion: HAMBURGER</string>
+  </void>
+  <void method="put">
+   <string>Sección: COMPLEMENTOS</string>
+   <string>Sektion: BEILAGEN</string>
+  </void>
+  <void method="put">
+   <string>Añadir al pedido</string>
+   <string>Zur Bestellung hinzufügen</string>
+  </void>
+  <void method="put">
+   <string>Producto: GALLEGA</string>
+   <string>Produkt: GALICISCH</string>
+  </void>
+  <void method="put">
+   <string>Producto: VEGETAL</string>
+   <string>Produkt: VEGAN</string>
+  </void>
+  <void method="put">
+   <string>Producto: ANGUS</string>
+   <string>Produkt: ANGUS</string>
+  </void>
+  <void method="put">
+   <string>Producto: COCA COLA NORMAL</string>
+   <string>Produkt: COCA COLA</string>
+  </void>
+  <void method="put">
+   <string>Producto: COCA COLA ZERO</string>
+   <string>Produkt: COCA COLA ZERO</string>
+  </void>
+  <void method="put">
+   <string>Añadir producto al pedido</string>
+   <string>Produkt zur Bestellung hinzufügen</string>
+  </void>
+  <void method="put">
+   <string>Producto: COCA COLA ZERO ZERO</string>
+   <string>Produkt: COCA COLA OHNE ZUCKER</string>
+  </void>
+  <void method="put">
+   <string>Producto: FANTA</string>
+   <string>Produkt: FANTA</string>
+  </void>
+  <void method="put">
+   <string>Producto: POLLO</string>
+   <string>Produkt: HUHN</string>
+  </void>
+  <void method="put">
+   <string>Producto: AGUA</string>
+   <string>Produkt: WASSER</string>
+  </void>
+  <void method="put">
+   <string>Producto: CERVEZA</string>
+   <string>Produkt: BIER</string>
+  </void>
+  <void method="put">
+   <string>Producto añadido al pedido</string>
+   <string>Produkt zur Bestellung hinzugefügt</string>
+  </void>
+  <void method="put">
+   <string>Producto: ENSALADA</string>
+   <string>Produkt: SALAT</string>
+  </void>
+  <void method="put">
+   <string>Producto: SUNDAE CHOCOLATE</string>
+   <string>Produkt: SCHOKO-SUNDAE</string>
+  </void>
+  <void method="put">
+   <string>Producto: PIÑA</string>
+   <string>Produkt: ANANAS</string>
+  </void>
+  <void method="put">
+   <string>Producto: PATATAS FRITAS</string>
+   <string>Produkt: POMMES FRITES</string>
+  </void>
+  <void method="put">
+   <string>Producto: NUGGETS_VEGETALES</string>
+   <string>Produkt: VEGANE NUGGETS</string>
+  </void>
+  <void method="put">
+   <string>Producto: ALITAS</string>
+   <string>Produkt: HUHNFLÜGEL</string>
+  </void>
+  <void method="put">
+   <string>Producto: AROS DE CEBOLLA</string>
+   <string>Produkt: ZWIEBELRINGE</string>
+  </void>
+  <void method="put">
+   <string>Producto: PATATAS_SUPREME</string>
+   <string>Produkt: SUPREME POMMES FRITES</string>
+  </void>
+  <void method="put">
+   <string>Pedido cancelado</string>
+   <string>Bestellung storniert</string>
   </void>
  </object>
 </java>

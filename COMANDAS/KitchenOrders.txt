@@ -1,12 +1,4 @@
-Numero de pedido: 22
+Numero de pedido: 29
 Productos: 
-POLLO
-CERVEZA
-SUNDAE CHOCOLATE
-
-Numero de pedido: 23
-Productos: 
-ANGUS
-AGUA
-PIÑA
+Menu:1x ANGUS 1x COCA COLA NORMAL 1x ALITAS 
 

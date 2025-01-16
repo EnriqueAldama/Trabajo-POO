@@ -2,16 +2,184 @@
 <java version="23.0.1" class="java.beans.XMLDecoder">
  <object class="java.util.HashMap">
   <void method="put">
-   <string>bienvenido</string>
-   <string>welSSSScome</string>
+   <string>Seleccionar este idioma</string>
+   <string>Sélectionner cette langue</string>
   </void>
   <void method="put">
-   <string>hola</string>
-   <string>helSSSlo</string>
+   <string>Añadir menú a pedido</string>
+   <string>Ajouter le menu à la commande</string>
   </void>
   <void method="put">
-   <string>adios</string>
-   <string>goodSSSSbye</string>
+   <string>Añadir producto individual a pedido</string>
+   <string>Ajouter un produit individuel à la commande</string>
+  </void>
+  <void method="put">
+   <string>Finalizar pedido y pagar</string>
+   <string>Terminer la commande et payer</string>
+  </void>
+  <void method="put">
+   <string>Cancelar pedido</string>
+   <string>Annuler la commande</string>
+  </void>
+  <void method="put">
+   <string>Modificar pedido</string>
+   <string>Modifier la commande</string>
+  </void>
+  <void method="put">
+   <string>Cancelar pago</string>
+   <string>Annuler le paiement</string>
+  </void>
+  <void method="put">
+   <string>Iniciar nuevo pedido</string>
+   <string>Commencer une nouvelle commande</string>
+  </void>
+  <void method="put">
+   <string>Cambiar idioma</string>
+   <string>Changer de langue</string>
+  </void>
+  <void method="put">
+   <string>Cambiar idioma</string>
+   <string>Changer de langue</string>
+  </void>
+  <void method="put">
+   <string>Introduce la tarjeta de crédito</string>
+   <string>Insérer la carte de crédit</string>
+  </void>
+  <void method="put">
+   <string>Error: no se puedo efectuar el pago</string>
+   <string>Erreur : le paiement n'a pas pu être effectué</string>
+  </void>
+  <void method="put">
+   <string>Error: no se pudo establecer conexion con el servidor</string>
+   <string>Erreur : impossible d'établir la connexion au serveur</string>
+  </void>
+  <void method="put">
+   <string>Introduce la tarjeta de credito para confirmar el pedido o pulsa alguno de los botones inferiores</string>
+   <string>Insérez votre carte de crédit pour confirmer la commande ou appuyez sur l'un des boutons ci-dessous</string>
+  </void>
+  <void method="put">
+   <string>Seleccionar el idioma español</string>
+   <string>Sélectionner la langue espagnole</string>
+  </void>
+  <void method="put">
+   <string>Seleccionar el idioma inglés</string>
+   <string>Sélectionner la langue anglaise</string>
+  </void>
+  <void method="put">
+   <string>Seleccionar el idioma francés</string>
+   <string>Sélectionner la langue française</string>
+  </void>
+  <void method="put">
+   <string>Seleccionar el idioma alemán</string>
+   <string>Sélectionner la langue allemande</string>
+  </void>
+  <void method="put">
+   <string>SECCIONES</string>
+   <string>SECTIONS</string>
+  </void>
+  <void method="put">
+   <string>Sección: BEBIDAS</string>
+   <string>Section : BOISSONS</string>
+  </void>
+  <void method="put">
+   <string>Seleccionar esta sección</string>
+   <string>Sélectionner cette section</string>
+  </void>
+  <void method="put">
+   <string>Sección: HAMBURGUESAS</string>
+   <string>Section : HAMBURGERS</string>
+  </void>
+  <void method="put">
+   <string>Sección: COMPLEMENTOS</string>
+   <string>Section : ACCOMPAGNEMENTS</string>
+  </void>
+  <void method="put">
+   <string>Añadir al pedido</string>
+   <string>Ajouter à la commande</string>
+  </void>
+  <void method="put">
+   <string>Producto: GALLEGA</string>
+   <string>Produit : GALICIENNE</string>
+  </void>
+  <void method="put">
+   <string>Producto: VEGETAL</string>
+   <string>Produit : VÉGÉTALIEN</string>
+  </void>
+  <void method="put">
+   <string>Producto: ANGUS</string>
+   <string>Produit : ANGUS</string>
+  </void>
+  <void method="put">
+   <string>Producto: COCA COLA NORMAL</string>
+   <string>Produit : COCA COLA</string>
+  </void>
+  <void method="put">
+   <string>Producto: COCA COLA ZERO</string>
+   <string>Produit : COCA COLA ZÉRO</string>
+  </void>
+  <void method="put">
+   <string>Añadir producto al pedido</string>
+   <string>Ajouter le produit à la commande</string>
+  </void>
+  <void method="put">
+   <string>Producto: COCA COLA ZERO ZERO</string>
+   <string>Produit : COCA COLA SANS SUCRE</string>
+  </void>
+  <void method="put">
+   <string>Producto: FANTA</string>
+   <string>Produit : FANTA</string>
+  </void>
+  <void method="put">
+   <string>Producto: POLLO</string>
+   <string>Produit : POULET</string>
+  </void>
+  <void method="put">
+   <string>Producto: AGUA</string>
+   <string>Produit : EAU</string>
+  </void>
+  <void method="put">
+   <string>Producto: CERVEZA</string>
+   <string>Produit : BIÈRE</string>
+  </void>
+  <void method="put">
+   <string>Producto añadido al pedido</string>
+   <string>Produit ajouté à la commande</string>
+  </void>
+  <void method="put">
+   <string>Producto: ENSALADA</string>
+   <string>Produit : SALADE</string>
+  </void>
+  <void method="put">
+   <string>Producto: SUNDAE CHOCOLATE</string>
+   <string>Produit : SUNDAE AU CHOCOLAT</string>
+  </void>
+  <void method="put">
+   <string>Producto: PIÑA</string>
+   <string>Produit : ANANAS</string>
+  </void>
+  <void method="put">
+   <string>Producto: PATATAS FRITAS</string>
+   <string>Produit : FRITES</string>
+  </void>
+  <void method="put">
+   <string>Producto: NUGGETS_VEGETALES</string>
+   <string>Produit : NUGGETS VÉGÉTALIENS</string>
+  </void>
+  <void method="put">
+   <string>Producto: ALITAS</string>
+   <string>Produit : AILES DE POULET</string>
+  </void>
+  <void method="put">
+   <string>Producto: AROS DE CEBOLLA</string>
+   <string>Produit : ANNEAUX D'OIGNON</string>
+  </void>
+  <void method="put">
+   <string>Producto: PATATAS_SUPREME</string>
+   <string>Produit : FRITES SUPRÊMES</string>
+  </void>
+  <void method="put">
+   <string>Pedido cancelado</string>
+   <string>Commande annulée</string>
   </void>
  </object>
 </java>

@@ -38,7 +38,7 @@ public class ProductScreen implements CarouselScreen{
         // Bucle del carrusel
         while (true) { 
             products.IndividualProduct currentProduct = sc.getIndividualProduct(this.currentItem);  
-            String description = "Product: " + currentProduct.getName();
+            String description = "Producto: " + currentProduct.getName();
             String im = currentProduct.getImageFileName();
             kiosk.setDescription(description);
             kiosk.setImage(im);

@@ -3,186 +3,179 @@
  <object class="java.util.HashMap">
   <void method="put">
    <string>Seleccionar este idioma</string>
-   <string>Select this language</string>
+   <string>Hizkuntza hau aukeratu</string>
   </void>
   <void method="put">
    <string>Añadir menú a pedido</string>
-   <string>Add menu to order</string>
+   <string>Menua eskaerara gehitu</string>
   </void>
   <void method="put">
    <string>Añadir producto individual a pedido</string>
-   <string>Add individual product to order</string>
+   <string>Banakako produktua eskaerara gehitu</string>
   </void>
   <void method="put">
    <string>Finalizar pedido y pagar</string>
-   <string>End order and pay</string>
+   <string>Eskaera amaitu eta ordaindu</string>
   </void>
   <void method="put">
    <string>Cancelar pedido</string>
-   <string>Cancel order</string>
+   <string>Eskaera bertan behera utzi</string>
   </void>
   <void method="put">
    <string>Modificar pedido</string>
-   <string>Modify order</string>
+   <string>Eskaera aldatu</string>
   </void>
   <void method="put">
    <string>Cancelar pago</string>
-   <string>Cancel payment</string>
+   <string>Ordainketa bertan behera utzi</string>
   </void>
   <void method="put">
    <string>Iniciar nuevo pedido</string>
-   <string>Start new order</string>
+   <string>Eskaera berri bat hasi</string>
   </void>
   <void method="put">
    <string>Cambiar idioma</string>
-   <string>Change language</string>
-  </void>
-  <void method="put">
-   <string>Cambiar idioma</string>
-   <string>Change language</string>
+   <string>Hizkuntza aldatu</string>
   </void>
   <void method="put">
    <string>Introduce la tarjeta de crédito</string>
-   <string>Enter the credit card</string>
+   <string>Sartu kreditu txartela</string>
   </void>
   <void method="put">
    <string>Error: no se puedo efectuar el pago</string>
-   <string>Error: payment cannot be made</string>
+   <string>Errorea: ezin izan da ordainketa egin</string>
   </void>
   <void method="put">
    <string>Error: no se pudo establecer conexion con el servidor</string>
-   <string>Error: Could not establish connection to the server</string>
+   <string>Errorea: ezin izan da zerbitzariarekin konexioa ezarri</string>
   </void>
   <void method="put">
    <string>Introduce la tarjeta de credito para confirmar el pedido o pulsa alguno de los botones inferiores</string>
-   <string>Enter your credit card to confirm the order or press one of the buttons below</string>
+   <string>Sartu kreditu txartela eskaera berresteko edo sakatu beheko botoietako bat</string>
   </void>
   <void method="put">
    <string>Seleccionar el idioma español</string>
-   <string>Select language Spanish</string>
+   <string>Aukeratu gaztelaniazko hizkuntza</string>
   </void>
   <void method="put">
    <string>Seleccionar el idioma inglés</string>
-   <string>Select lenguage English</string>
+   <string>Aukeratu ingelesezko hizkuntza</string>
   </void>
   <void method="put">
    <string>Seleccionar el idioma francés</string>
-   <string>Select lenguage French</string>
+   <string>Aukeratu frantsesezko hizkuntza</string>
   </void>
   <void method="put">
    <string>Seleccionar el idioma alemán</string>
-   <string>Select lenguage German</string>
+   <string>Aukeratu alemanezko hizkuntza</string>
   </void>
   <void method="put">
    <string>SECCIONES</string>
-   <string>SECTIONS</string>
+   <string>SEKZIOAK</string>
   </void>
   <void method="put">
    <string>Sección: BEBIDAS</string>
-   <string>Section: DRINKS</string>
+   <string>Sekzioa: EDARIAK</string>
   </void>
   <void method="put">
    <string>Seleccionar esta sección</string>
-   <string>Select this section</string>
+   <string>Aukeratu sekzio hau</string>
   </void>
   <void method="put">
    <string>Sección: HAMBURGUESAS</string>
-   <string>Section: BURGERS</string>
+   <string>Sekzioa: HAMBURGUESAK</string>
   </void>
   <void method="put">
    <string>Sección: COMPLEMENTOS</string>
-   <string>Section: SIDE DISHES</string>
+   <string>Sekzioa: OSAGARRIAK</string>
   </void>
   <void method="put">
    <string>Añadir al pedido</string>
-   <string>Add to order</string>
+   <string>Eskaerara gehitu</string>
   </void>
-    <void method="put">
+  <void method="put">
    <string>Producto: GALLEGA</string>
-   <string>Product: GALICIAN</string>
+   <string>Produktua: GALIZIARRA</string>
   </void>
-     <void method="put">
+  <void method="put">
    <string>Producto: VEGETAL</string>
-   <string>Product: VEGAN</string>
+   <string>Produktua: BEGETALA</string>
   </void>
-       <void method="put">
+  <void method="put">
    <string>Producto: ANGUS</string>
-   <string>Product: ANGUS</string>
+   <string>Produktua: ANGUS</string>
   </void>
-     <void method="put">
+  <void method="put">
    <string>Producto: COCA COLA NORMAL</string>
-   <string>Product: COKE</string>
+   <string>Produktua: COCA COLA NORMALA</string>
   </void>
-       <void method="put">
+  <void method="put">
    <string>Producto: COCA COLA ZERO</string>
-   <string>Product: DIET COKE</string>
+   <string>Produktua: COCA COLA ZERO</string>
   </void>
-        <void method="put">
+  <void method="put">
    <string>Añadir producto al pedido</string>
-   <string>Add product to order</string>
+   <string>Produktua eskaerara gehitu</string>
   </void>
-        <void method="put">
+  <void method="put">
    <string>Producto: COCA COLA ZERO ZERO</string>
-   <string>Product: DIET COKE NO SUGARS ADDED</string>
+   <string>Produktua: COCA COLA ZERO AZUKRERIK GABE</string>
   </void>
-        <void method="put">
+  <void method="put">
    <string>Producto: FANTA</string>
-   <string>Product: FANTA</string>
+   <string>Produktua: FANTA</string>
   </void>
-       <void method="put">
+  <void method="put">
    <string>Producto: POLLO</string>
-   <string>Product: CHICKEN</string>
+   <string>Produktua: OILASKOA</string>
   </void>
   <void method="put">
    <string>Producto: AGUA</string>
-   <string>Product: WATER</string>
+   <string>Produktua: URA</string>
   </void>
-    <void method="put">
+  <void method="put">
    <string>Producto: CERVEZA</string>
-   <string>Product: BEER</string>
+   <string>Produktua: GARAGARDOA</string>
   </void>
-      <void method="put">
+  <void method="put">
    <string>Producto añadido al pedido</string>
-   <string>Product has been added to the order</string>
+   <string>Produktua eskaerara gehituta</string>
   </void>
-        <void method="put">
+  <void method="put">
    <string>Producto: ENSALADA</string>
-   <string>Product: SALAD</string>
+   <string>Produktua: ENTSALADA</string>
   </void>
-      <void method="put">
+  <void method="put">
    <string>Producto: SUNDAE CHOCOLATE</string>
-   <string>Product: CHOCOLATE SUNDAE</string>
+   <string>Produktua: TXOKOLATEZKO SUNDAE</string>
   </void>
-        <void method="put">
+  <void method="put">
    <string>Producto: PIÑA</string>
-   <string>Product: PINEAPPLE</string>
+   <string>Produktua: ANANA</string>
   </void>
-          <void method="put">
+  <void method="put">
    <string>Producto: PATATAS FRITAS</string>
-   <string>Product: FRENCH FRIES</string>
-   </void>
-   <void method="put">
+   <string>Produktua: PATATA FRIJITUAK</string>
+  </void>
+  <void method="put">
    <string>Producto: NUGGETS_VEGETALES</string>
-   <string>Product: VEGAN NUGGETS</string>
+   <string>Produktua: BEGETAL NUGGETS</string>
   </void>
-     <void method="put">
+  <void method="put">
    <string>Producto: ALITAS</string>
-   <string>Product: CHICKEN WINGS</string>
+   <string>Produktua: HEGALAK</string>
   </void>
-       <void method="put">
+  <void method="put">
    <string>Producto: AROS DE CEBOLLA</string>
-   <string>Product: ONION RINGS</string>
+   <string>Produktua: TIPULAREN ERAZTUEN</string>
   </void>
-       <void method="put">
+  <void method="put">
    <string>Producto: PATATAS_SUPREME</string>
-   <string>Product: SUPREME FRIES</string>
+   <string>Produktua: SUPREME PATATA FRIJITUAK</string>
   </void>
-        <void method="put">
+  <void method="put">
    <string>Pedido cancelado</string>
-   <string>Order canceled</string>
+   <string>Eskaera bertan behera utzita</string>
   </void>
-  <string>Introduce la tarjeta de credito para confirmar el pedido o pulsa alguno de los botones inferiores</string>
-   <string>Enter your credit card to confirm the order or click on one of the buttons below</string>
-  
  </object>
 </java>
