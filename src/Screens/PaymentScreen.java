@@ -42,7 +42,7 @@ public class PaymentScreen implements KioskScreen {
         Order order = c.getOrder(); // No hay Order de momento en context
         TranslatorManager t = c.getTranslator();
         UrjcBankServer bank = new UrjcBankServer();
-
+        KitchenOrderManager Kitchen=new KitchenOrderManager();
         String orderText = order.getOrderText();
         int totalAmount = order.getTotalAmount();
         float totalAmountFloat = ((float) order.getTotalAmount()) / 100;
@@ -85,11 +85,9 @@ public class PaymentScreen implements KioskScreen {
                         newOrderNumber = -1;
                     } // hay que implementar este metodo
 
-                    try {
-                        addOrderToKitchen(order, newOrderNumber);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+
+                        Kitchen.addOrderToKitchen(order, newOrderNumber);
+
 
                     ArrayList<String> ticketStringList = new ArrayList<>(); // **Encpasulac bien?? */
 
