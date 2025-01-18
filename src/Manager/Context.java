@@ -6,6 +6,7 @@ package Manager;
 
 import products.MenuCard;
 import products.Order;
+
 /**
  *
  * @author am.machuca.2023
@@ -16,14 +17,13 @@ public class Context {
     private Order order;
     private MenuCard menuCard;
 
-    
-    public Context(){
-        this.translator = new TranslatorManager(); 
+    public Context() {
+        this.translator = new TranslatorManager();
         this.kiosk = new SimpleKiosk(this.translator);
-        this.menuCard = MenuCard.loadFromDisk(); 
-        this.order= new Order();
+        this.menuCard = MenuCard.loadFromDisk();
+        this.order = new Order();
     }
-    
+
     public SimpleKiosk getKiosk() {
         return kiosk;
     }
@@ -40,7 +40,7 @@ public class Context {
         return menuCard;
     }
 
-    public void setOrder(Order o){
-            
+    public void setOrder() {
+        this.order.cancelOrder();
     }
 }

@@ -15,36 +15,36 @@ public class Order {
     private int orderNumber;
     private List<Product> products;
 
-    public Order(){
-        this.products= new ArrayList<Product>();
+    public Order() {
+        this.products = new ArrayList<Product>();
     }
-    
-    public int getTotalAmount(){
-        int s=0; 
-        for (Product p : this.products) { 
-            s+=p.getPrice(); 
+
+    public int getTotalAmount() {
+        int s = 0;
+        for (Product p : this.products) {
+            s += p.getPrice();
         }
         return s;
     }
-    
+
     public String getOrderText() {
-        StringBuilder s = new StringBuilder(); 
-        for (Product p : this.products) { 
-            s.append(p.getName()).append("\n"); 
+        StringBuilder s = new StringBuilder();
+        for (Product p : this.products) {
+            s.append(p.getName()).append("\n");
         }
-        return s.toString(); 
+        return s.toString();
     }
-    
-    
-    public int GetNumProducts(){
+
+    public int GetNumProducts() {
         return this.products.size();
     }
-    
-    public void addProduct(Product p){
+
+    public void addProduct(Product p) {
         this.products.add(p);
     }
 
-    public void cancelOrder(){
-            this.products.removeAll(products);
+    public void cancelOrder() {
+        this.products.removeAll(products);
     }
+
 }

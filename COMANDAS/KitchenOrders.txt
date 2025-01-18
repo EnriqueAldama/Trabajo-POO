@@ -115,3 +115,31 @@ Numero de pedido: 53
 Productos: 
 Menu:1x VEGETAL 1x FANTA 1x NUGGETS 
 
+Numero de pedido: 54
+Productos: 
+ANGUS
+
+Numero de pedido: 55
+Productos: 
+ANGUS
+
+Numero de pedido: 56
+Productos: 
+GALLEGA
+
+Numero de pedido: 57
+Productos: 
+Menu:1x ANGUS 1x CERVEZA 1x APPLE PIE 
+
+Numero de pedido: 58
+Productos: 
+ANGUS
+
+Numero de pedido: 59
+Productos: 
+ANGUS
+
+Numero de pedido: 60
+Productos: 
+PATATAS FRITAS
+
