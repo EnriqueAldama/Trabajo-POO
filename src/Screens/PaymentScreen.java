@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javax.naming.CommunicationException;
@@ -84,13 +85,8 @@ public class PaymentScreen implements KioskScreen {
                         newOrderNumber = -1;
                     } // hay que implementar este metodo
 
-                    // LISTADO COCINA**
-                    try {
+                    // AÑADIR AL LISTADO DE COCINA**
                         writeOrderToFile(order, newOrderNumber);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
                     // TICKET****
 
                     ArrayList<String> ticketStringList = new ArrayList<>(); // **Encpasulac bien?? */
@@ -185,35 +181,39 @@ public class PaymentScreen implements KioskScreen {
 
     }
 
-    private void writeOrderToFile(Order Order, int orderNumber) throws IOException {
+    private void writeOrderToFile(Order Order, int orderNumber){
 
         int number = orderNumber;
-
         File FicheroCocina = new File("COMANDAS\\KitchenOrders.txt");
-
-        /*
-         * catch(FileNotFoundException e)
-         * {
-         * File FicheroCocina;
-         * FicheroCocina.createNewFile();
-         * System.out.println("listado de cocina no encontrado, creando uno nuevo");
-         * }
-         */
-
+        if (!FicheroCocina.exists()) {
+            
+            System.out.println("Listado de cocina no encontrado, creando uno nuevo");
+            try{
+                FicheroCocina.createNewFile();
+            }
+            catch(IOException e){
+                System.out.println("No se puede comunicar el pedido a la cocina, pida ayuda a un empleado");
+            }
+        }
+        //La siguiente seccion obtiene la hora actual, la de ultima modificacion y establece el limite
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime limit = LocalDateTime.now().withHour(5).withMinute(0);
         LocalDateTime ultimaMod = Instant.ofEpochMilli(FicheroCocina.lastModified())
                 .atZone(ZoneId.systemDefault()) // uso la zona horaria por defecto
                 .toLocalDateTime();
+        //Si la ultima edicion fue antes que el instante limite y ahora es despues hemos pasado por la hora de reinicio
         if (ultimaMod.isBefore(limit) && now.isAfter(limit)) {
-            FicheroCocina.delete();
-            FicheroCocina.createNewFile();
-
+            String fechaAyer = now.minusDays(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            File FicheroAntiguo=new File("COMANDAS\\KitchenOrders_"+fechaAyer+".txt");
+            FicheroCocina.renameTo(FicheroAntiguo);
+            try{
+                FicheroCocina.createNewFile();
+            }catch(IOException f){
+                System.out.println("algo ha salido mal, pida ayuda a un empleado");
         }
-
+        }
+        try{
         BufferedWriter buff = new BufferedWriter(new FileWriter(FicheroCocina, true)); // true para añadir despues de lo
-                                                                                       // que ya hay en vez de
-                                                                                       // sobreescribir
 
         buff.write("Numero de pedido: " + Integer.toString(number));
         buff.newLine();
@@ -222,5 +222,8 @@ public class PaymentScreen implements KioskScreen {
         buff.write(Order.getOrderText());
         buff.newLine();
         buff.close();
+        } catch(IOException g){
+            System.out.println("ha habido un error");
+        }
     }
 }
