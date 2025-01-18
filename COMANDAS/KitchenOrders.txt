@@ -2,3 +2,116 @@ Numero de pedido: 29
 Productos: 
 Menu:1x ANGUS 1x COCA COLA NORMAL 1x ALITAS 
 
+Numero de pedido: 30
+Productos: 
+Menu:1x VEGETAL 1x COCA COLA ZERO ZERO 1x PATATAS_SUPREME 
+ALITAS
+
+Numero de pedido: 31
+Productos: 
+ANGUS
+
+Numero de pedido: 32
+Productos: 
+ANGUS
+
+Numero de pedido: 33
+Productos: 
+ANGUS
+
+Numero de pedido: 34
+Productos: 
+VEGETAL
+
+Numero de pedido: 35
+Productos: 
+VEGETAL
+ANGUS
+
+Numero de pedido: 36
+Productos: 
+VEGETAL
+ANGUS
+Menu:1x POLLO 1x COCA COLA ZERO ZERO 1x NUGGETS 
+
+Numero de pedido: 37
+Productos: 
+VEGETAL
+ANGUS
+Menu:1x POLLO 1x COCA COLA ZERO ZERO 1x NUGGETS 
+ANGUS
+
+Numero de pedido: 38
+Productos: 
+
+Numero de pedido: 39
+Productos: 
+Menu:1x GALLEGA 1x COCA COLA ZERO 1x AROS DE CEBOLLA 
+
+Numero de pedido: 40
+Productos: 
+Menu:1x GALLEGA 1x COCA COLA ZERO 1x AROS DE CEBOLLA 
+Menu:1x ANGUS 1x COCA COLA NORMAL 1x ALITAS 
+
+Numero de pedido: 41
+Productos: 
+ANGUS
+ANGUS
+
+Numero de pedido: 42
+Productos: 
+ANGUS
+ANGUS
+ANGUS
+
+Numero de pedido: 43
+Productos: 
+ANGUS
+ANGUS
+ANGUS
+
+Numero de pedido: 44
+Productos: 
+ANGUS
+ANGUS
+ANGUS
+ALITAS
+
+Numero de pedido: 45
+Productos: 
+ANGUS
+
+Numero de pedido: 46
+Productos: 
+ANGUS
+
+Numero de pedido: 47
+Productos: 
+Menu:1x POLLO 1x COCA COLA ZERO ZERO 1x PATATAS_SUPREME 
+
+Numero de pedido: 48
+Productos: 
+Menu:1x POLLO 1x COCA COLA ZERO ZERO 1x PATATAS_SUPREME 
+ANGUS
+
+Numero de pedido: 49
+Productos: 
+ANGUS
+
+Numero de pedido: 50
+Productos: 
+ANGUS
+
+Numero de pedido: 51
+Productos: 
+ANGUS
+POLLO
+
+Numero de pedido: 52
+Productos: 
+Menu:1x VEGETAL 1x FANTA 1x NUGGETS 
+
+Numero de pedido: 53
+Productos: 
+Menu:1x VEGETAL 1x FANTA 1x NUGGETS 
+

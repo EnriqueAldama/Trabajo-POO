@@ -39,7 +39,7 @@ public class PaymentScreen implements KioskScreen {
         // proceso de pago
 
         SimpleKiosk sk = c.getKiosk();
-        Order order = c.getOrder(); // No hay Order de momento en context
+        Order order = c.getOrder();
         TranslatorManager t = c.getTranslator();
         UrjcBankServer bank = new UrjcBankServer();
 
@@ -47,13 +47,10 @@ public class PaymentScreen implements KioskScreen {
         int totalAmount = order.getTotalAmount();
         float totalAmountFloat = ((float) order.getTotalAmount()) / 100;
 
-        // int totalAmount = 99;
-
-        // configureScreenButtons(k,t);
-
         configureScreenButtons(sk);
         sk.setDescription(orderText + "\n Total: " + String.valueOf(totalAmountFloat)
-                + " € \n" + t.translate("Introduce la tarjeta de credito para confirmar el pedido o pulsa alguno de los botones inferiores"));
+                + " € \n" + t.translate(
+                        "Introduce la tarjeta de credito para confirmar el pedido o pulsa alguno de los botones inferiores"));
 
         char response = sk.waitEvent(30);
 
@@ -75,25 +72,30 @@ public class PaymentScreen implements KioskScreen {
                 long creditCardNumb = sk.getCardNumber();
 
                 if (bank.comunicationAvaiable() == true) {
+                    // *HAY CONEX CON SERVIDOR
                     int newOrderNumber;
 
+                    // NUM PEDIDO**
                     try {
                         newOrderNumber = incrementOrderNumber(); // #Hay que gestionar esto mejor con un Throw hacia
                                                                  // arriba
                     } catch (IOException e) {
-                        System.out.println("Archivo no encontrado");
+                        System.out.println("Archivo no encontrado"); // error de la maquina. Llamar a operario
                         newOrderNumber = -1;
                     } // hay que implementar este metodo
 
+                    // LISTADO COCINA**
                     try {
                         writeOrderToFile(order, newOrderNumber);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
 
+                    // TICKET****
+
                     ArrayList<String> ticketStringList = new ArrayList<>(); // **Encpasulac bien?? */
 
-                    ticketStringList.add(String.valueOf(newOrderNumber));
+                    ticketStringList.add("nº " + String.valueOf(newOrderNumber));
                     ticketStringList.add("-----------------------------------");
                     ticketStringList.add(orderText);
                     ticketStringList.add("-----------------------------------");
@@ -103,39 +105,37 @@ public class PaymentScreen implements KioskScreen {
 
                     sk.print(ticketStringList); // imprimimos ticket con ifnormacion. Hay que pasar lista de Strings
 
-                    // boolean opStatus;
+                    // PAGO****
 
                     try {
                         bank.doOperation(creditCardNumb, totalAmount);
+                        sk.clearScreen();
+                        sk.setMessageMode();
+                        sk.setDescription("Pago completado con éxito. \nRecoja el ticket por favor\n Número de pedido: "
+                                + String.valueOf(newOrderNumber));
+                        sk.waitEvent(1);
 
                     } catch (CommunicationException e) {
-                        // Auto-generated catch block
-                        // e.printStackTrace();
+
                         sk.clearScreen();
                         sk.setMessageMode();
                         sk.setDescription("Error: no se pudo efectuar el pago");
                         sk.waitEvent(1);
-                        // return new WelcomeScreen();
 
-                        // Añadir boton de vovler a welcomeScreen??
                     }
 
-                    sk.expelCreditCard(12); // el int no se cual meter, lo elijo arbitrariamente
+                } // **END HAY CONEX SERV
 
-                    // return new WelcomeScreen(); se vuelve a pantalla de inicio
-                    // operac realizada
-
-                } // comm available
-
-                else {
+                else { // *NO HAY CONEXION CON SERVIDOR
                     sk.clearScreen();
                     sk.setMessageMode();
                     sk.setDescription("Error: no se pudo establecer conexion con el servidor");
                     sk.waitEvent(1);
                     // return new WelcomeScreen();
 
-                } // comm not available
+                }
 
+                sk.expelCreditCard(12);
                 return new WelcomeScreen(); // Pase lo que pase se vuelve a WelcomeScreen
 
             } // final case 1
@@ -180,7 +180,7 @@ public class PaymentScreen implements KioskScreen {
         k.setMessageMode();
         k.setTitle("Introduce la tarjeta de crédito");
 
-        k.setOption('A', "Modificar pedido");
+        k.setOption('A', "Modificar pedido"); // se traducen solos desde SimpleKiosk
         k.setOption('B', "Cancelar pago");
 
     }
@@ -211,7 +211,9 @@ public class PaymentScreen implements KioskScreen {
 
         }
 
-        BufferedWriter buff = new BufferedWriter(new FileWriter(FicheroCocina, true));
+        BufferedWriter buff = new BufferedWriter(new FileWriter(FicheroCocina, true)); // true para añadir despues de lo
+                                                                                       // que ya hay en vez de
+                                                                                       // sobreescribir
 
         buff.write("Numero de pedido: " + Integer.toString(number));
         buff.newLine();

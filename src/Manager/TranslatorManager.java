@@ -15,9 +15,9 @@ import java.util.Map;
  */
 public class TranslatorManager {
     private Translator currentDictionary;
-    private Map<String,Translator> dictionaries;
-    
-    public TranslatorManager(){
+    private Map<String, Translator> dictionaries;
+
+    public TranslatorManager() {
         this.dictionaries = new HashMap<>();
         this.dictionaries.put("español", new Translator("languages/español.xml"));
         this.dictionaries.put("inglés", new Translator("languages/inglés.xml"));
@@ -27,21 +27,22 @@ public class TranslatorManager {
         this.dictionaries.put("gallego", new Translator("languages/gallego.xml"));
         this.dictionaries.put("vasco", new Translator("languages/vasco.xml"));
 
-        this.currentDictionary = dictionaries.getOrDefault("español", this.currentDictionary);
+        this.currentDictionary = dictionaries.getOrDefault("español", this.currentDictionary); // por defecto el idioma
+                                                                                               // es el español
     }
-    
-    public void setCurrentIdiom(String newLanguage){
+
+    public void setCurrentIdiom(String newLanguage) {
         this.currentDictionary = dictionaries.getOrDefault(newLanguage, this.currentDictionary);
     }
-    
-    public List<String> getIdioms(){
-        List<String> idioms = new ArrayList<>(this.dictionaries.keySet());
+
+    public List<String> getIdioms() {
+        List<String> idioms = new ArrayList<>(this.dictionaries.keySet()); // se crea lista de los idiomas a partir del
+                                                                           // conjuntod e claves
         return idioms;
     }
-    
-    
-    public String translate(String s){
+
+    public String translate(String s) {
         return currentDictionary.translate(s);
     }
-    
+
 }
