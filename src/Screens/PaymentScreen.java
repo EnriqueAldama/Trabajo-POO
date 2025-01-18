@@ -7,7 +7,7 @@ package Screens;
 import Manager.Context;
 import Manager.SimpleKiosk;
 import Manager.TranslatorManager;
-
+import Manager.KitchenOrderManager;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -86,7 +86,7 @@ public class PaymentScreen implements KioskScreen {
                     } // hay que implementar este metodo
 
                     try {
-                        writeOrderToFile(order, newOrderNumber);
+                        addOrderToKitchen(order, newOrderNumber);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
