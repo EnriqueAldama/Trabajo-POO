@@ -7,7 +7,7 @@ package Screens;
 import Manager.Context;
 import Manager.SimpleKiosk;
 import Manager.TranslatorManager;
-
+import Manager.KitchenOrderManager;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -42,7 +42,7 @@ public class PaymentScreen implements KioskScreen {
         Order order = c.getOrder();
         TranslatorManager t = c.getTranslator();
         UrjcBankServer bank = new UrjcBankServer();
-
+        KitchenOrderManager Kitchen = new KitchenOrderManager();
         String orderText = order.getOrderText();
         int totalAmount = order.getTotalAmount();
         float totalAmountFloat = ((float) order.getTotalAmount()) / 100;
