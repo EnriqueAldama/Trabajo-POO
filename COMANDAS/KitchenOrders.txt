@@ -199,3 +199,7 @@ Numero de pedido: 73
 Productos: 
 Menu:1x ANGUS 1x COCA COLA NORMAL 1x ALITAS 
 
+Numero de pedido: 74
+Productos: 
+ALITAS
+
