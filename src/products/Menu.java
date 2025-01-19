@@ -16,20 +16,14 @@ import java.util.ArrayList;
 public class Menu implements Product {
     private int discount;
     private ArrayList<IndividualProduct> prod;
-
-    public void setDiscount(int discount) {
-        try (BufferedReader Buffr = new BufferedReader(new FileReader("COMANDAS\\discount"))) {
-
-            this.discount = (int) Integer.valueOf(Buffr.readLine());
+    
+    public Menu() {
+        this.prod = new ArrayList<IndividualProduct>();
+        try (BufferedReader bufferReader = new BufferedReader(new FileReader("COMANDAS\\discount"))) {
+            this.discount = (int) Integer.valueOf(bufferReader.readLine());
         } catch (IOException e) {
             System.out.println("Fallo al leer fichero. Llamar a informatico");
         }
-
-    }
-
-    public Menu() {
-        this.prod = new ArrayList<IndividualProduct>();
-        // this.discount=0;
     }
 
     @Override
@@ -38,8 +32,6 @@ public class Menu implements Product {
         for (IndividualProduct p : this.prod) {
             s += p.getPrice();
         }
-        // return s=s*((100-this.discount)/100);/*descuento del 30, 100-30=70 el precio
-        // es el 70 del precio, entonces precio*0,7*/
         return s = s * (100 - this.discount) / 100;
     }
 

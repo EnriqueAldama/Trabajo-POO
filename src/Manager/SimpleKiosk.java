@@ -12,7 +12,7 @@ import sienens.BurgerSelfOrderKiosk;
 public class SimpleKiosk {
 
     private final BurgerSelfOrderKiosk kiosk = new BurgerSelfOrderKiosk();
-    private final TranslatorManager translatorManager; // TODO: Ver si es necesaria esta propiedad (no está en el diseño)
+    private final TranslatorManager translatorManager;
 
     /**
      * Constructor de SimpleKiosk

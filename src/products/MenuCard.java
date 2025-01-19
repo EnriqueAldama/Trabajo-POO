@@ -15,21 +15,35 @@ import java.util.List;
  */
 public class MenuCard {
     private List<MenuCardSection> sectionList;
-
-    public MenuCard(List<MenuCardSection> sectionList) { // En el constructor se pasa la lista de secciones. Cada una
-                                                         // contiene los Individualproduct de dicha seccion
+    /**
+     * Constructor de MenuCard
+     * @param sectionList Una lista de las secciones (Ej. Comida, bebida, postre), cada sección contiene los Individualproduct de dicha seccion
+     */
+    public MenuCard(List<MenuCardSection> sectionList) {
         this.sectionList = sectionList;
     }
 
-    public MenuCardSection getSection(int c) { // getter de las secciones
+    /**
+     * Getter de las secciones
+     * @param c Sección que se obtiene. Es utilizado para conseguir los productos de una sección y crear un carrusel de los productos
+     */
+    public MenuCardSection getSection(int c) {
         return sectionList.get(c);
     }
 
+    /**
+     * Obtiene el número de secciones
+     * Es utilizado para crear un carrusel con las secciones
+     */
     public int getNumberOfSections() {
         return sectionList.size();
     }
 
-    public static MenuCard loadFromDisk() { // Se lee el archivo xml con los productos
+    /**
+     * Se lee el archivo .xml con los IndividualProducts en sus respectivas secciones
+     * Utilizado para popular con datos un objeto de la clase MenuCard
+     */
+    public static MenuCard loadFromDisk() {
         try {
             MenuCard mc;
             try (FileInputStream file = new FileInputStream("PRODUCTOS/Catalog.xml")) {
@@ -43,11 +57,4 @@ public class MenuCard {
         }
     }
 
-    public List<MenuCardSection> getSectionList() {
-        return sectionList;
-    }
-
-    public void setSectionList(List<MenuCardSection> sectionList) {
-        this.sectionList = sectionList;
-    }
 }

@@ -8,7 +8,16 @@ package products;
  *
  * @author am.machuca.2023
  */
-public  interface Product {
+interface Product {
+    /**
+     * Getter de price
+     * Utilizado para calcular el precio final
+     */
     public int getPrice();
+    /**
+     * Getter de name
+     * Utilizado para mostrar el nombre del producto individual 
+     * o del listado de productos que contiene un menú
+     */
     public String getName();
 }

@@ -18,14 +18,9 @@ public class SectionScreen implements CarouselScreen {
     }
 
     @Override
-    public KioskScreen show(Context c) {
-        SimpleKiosk kiosk = c.getKiosk();
-        MenuCard mc=c.getMenuCard();
-        List<MenuCardSection> sections = mc.getSectionList();
-        
-        if (sections == null || sections.isEmpty()) {
-            throw new RuntimeException("Error: No hay secciones disponibles.");
-        }
+    public KioskScreen show(Context context) {
+        SimpleKiosk kiosk = context.getKiosk();
+        MenuCard menuCard=context.getMenuCard();
         
         // Muestra los botones estandar
         configureScreenButtons(kiosk);
@@ -33,7 +28,7 @@ public class SectionScreen implements CarouselScreen {
 
         // Bucle del carrusel
         while (true) { 
-            MenuCardSection currentSection = sections.get(this.currentItem);  
+            MenuCardSection currentSection = menuCard.getSection(this.currentItem);  
             String description = "Sección: " + currentSection.getSectionName();  
             String sectionImage = currentSection.getImageFileName();
             kiosk.setDescription(description);
@@ -49,14 +44,14 @@ public class SectionScreen implements CarouselScreen {
                 // Botón anterior
                 case 'G' -> {
                     if (currentItem - 1 < 0) { // Te lleva al final del carrusel al llegar al item -1
-                        currentItem = sections.size() - 1;
+                        currentItem = menuCard.getNumberOfSections() - 1;
                     } else {
                         currentItem--;
                     }
                 }
                 // Botón siguiente
                 case 'H' -> {
-                    if (currentItem + 1 >= sections.size()) { // Te lleva al inicio del carrusel cuando llegas al final
+                    if (currentItem + 1 >= menuCard.getNumberOfSections()) { // Te lleva al inicio del carrusel cuando llegas al final
                         currentItem = 0;
                     } else {
                         currentItem++;

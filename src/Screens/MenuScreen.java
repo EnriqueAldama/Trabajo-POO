@@ -91,7 +91,6 @@ public class MenuScreen implements CarouselScreen {
             }
 
         }
-        menu.setDiscount(20);
         context.getOrder().addProduct(menu);
         return new OrderScreen();
     }
