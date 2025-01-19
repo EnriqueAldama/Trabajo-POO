@@ -181,8 +181,21 @@
    <string>Pedido cancelado</string>
    <string>Order canceled</string>
   </void>
+  <void method="put">
   <string>Introduce la tarjeta de credito para confirmar el pedido o pulsa alguno de los botones inferiores</string>
    <string>Enter your credit card to confirm the order or click on one of the buttons below</string>
-  
+   </void>
+     <void method="put">
+  <string>Pago completado con éxito.</string>
+   <string>Payment successfully completed.</string>
+   </void>
+       <void method="put">
+  <string>Recoja el ticket por favor</string>
+   <string>Please pick up the ticket</string>
+   </void>
+       <void method="put">
+  <string>Número de pedido: </string>
+   <string>Order number:</string>
+   </void>
  </object>
 </java>

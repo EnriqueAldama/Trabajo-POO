@@ -177,5 +177,22 @@
    <string>Pedido cancelado</string>
    <string>Eskaera bertan behera utzita</string>
   </void>
+  <void method="put">
+  <string>Introduce la tarjeta de crédito para confirmar el pedido o pulsa alguno de los botones inferiores</string>
+  <string>Sartu kreditu-txartela eskaera berresteko edo sakatu beheko botoietako bat.</string>
+</void>
+<void method="put">
+  <string>Pago completado con éxito.</string>
+  <string>Ordainketa arrakastaz burututa.</string>
+</void>
+<void method="put">
+  <string>Recoja el ticket por favor</string>
+  <string>Mesedez, jaso tiketa.</string>
+</void>
+<void method="put">
+  <string>Número de pedido: </string>
+  <string>Eskaera zenbakia:</string>
+</void>
+
  </object>
 </java>

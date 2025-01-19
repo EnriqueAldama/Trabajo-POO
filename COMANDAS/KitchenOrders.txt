@@ -131,3 +131,21 @@ AGUA
 Numero de pedido: 57
 Productos: 
 
+Numero de pedido: 58
+Productos: 
+Menu:1x ANGUS 1x COCA COLA NORMAL 1x ALITAS 
+
+Numero de pedido: 59
+Productos: 
+ANGUS
+COCA COLA NORMAL
+ALITAS
+
+Numero de pedido: 60
+Productos: 
+ANGUS
+
+Numero de pedido: 61
+Productos: 
+COCA COLA NORMAL
+

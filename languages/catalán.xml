@@ -177,5 +177,22 @@
    <string>Pedido cancelado</string>
    <string>Comanda cancel·lada</string>
   </void>
+  <void method="put">
+  <string>Introduce la tarjeta de crédito para confirmar el pedido o pulsa alguno de los botones inferiores</string>
+  <string>Introdueix la targeta de crèdit per confirmar la comanda o prem un dels botons inferiors.</string>
+</void>
+<void method="put">
+  <string>Pago completado con éxito.</string>
+  <string>Pagament completat amb èxit.</string>
+</void>
+<void method="put">
+  <string>Recoja el ticket por favor</string>
+  <string>Si us plau, recull el tiquet.</string>
+</void>
+<void method="put">
+  <string>Número de pedido: </string>
+  <string>Número de comanda:</string>
+</void>
+
  </object>
 </java>
