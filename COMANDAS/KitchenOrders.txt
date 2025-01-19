@@ -166,3 +166,15 @@ Numero de pedido: 65
 Productos: 
 POLLO
 
+Numero de pedido: 66
+Productos: 
+ANGUS
+Menu:1x ANGUS 1x COCA COLA NORMAL 1x ALITAS 
+
+Numero de pedido: 67
+Productos: 
+ANGUS
+
+Numero de pedido: 68
+Productos: 
+

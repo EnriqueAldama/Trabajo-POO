@@ -197,6 +197,10 @@
   <string>Número de pedido: </string>
   <string>Numéro de commande :</string>
 </void>
+<void method="put">
+  <string>Antes de pagar debe añadir algún producto</string>
+  <string>Avant de payer, vous devez ajouter un produit</string>
+</void>
 
  </object>
 </java>

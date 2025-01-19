@@ -193,6 +193,10 @@
   <string>Número de pedido: </string>
   <string>Eskaera zenbakia:</string>
 </void>
+<void method="put">
+  <string>Antes de pagar debe añadir algún producto</string>
+  <string>Ordaindu aurretik produktu bat gehitu behar duzu</string>
+</void>
 
  </object>
 </java>

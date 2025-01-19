@@ -197,5 +197,9 @@
   <string>Número de pedido: </string>
    <string>Order number:</string>
    </void>
+          <void method="put">
+  <string>Antes de pagar debe añadir algún producto</string>
+   <string>Before paying you must add a product</string>
+   </void>
  </object>
 </java>

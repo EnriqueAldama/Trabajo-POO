@@ -26,12 +26,17 @@ public class OrderScreen implements KioskScreen {
                 return new SectionScreen();
             }
             case 'C' -> {
-                return new PaymentScreen();
+                if (c.getOrder().getTotalAmount()==0){
+                    kiosk.clearScreen();
+                    kiosk.setMessageMode();
+                    kiosk.setDescription("Antes de pagar debe añadir algún producto");
+                    kiosk.waitEvent(1);
+                    return new OrderScreen();
+
+                }else return new PaymentScreen();
             }
+        
             case 'D' -> {
-                return new UserOrderScreen();
-            }
-            case 'E' -> {
                 c.getOrder().cancelOrder();
                 c.getKiosk().clearScreen();
                 c.getKiosk().setMessageMode();
@@ -48,10 +53,10 @@ public class OrderScreen implements KioskScreen {
     private void configureScreenButtons(SimpleKiosk kiosk) {
         kiosk.clearScreen();
         kiosk.setMenuMode();
+        kiosk.setImage("PRODUCTOS/Logo.png");
         kiosk.setOption('A', "Añadir menú a pedido");
         kiosk.setOption('B', "Añadir producto individual a pedido");
         kiosk.setOption('C', "Finalizar pedido y pagar");
-        kiosk.setOption('D', "Editar pedido");
-        kiosk.setOption('E', "Cancelar pedido");
+        kiosk.setOption('D', "Cancelar pedido");
     }
 }
