@@ -27,6 +27,7 @@ public class SectionScreen implements CarouselScreen {
             throw new RuntimeException("Error: No hay secciones disponibles.");
         }
         
+        // Muestra los botones estandar
         configureScreenButtons(kiosk);
         adjustCarruselButton(kiosk);
 
@@ -34,9 +35,9 @@ public class SectionScreen implements CarouselScreen {
         while (true) { 
             MenuCardSection currentSection = sections.get(this.currentItem);  
             String description = "Sección: " + currentSection.getSectionName();  
-            String im = currentSection.getImageFileName();
+            String sectionImage = currentSection.getImageFileName();
             kiosk.setDescription(description);
-            kiosk.setImage(im);
+            kiosk.setImage(sectionImage);
             
             char response = kiosk.waitEvent(30);
             switch (response) {
@@ -47,7 +48,7 @@ public class SectionScreen implements CarouselScreen {
                 }
                 // Botón anterior
                 case 'G' -> {
-                    if (currentItem - 1 < 0) { // Comprueba si intenta ir al -1 y va al final
+                    if (currentItem - 1 < 0) { // Te lleva al final del carrusel al llegar al item -1
                         currentItem = sections.size() - 1;
                     } else {
                         currentItem--;
@@ -55,7 +56,7 @@ public class SectionScreen implements CarouselScreen {
                 }
                 // Botón siguiente
                 case 'H' -> {
-                    if (currentItem + 1 >= sections.size()) { // Comprueba si intenta ir más allá y vuelve al inicio
+                    if (currentItem + 1 >= sections.size()) { // Te lleva al inicio del carrusel cuando llegas al final
                         currentItem = 0;
                     } else {
                         currentItem++;

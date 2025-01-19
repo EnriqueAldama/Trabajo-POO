@@ -33,108 +33,103 @@ public class PaymentScreen implements KioskScreen {
     @Override // HABRIA QUE AÑADIR UN THROW IOEXCEPTION POR SI NO SE ENCUENTRA FICHEROS Y
               // PONER TRY Y CATCH EN CREACION DE PANTALLA DE PAGO
 
-    public KioskScreen show(Context c) {
+    public KioskScreen show(Context context) {
 
         // Metodo principal de la clase, desde el cual se produce la totalidad del
         // proceso de pago
 
-        SimpleKiosk sk = c.getKiosk();
-        Order order = c.getOrder();
-        TranslatorManager t = c.getTranslator();
+        SimpleKiosk kiosk = context.getKiosk();
+        Order order = context.getOrder();
+        TranslatorManager translator = context.getTranslator();
         UrjcBankServer bank = new UrjcBankServer();
 
         String orderText = order.getOrderText();
         int totalAmount = order.getTotalAmount();
         float totalAmountFloat = ((float) order.getTotalAmount()) / 100;
 
-        configureScreenButtons(sk);
-        sk.setDescription(orderText + "\n Total: " + String.valueOf(totalAmountFloat)
-                + " € \n" + t.translate(
-                        "Introduce la tarjeta de credito para confirmar el pedido o pulsa alguno de los botones inferiores"));
+        configureScreenButtons(kiosk);
+        kiosk.setDescription(
+            orderText +
+            "\n Total: " +
+            String.valueOf(totalAmountFloat) +
+            " € \n" +
+            translator.translate("Introduce la tarjeta de credito para confirmar el pedido o pulsa alguno de los botones inferiores")
+        );
 
-        char response = sk.waitEvent(30);
+        char response = kiosk.waitEvent(30);
 
         switch (response) {
             case 'A' -> {
-                // Boton modifiar pedido. Devolvemos pantalla de menu
+                // Boton modifiar pedido. Devolvemos a pantalla de menu
                 return new OrderScreen(); // antes menuScreen
             }
 
             case 'B' -> {
-                // Boton cancelar pedido. devolv a pantalla bienvenida
+                // Boton cancelar pedido. Devolvemos a pantalla bienvenida
                 return new WelcomeScreen(); // antes welcomeScreen
             }
 
             case '1' -> {
-                // se detecta la tarjeta de credito
+                // Se detecta la tarjeta de credito
 
-                sk.retainCreditCard(false); // false, puede ser expulsada con expelCreditCard/()
-                long creditCardNumb = sk.getCardNumber();
+                kiosk.retainCreditCard(false); // false, puede ser expulsada con expelCreditCard()
+                long creditCardNumb = kiosk.getCardNumber();
 
                 if (bank.comunicationAvaiable() == true) {
-                    // *HAY CONEX CON SERVIDOR
+                    // HAY CONEXIÓN CON SERVIDOR
                     int newOrderNumber;
 
-                    // NUM PEDIDO**
+                    // NUM PEDIDO
                     try {
-                        newOrderNumber = incrementOrderNumber(); // #Hay que gestionar esto mejor con un Throw hacia
-                                                                 // arriba
+                        newOrderNumber = incrementOrderNumber();                                                                  
                     } catch (IOException e) {
-                        System.out.println("Archivo no encontrado"); // error de la maquina. Llamar a operario
+                        System.out.println("Archivo no encontrado"); // Error de la maquina. Llamar a operario
                         newOrderNumber = -1;
-                    } // hay que implementar este metodo
+                    }
 
-                    // AÑADIR AL LISTADO DE COCINA**
+                    // AÑADIR AL LISTADO DE COCINA
                     writeOrderToFile(order, newOrderNumber);
-                    // TICKET****
 
-                    ArrayList<String> ticketStringList = new ArrayList<>(); // **Encpasulac bien?? */
-
+                    // TICKET
+                    ArrayList<String> ticketStringList = new ArrayList<>();
                     ticketStringList.add("nº " + String.valueOf(newOrderNumber));
                     ticketStringList.add("-----------------------------------");
                     ticketStringList.add(orderText);
                     ticketStringList.add("-----------------------------------");
                     ticketStringList.add(String.valueOf(totalAmountFloat) + " €");
 
-                    // Habria que añadir texto auxiliares traducidos
+                    kiosk.print(ticketStringList); // imprimimos ticket con informacion
 
-                    sk.print(ticketStringList); // imprimimos ticket con ifnormacion. Hay que pasar lista de Strings
-
-                    // PAGO****
-
+                    // PAGO
                     try {
                         bank.doOperation(creditCardNumb, totalAmount);
-                        sk.clearScreen();
-                        sk.setMessageMode();
-                        sk.setDescription(t.translate("Pago completado con éxito.") + "\n"
-                                + t.translate("Recoja el ticket por favor") + "\n" + t.translate("Número de pedido: ")
-                                + String.valueOf(newOrderNumber));
-                        sk.waitEvent(1);
+                        kiosk.clearScreen();
+                        kiosk.setMessageMode();
+                        kiosk.setDescription(
+                            translator.translate("Pago completado con éxito.\n")
+                            + translator.translate("Recoja el ticket por favor\n")
+                            + translator.translate("Número de pedido: ")
+                            + String.valueOf(newOrderNumber));
+                        kiosk.waitEvent(1);
 
                     } catch (CommunicationException e) {
-
-                        sk.clearScreen();
-                        sk.setMessageMode();
-                        sk.setDescription("Error: no se pudo efectuar el pago");
-                        sk.waitEvent(1);
-
+                        kiosk.clearScreen();
+                        kiosk.setMessageMode();
+                        kiosk.setDescription("Error: no se pudo efectuar el pago");
+                        kiosk.waitEvent(1);
                     }
 
-                } // **END HAY CONEX SERV
-
-                else { // *NO HAY CONEXION CON SERVIDOR
-                    sk.clearScreen();
-                    sk.setMessageMode();
-                    sk.setDescription("Error: no se pudo establecer conexion con el servidor");
-                    sk.waitEvent(1);
-                    // return new WelcomeScreen();
-
                 }
-
-                sk.expelCreditCard(20);
+                // NO HAY CONEXION CON SERVIDOR
+                else { 
+                    kiosk.clearScreen();
+                    kiosk.setMessageMode();
+                    kiosk.setDescription("Error: no se pudo establecer conexion con el servidor");
+                    kiosk.waitEvent(1);
+                }
+                kiosk.expelCreditCard(20);
                 return new WelcomeScreen(); // Pase lo que pase se vuelve a WelcomeScreen
-
-            } // final case 1
+            }
 
             default -> {
                 return this;
@@ -147,83 +142,84 @@ public class PaymentScreen implements KioskScreen {
 
         String rutaArchivo = "COMANDAS\\numTicket.txt";
 
-        FileReader in = new FileReader(rutaArchivo);
-        BufferedReader bufr = new BufferedReader(in);
-        String linea;
+        FileReader file = new FileReader(rutaArchivo);
+        BufferedReader bufferReader = new BufferedReader(file);
+        String line;
         int numTicket = 0;
-        linea = bufr.readLine(); // leemos la linea con el numero de ticket
-        numTicket = Integer.valueOf(linea) + 1; // lo incrementamos en 1 y si es 100 lo ponemos a 0
+        line = bufferReader.readLine(); // leemos la linea con el numero de ticket
+        numTicket = Integer.valueOf(line) + 1; // lo incrementamos en 1 y si es 100 lo ponemos a 0
 
         if (numTicket == 100) {
             numTicket = 0;
         }
 
-        FileWriter out = new FileWriter(rutaArchivo); // Ahora escribimos la linea con el num ticket actualizado
-        BufferedWriter bufw = new BufferedWriter(out);
-        linea = Integer.toString(numTicket);
-        bufw.write(linea);
+        FileWriter output = new FileWriter(rutaArchivo); // Ahora escribimos la linea con el num ticket actualizado
+        BufferedWriter bufferWriter = new BufferedWriter(output);
+        line = Integer.toString(numTicket);
+        bufferWriter.write(line);
 
-        bufr.close();
-        bufw.close();
+        bufferReader.close();
+        bufferWriter.close();
 
         return numTicket;
     }
 
-    private void configureScreenButtons(SimpleKiosk k) {
-
-        k.clearScreen();
-        k.setMessageMode();
-        k.setTitle("Introduce la tarjeta de crédito");
-
-        k.setOption('A', "Modificar pedido"); // se traducen solos desde SimpleKiosk
-        k.setOption('B', "Cancelar pago");
-
+    private void configureScreenButtons(SimpleKiosk kiosk) {
+        kiosk.clearScreen();
+        kiosk.setMessageMode();
+        kiosk.setTitle("Introduce la tarjeta de crédito");
+        kiosk.setOption('A', "Modificar pedido");
+        kiosk.setOption('B', "Cancelar pago");
     }
 
     private void writeOrderToFile(Order Order, int orderNumber) {
 
         int number = orderNumber;
-        File FicheroCocina = new File("COMANDAS\\KitchenOrders.txt");
-        if (!FicheroCocina.exists()) {
+        File kitchenOrders = new File("COMANDAS\\KitchenOrders.txt");
 
+        // CHECK PARA CREAR EL kitchenOrders
+        if (!kitchenOrders.exists()) {
             System.out.println("Listado de cocina no encontrado, creando uno nuevo");
             try {
-                FicheroCocina.createNewFile();
+                kitchenOrders.createNewFile();
             } catch (IOException e) {
                 System.out.println("No se puede comunicar el pedido a la cocina, pida ayuda a un empleado");
             }
         }
-        // La siguiente seccion obtiene la hora actual, la de ultima modificacion y
-        // establece el limite
+
+        // CHECK PARA RESETEAR EL kitchenOrders A LAS 5AM
+        // Se obtiene la hora actual, la de ultima modificacion y la del limite (5AM)
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime limit = LocalDateTime.now().withHour(5).withMinute(0);
-        LocalDateTime ultimaMod = Instant.ofEpochMilli(FicheroCocina.lastModified())
-                .atZone(ZoneId.systemDefault()) // uso la zona horaria por defecto
-                .toLocalDateTime();
+        LocalDateTime lastOrder = Instant.ofEpochMilli(kitchenOrders.lastModified())
+            .atZone(ZoneId.systemDefault()) // uso la zona horaria por defecto
+            .toLocalDateTime();
 
-        // Si la ultima edicion fue antes que el instante limite y ahora es despues
-        // hemos pasado por la hora de reinicio
-        if (ultimaMod.isBefore(limit) && now.isAfter(limit)) {
+        // Si el último pedido fue antes del limite (5AM) y ahora es despues se resetea kitchenOrders
+        if (lastOrder.isBefore(limit) && now.isAfter(limit)) {
+            
             String fechaAyer = now.minusDays(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             File FicheroAntiguo = new File("COMANDAS\\KitchenOrders_" + fechaAyer + ".txt");
-            FicheroCocina.renameTo(FicheroAntiguo);
+            kitchenOrders.renameTo(FicheroAntiguo);
             try {
-                FicheroCocina.createNewFile();
+                kitchenOrders.createNewFile();
             } catch (IOException f) {
-                System.out.println("algo ha salido mal, pida ayuda a un empleado");
+                System.out.println("Algo ha salido mal, pida ayuda a un empleado");
             }
         }
+
+        // CUANDO PASE TODOS LOS CHECKS, SE ESCRIBE EL NUEVO PEDIDO
         try {
-            BufferedWriter buff = new BufferedWriter(new FileWriter(FicheroCocina, true)); // true para añadir despues
+            BufferedWriter bufferWriter = new BufferedWriter(new FileWriter(kitchenOrders, true)); // true para añadir despues
                                                                                            // de lo que haya escrito
 
-            buff.write("Numero de pedido: " + Integer.toString(number));
-            buff.newLine();
-            buff.write("Productos: ");
-            buff.newLine();
-            buff.write(Order.getOrderText());
-            buff.newLine();
-            buff.close();
+            bufferWriter.write("Numero de pedido: " + Integer.toString(number));
+            bufferWriter.newLine();
+            bufferWriter.write("Productos: ");
+            bufferWriter.newLine();
+            bufferWriter.write(Order.getOrderText());
+            bufferWriter.newLine();
+            bufferWriter.close();
         } catch (IOException g) {
             System.out.println("ha habido un error");
         }

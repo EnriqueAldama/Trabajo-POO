@@ -23,8 +23,8 @@ public class IdiomScreen implements CarouselScreen {
     @Override
     public KioskScreen show(Context c){
         SimpleKiosk kiosk = c.getKiosk();
-        TranslatorManager t = c.getTranslator();
-        List<String> idioms = t.getIdioms();
+        TranslatorManager translator = c.getTranslator();
+        List<String> idioms = translator.getIdioms();
         configureScreenButtons(kiosk);
         adjustCarruselButton(kiosk);
         // Bucle del carrusel
@@ -38,7 +38,7 @@ public class IdiomScreen implements CarouselScreen {
             switch (response) {
                 // Botón cambiar idioma
                 case 'D' -> {
-                    t.setCurrentIdiom(currentIdiom);
+                    translator.setCurrentIdiom(currentIdiom);
                     return new WelcomeScreen();
                 }
                 // Botón anterior
@@ -65,19 +65,18 @@ public class IdiomScreen implements CarouselScreen {
             }
         }
     }
-    
-    /* TODO: ¿ESTO ESTÁ BIEN O ES MEJOR USAR SOLO configureScreenButtons?*/ /*Todo esto nos lo deja a nosotros */
+        
     @Override
-    public void adjustCarruselButton(SimpleKiosk k){
-        k.setOption('G', "<");
-        k.setOption('H', ">");
+    public void adjustCarruselButton(SimpleKiosk kiosk){
+        kiosk.setOption('G', "<");
+        kiosk.setOption('H', ">");
     }
     
     @Override
-    public void configureScreenButtons(SimpleKiosk k) {
-        k.clearScreen();
-        k.setMenuMode();
-        k.setTitle("Cambiar idioma");
-        k.setOption('D', "Seleccionar este idioma");
+    public void configureScreenButtons(SimpleKiosk kiosk) {
+        kiosk.clearScreen();
+        kiosk.setMenuMode();
+        kiosk.setTitle("Cambiar idioma");
+        kiosk.setOption('D', "Seleccionar este idioma");
     }  
 }

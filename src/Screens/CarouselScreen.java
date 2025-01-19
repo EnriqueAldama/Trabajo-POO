@@ -9,7 +9,7 @@ import Manager.SimpleKiosk;
 
 public interface CarouselScreen extends KioskScreen {
     
-//    void adjustCarruselButton(int CurrentElement, int numberOfElements);    // TODO: ¿Porque se tiene que pasar el número de elementos?
+//    void adjustCarruselButton(int CurrentElement, int numberOfElements);
     
     public void adjustCarruselButton(SimpleKiosk kiosk);
 
