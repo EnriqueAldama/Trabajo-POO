@@ -25,18 +25,27 @@ import products.Order;
 import urjc.UrjcBankServer;
 
 /**
- *
- * @author Alfa
+ * Pantalla de pago.
+ * Se accede desde la pantalla de pedido y se vuelve a la pantalla de pedido, o
+ * a la pantalla de bienvenida
  */
+
 public class PaymentScreen implements KioskScreen {
 
     @Override // HABRIA QUE AÑADIR UN THROW IOEXCEPTION POR SI NO SE ENCUENTRA FICHEROS Y
               // PONER TRY Y CATCH EN CREACION DE PANTALLA DE PAGO
 
-    public KioskScreen show(Context c) {
+    /**
+     * Se realiza el pago, se actualiza el numero de pedido, se
+     * imprime ticket y se anota en el listado de cocina
+     * Dependiendo de la opcion elegida se vuelve a pantalla de bienvenida o de
+     * pedido
+     * 
+     * @param Context
+     * @return siguiente pantalla
+     */
 
-        // Metodo principal de la clase, desde el cual se produce la totalidad del
-        // proceso de pago
+    public KioskScreen show(Context c) {
 
         SimpleKiosk sk = c.getKiosk();
         Order order = c.getOrder();
@@ -143,6 +152,14 @@ public class PaymentScreen implements KioskScreen {
         }
     }
 
+    /**
+     * Incrementa el numero de pedido en el archivo en el que se guarda y lo
+     * devuelve
+     * 
+     * @return el numero del pedido
+     * @throws IOException
+     */
+
     private int incrementOrderNumber() throws IOException {
 
         String rutaArchivo = "COMANDAS\\numTicket.txt";
@@ -169,6 +186,13 @@ public class PaymentScreen implements KioskScreen {
         return numTicket;
     }
 
+    /**
+     * Se configuran los botones, el modo y el titulo
+     * En este caso, son botones de modificar pedido y cancelar pago
+     * 
+     * @param SimpleKiosk
+     */
+
     private void configureScreenButtons(SimpleKiosk k) {
 
         k.clearScreen();
@@ -179,6 +203,14 @@ public class PaymentScreen implements KioskScreen {
         k.setOption('B', "Cancelar pago");
 
     }
+
+    /**
+     * Anota la informacion del pedido en el arhivo de texto correspondiente al
+     * listado de cocina
+     * 
+     * @param Order
+     * @param orderNumber
+     */
 
     private void writeOrderToFile(Order Order, int orderNumber) {
 

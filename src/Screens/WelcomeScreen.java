@@ -9,14 +9,22 @@ import Manager.SimpleKiosk;
 
 /**
  *
- * @author Alfa
+ * Pantalla inicial, de bienvenida, desde la cual se puede pasar a elegir el
+ * idioma o a efectuar el pedido
  */
+
 public class WelcomeScreen implements KioskScreen {
+
+    /**
+     * 
+     * @param Context
+     * @return siguiente pantalla
+     */
+
     @Override
     public KioskScreen show(Context c) {
         SimpleKiosk kiosk = c.getKiosk();
         configureScreenButtons(kiosk);
-        // kiosk.setImage("Logo.png");
 
         c.setOrder(); // reiniciamos el pedido. Mejor hacerlo aqui que en OrderScreen ya que no
                       // queremos borrar

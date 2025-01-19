@@ -3,16 +3,25 @@ package Screens;
 import Manager.SimpleKiosk;
 
 /**
- *
- * @author Alfa
+ * Interfaz de las pantallas de tipo carrusel. Es decir, las pantallas de añadir
+ * productos y la de elegir idioma
  */
 
 public interface CarouselScreen extends KioskScreen {
-    
-//    void adjustCarruselButton(int CurrentElement, int numberOfElements);    // TODO: ¿Porque se tiene que pasar el número de elementos?
-    
+
+    /**
+     * Configuracion de los botones de ir hacia delante y hacia atras del carrusel
+     * 
+     * @param kiosk
+     */
     public void adjustCarruselButton(SimpleKiosk kiosk);
 
+    /**
+     * Configuracion de los elementos que aparecen en la pantalla como el titulo, al
+     * descripcion o los botones
+     * 
+     * @param kiosk
+     */
     public void configureScreenButtons(SimpleKiosk kiosk);
 
 }

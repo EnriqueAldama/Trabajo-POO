@@ -203,3 +203,15 @@ Numero de pedido: 74
 Productos: 
 ALITAS
 
+Numero de pedido: 75
+Productos: 
+ANGUS
+
+Numero de pedido: 76
+Productos: 
+Menu:1x VEGETAL 1x FANTA 1x NUGGETS 
+
+Numero de pedido: 77
+Productos: 
+ANGUS
+

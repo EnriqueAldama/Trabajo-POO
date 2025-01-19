@@ -7,8 +7,11 @@ import products.MenuCard;
 import products.MenuCardSection;
 
 /**
- *
- * @author Alfa
+ * Si seleccionamos la opcion de añadir producto individual al pedido desde
+ * OrderScreen, pasamos
+ * a esta pantalla. Es una pantalla de tipo carrusel en la que se selecciona la
+ * seccion
+ * De esta pantalla se pasa a la pantalla de eleccion de producto
  */
 public class SectionScreen implements CarouselScreen {
     private int currentItem;
@@ -17,32 +20,39 @@ public class SectionScreen implements CarouselScreen {
         this.currentItem = 0;
     }
 
+    /**
+     * Se selecciona la seccion del producto a añadir
+     * 
+     * @param Context
+     * @return siguiente pantalla
+     */
     @Override
     public KioskScreen show(Context c) {
         SimpleKiosk kiosk = c.getKiosk();
-        MenuCard mc=c.getMenuCard();
+        MenuCard mc = c.getMenuCard();
         List<MenuCardSection> sections = mc.getSectionList();
-        
+
         if (sections == null || sections.isEmpty()) {
             throw new RuntimeException("Error: No hay secciones disponibles.");
         }
-        
+
         configureScreenButtons(kiosk);
         adjustCarruselButton(kiosk);
 
         // Bucle del carrusel
-        while (true) { 
-            MenuCardSection currentSection = sections.get(this.currentItem);  
-            String description = "Sección: " + currentSection.getSectionName();  
+        while (true) {
+            MenuCardSection currentSection = sections.get(this.currentItem);
+            String description = "Sección: " + currentSection.getSectionName();
             String im = currentSection.getImageFileName();
             kiosk.setDescription(description);
             kiosk.setImage(im);
-            
+
             char response = kiosk.waitEvent(30);
             switch (response) {
                 // Botón seleccionar seccion
                 case 'C' -> {
-                    return new ProductScreen(currentItem); // Retornar la pantalla de los productos de la seccion elegida
+                    return new ProductScreen(currentItem); // Retornar la pantalla de los productos de la seccion
+                                                           // elegida
 
                 }
                 // Botón anterior
@@ -74,6 +84,12 @@ public class SectionScreen implements CarouselScreen {
         k.setOption('H', ">");
     }
 
+    /**
+     * Se configuran los botones, titulo.
+     * En este caso, es un boton de seleccionar la seccion
+     * 
+     * @param SimpleKiosk
+     */
     @Override
     public void configureScreenButtons(SimpleKiosk k) {
         k.clearScreen();

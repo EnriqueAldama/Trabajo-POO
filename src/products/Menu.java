@@ -17,7 +17,7 @@ public class Menu implements Product {
     private int discount;
     private ArrayList<IndividualProduct> prod;
 
-    public void setDiscount(int discount) {
+    public void setDiscount() {
         try (BufferedReader Buffr = new BufferedReader(new FileReader("COMANDAS\\discount"))) {
 
             this.discount = (int) Integer.valueOf(Buffr.readLine());
