@@ -249,3 +249,12 @@ VEGETAL
 COCA COLA ZERO ZERO
 OREO
 
+Numero de pedido: 85
+Productos: 
+ANGUS
+ANGUS
+
+Numero de pedido: 86
+Productos: 
+Menu:1x ANGUS 1x COCA COLA NORMAL 1x ALITAS 
+

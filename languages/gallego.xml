@@ -197,6 +197,11 @@
   <string>Antes de pagar debe añadir algún producto</string>
   <string>Antes de pagar debe engadir algún produto</string>
 </void>
+<void method="put">
+  <string>Cancelar menú del pedido</string>
+  <string>Cancelar o menú do pedido</string>
+</void>
+
 
  </object>
 </java>

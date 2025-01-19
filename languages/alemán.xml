@@ -197,6 +197,10 @@
   <string>Antes de pagar debe añadir algún producto</string>
   <string>Bevor Sie bezahlen, müssen Sie ein Produkt hinzufügen</string>
 </void>
+<void method="put">
+  <string>Cancelar menú del pedido</string>
+  <string>Menü von der Bestellung stornieren</string>
+</void>
 
  </object>
 </java>

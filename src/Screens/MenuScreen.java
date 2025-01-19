@@ -71,7 +71,7 @@ public class MenuScreen implements CarouselScreen {
                     }
                     // Boton cancelar
                     case 'B' -> {
-                        context.getOrder().cancelOrder();
+                        
                         context.getKiosk().clearScreen();
                         context.getKiosk().setMessageMode();
                         context.getKiosk().setDescription("Pedido cancelado");
@@ -128,7 +128,7 @@ public class MenuScreen implements CarouselScreen {
         kiosk.setMenuMode();
 
         kiosk.setOption('A', "Añadir al pedido");
-        kiosk.setOption('B', "Cancelar pedido");
-    }
+        kiosk.setOption('B', "Cancelar menú del pedido");
+    } 
 
 }

@@ -197,6 +197,10 @@
   <string>Antes de pagar debe añadir algún producto</string>
   <string>Ordaindu aurretik produktu bat gehitu behar duzu</string>
 </void>
+<void method="put">
+  <string>Cancelar menú del pedido</string>
+  <string>Eskaeratik menua ezeztatu</string>
+</void>
 
  </object>
 </java>
