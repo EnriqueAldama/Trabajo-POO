@@ -115,3 +115,19 @@ Numero de pedido: 53
 Productos: 
 Menu:1x VEGETAL 1x FANTA 1x NUGGETS 
 
+Numero de pedido: 54
+Productos: 
+Menu:1x ANGUS 1x COCA COLA NORMAL 1x ALITAS 
+ANGUS
+
+Numero de pedido: 55
+Productos: 
+
+Numero de pedido: 56
+Productos: 
+Menu:1x ANGUS 1x COCA COLA NORMAL 1x NUGGETS_VEGETALES 
+AGUA
+
+Numero de pedido: 57
+Productos: 
+
