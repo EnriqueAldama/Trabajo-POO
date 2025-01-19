@@ -201,6 +201,11 @@
   <string>Cancelar menú del pedido</string>
   <string>Menü von der Bestellung stornieren</string>
 </void>
+<void method="put">
+  <string>Cancelar producto</string>
+  <string>Produkt stornieren</string>
+</void>
+
 
  </object>
 </java>

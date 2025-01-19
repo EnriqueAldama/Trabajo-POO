@@ -201,6 +201,10 @@
   <string>Cancelar menú del pedido</string>
   <string>Eskaeratik menua ezeztatu</string>
 </void>
+<void method="put">
+  <string>Cancelar producto</string>
+  <string>Produktua ezeztatu</string>
+</void>
 
  </object>
 </java>

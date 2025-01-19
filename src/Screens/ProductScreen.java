@@ -122,7 +122,7 @@ public class ProductScreen implements CarouselScreen {
         k.clearScreen();
         k.setMenuMode();
         k.setOption('A', "Añadir producto al pedido");
-        k.setOption('B', "Cancelar pedido");
+        k.setOption('B', "Cancelar producto");
     }
 
 }
