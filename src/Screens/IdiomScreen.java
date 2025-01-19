@@ -17,7 +17,7 @@ public class IdiomScreen implements CarouselScreen {
     private int currentItem;
 
     /**
-     * Constructor que inicializa como idioma por defecto al primeo en la lista de
+     * Constructor que inicializa como idioma por defecto al primero en la lista de
      * idiomas
      */
 

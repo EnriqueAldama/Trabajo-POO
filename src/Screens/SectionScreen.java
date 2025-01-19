@@ -13,6 +13,7 @@ import products.MenuCardSection;
  * seccion
  * De esta pantalla se pasa a la pantalla de eleccion de producto
  */
+
 public class SectionScreen implements CarouselScreen {
     private int currentItem;
 
@@ -27,9 +28,9 @@ public class SectionScreen implements CarouselScreen {
      * @return siguiente pantalla
      */
     @Override
-    public KioskScreen show(Context c) {
-        SimpleKiosk kiosk = c.getKiosk();
-        MenuCard mc = c.getMenuCard();
+    public KioskScreen show(Context context) {
+        SimpleKiosk kiosk = context.getKiosk();
+        MenuCard mc = context.getMenuCard();
         List<MenuCardSection> sections = mc.getSectionList();
 
         if (sections == null || sections.isEmpty()) {

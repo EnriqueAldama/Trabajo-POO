@@ -61,7 +61,7 @@ public class MenuScreen implements CarouselScreen {
                 switch (response) {
                     // Botón seleccionar
                     case 'A' -> {
-                        menu.addIndProduct(currentProduct); //añadimos a pedido producto individual
+                        menu.addIndProduct(currentProduct); // añadimos a pedido producto individual
                         context.getKiosk().clearScreen();
                         context.getKiosk().setMessageMode();
                         context.getKiosk().setDescription("Producto añadido al pedido");
@@ -89,7 +89,8 @@ public class MenuScreen implements CarouselScreen {
                     }
                     // Botón siguiente
                     case 'H' -> {
-                        if (currentItem + 1 >= menuSection.getProductList().size()) { // Te lleva al inicio del carrusel cuando llegas al final
+                        if (currentItem + 1 >= menuSection.getProductList().size()) { // Te lleva al inicio del carrusel
+                                                                                      // cuando llegas al final
                             currentItem = 0;
                         } else {
                             currentItem++;
@@ -99,11 +100,12 @@ public class MenuScreen implements CarouselScreen {
                         return this; // Mantener la pantalla actual
                     }
                 }
-            }
+            } // end while eleccion producto
 
-        }
-        menu.setDiscount(); //Aplicamos descuento
-        context.getOrder().addProduct(menu); /7Añadimos el menu al pedido
+        } // end for de secciones
+
+        menu.setDiscount(); // Aplicamos descuento
+        context.getOrder().addProduct(menu); // Añadimos el menu al pedido
         return new OrderScreen();
     }
 

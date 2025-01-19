@@ -45,8 +45,6 @@ public class PaymentScreen implements KioskScreen {
      * @return siguiente pantalla
      */
 
-    public KioskScreen show(Context c) {
-
     public KioskScreen show(Context context) {
 
         // Metodo principal de la clase, desde el cual se produce la totalidad del
@@ -192,15 +190,6 @@ public class PaymentScreen implements KioskScreen {
      * 
      * @param SimpleKiosk
      */
-
-    private void configureScreenButtons(SimpleKiosk k) {
-
-        k.clearScreen();
-        k.setMessageMode();
-        k.setTitle("Introduce la tarjeta de crédito");
-
-        k.setOption('A', "Modificar pedido"); // se traducen solos desde SimpleKiosk
-        k.setOption('B', "Cancelar pago");
 
     private void configureScreenButtons(SimpleKiosk kiosk) {
         kiosk.clearScreen();

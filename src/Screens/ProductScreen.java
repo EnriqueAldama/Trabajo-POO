@@ -31,14 +31,6 @@ public class ProductScreen implements CarouselScreen {
      * @return siguiente pantalla
      */
 
-    /**
-     * Segun la seccion que sea, se itera por los productos de su carta con un
-     * carrusel
-     * 
-     * @param Context
-     * @return siguiente pantalla
-     */
-
     @Override
     public KioskScreen show(Context context) {
         SimpleKiosk kiosk = context.getKiosk();
