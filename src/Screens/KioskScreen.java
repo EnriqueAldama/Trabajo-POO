@@ -12,7 +12,7 @@ import Manager.Context;
  */
 public interface KioskScreen {
      
-     public KioskScreen show(Context c);
+     public KioskScreen show(Context context);
             
             
 }

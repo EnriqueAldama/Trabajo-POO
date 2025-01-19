@@ -14,8 +14,8 @@ import Manager.SimpleKiosk;
 public class OrderScreen implements KioskScreen {
 
     @Override
-    public KioskScreen show(Context c) {
-        SimpleKiosk kiosk = c.getKiosk();
+    public KioskScreen show(Context context) {
+        SimpleKiosk kiosk = context.getKiosk();
         configureScreenButtons(kiosk);
         char response = kiosk.waitEvent(30);
         switch (response) {
@@ -26,21 +26,21 @@ public class OrderScreen implements KioskScreen {
                 return new SectionScreen();
             }
             case 'C' -> {
-                if (c.getOrder().getTotalAmount()==0){
+                if (context.getOrder().getTotalAmount()==0){
                     kiosk.clearScreen();
                     kiosk.setMessageMode();
                     kiosk.setDescription("Antes de pagar debe añadir algún producto");
                     kiosk.waitEvent(1);
                     return new OrderScreen();
-
-                }else return new PaymentScreen();
+                } 
+                else return new PaymentScreen();
             }
         
             case 'D' -> {
-                c.getOrder().cancelOrder();
-                c.getKiosk().clearScreen();
-                c.getKiosk().setMessageMode();
-                c.getKiosk().setDescription("Pedido cancelado");
+                context.getOrder().cancelOrder();
+                context.getKiosk().clearScreen();
+                context.getKiosk().setMessageMode();
+                context.getKiosk().setDescription("Pedido cancelado");
                 kiosk.waitEvent(1);
                 return new WelcomeScreen();
             }

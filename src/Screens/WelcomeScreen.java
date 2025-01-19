@@ -13,14 +13,11 @@ import Manager.SimpleKiosk;
  */
 public class WelcomeScreen implements KioskScreen {
     @Override
-    public KioskScreen show(Context c) {
-        SimpleKiosk kiosk = c.getKiosk();
+    public KioskScreen show(Context context) {
+        SimpleKiosk kiosk = context.getKiosk();
         configureScreenButtons(kiosk);
-        // kiosk.setImage("Logo.png");
 
-        c.setOrder(); // reiniciamos el pedido. Mejor hacerlo aqui que en OrderScreen ya que no
-                      // queremos borrar
-                      // todo el pedido cuando solo queramos hacer una modificacion
+        context.setOrder(); // Reiniciamos el pedido.
 
         char response = kiosk.waitEvent(30);
         return switch (response) {

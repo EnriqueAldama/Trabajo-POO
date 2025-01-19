@@ -18,67 +18,66 @@ public class ProductScreen implements CarouselScreen{
     private int currentItem;
 
     public ProductScreen(int section){
-        this.section=section;
-        this.currentItem=0;
+        this.section = section;
+        this.currentItem = 0;
     }
 
     @Override
-    public KioskScreen show(Context c) {
-        SimpleKiosk kiosk = c.getKiosk();
-        MenuCardSection sc = c.getMenuCard().getSection(this.section);  
-        //List<IndividualProduct> products = sc.getProductList();
-        
-        if (sc.getProductList() == null ) {
+    public KioskScreen show(Context context) {
+        SimpleKiosk kiosk = context.getKiosk();
+        MenuCardSection menuSection = context.getMenuCard().getSection(this.section);  
+       
+        if (menuSection.getProductList() == null ) {
             throw new RuntimeException("Error: No hay productos disponibles de esta sección.");
         }
         
+        // Muestra los botones estandar
         configureScreenButtons(kiosk);
         adjustCarruselButton(kiosk);
 
         // Bucle del carrusel
         while (true) { 
-            products.IndividualProduct currentProduct = sc.getIndividualProduct(this.currentItem);  
+            products.IndividualProduct currentProduct = menuSection.getIndividualProduct(this.currentItem);  
             String description = "Producto: " + currentProduct.getName();
-            String im = currentProduct.getImageFileName();
+            String productImage = currentProduct.getImageFileName();
             kiosk.setDescription(description);
-            kiosk.setImage(im);
-            String title="Selecciona la "+sc.getSectionName();
+            kiosk.setImage(productImage);
+            String title = "Selecciona la " + menuSection.getSectionName();
             kiosk.setTitle(title);
             char response = kiosk.waitEvent(30);
             switch (response) {
                 // Botón seleccionar seccion
                 case 'A' -> {
-                    c.getOrder().addProduct(currentProduct);
-                    c.getKiosk().clearScreen();
-                    c.getKiosk().setMessageMode();
-                    c.getKiosk().setDescription("Producto añadido al pedido");
+                    context.getOrder().addProduct(currentProduct);
+                    context.getKiosk().clearScreen();
+                    context.getKiosk().setMessageMode();
+                    context.getKiosk().setDescription("Producto añadido al pedido");
                     kiosk.waitEvent(1);
                     return  new OrderScreen();
                 }
                 case 'B' -> {
-                    c.getOrder().cancelOrder();
-                    c.getKiosk().clearScreen();
-                    c.getKiosk().setMessageMode();
-                    c.getKiosk().setDescription("Pedido cancelado");
+                    context.getOrder().cancelOrder();
+                    context.getKiosk().clearScreen();
+                    context.getKiosk().setMessageMode();
+                    context.getKiosk().setDescription("Pedido cancelado");
                     kiosk.waitEvent(1);
                     return new OrderScreen();
                 }
                 case 'C' -> {
                    return new OrderScreen();
                 }
-
                 
                 // Botón anterior
                 case 'G' -> {
-                    if (currentItem - 1 < 0) { // Comprueba si intenta ir al -1 y va al final
-                        currentItem = sc.getProductList().size() - 1;
+                    if (currentItem - 1 < 0) { // Te lleva al final del carrusel al llegar al item -1
+                        currentItem = menuSection.getProductList().size() - 1;
                     } else {
                         currentItem--;
                     }
                 }
                 // Botón siguiente
                 case 'H' -> {
-                    if (currentItem + 1 >= sc.getProductList().size()) { // Comprueba si intenta ir más allá y vuelve al inicio
+                    if (currentItem + 1 >= menuSection.getProductList().size()) { // Te lleva al inicio del carrusel cuando llegas al final
                         currentItem = 0;
                     } else {
                         currentItem++;
