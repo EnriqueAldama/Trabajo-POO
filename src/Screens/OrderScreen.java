@@ -29,6 +29,9 @@ public class OrderScreen implements KioskScreen {
                 return new PaymentScreen();
             }
             case 'D' -> {
+                return new UserOrderScreen();
+            }
+            case 'E' -> {
                 c.getOrder().cancelOrder();
                 c.getKiosk().clearScreen();
                 c.getKiosk().setMessageMode();
@@ -48,6 +51,7 @@ public class OrderScreen implements KioskScreen {
         kiosk.setOption('A', "Añadir menú a pedido");
         kiosk.setOption('B', "Añadir producto individual a pedido");
         kiosk.setOption('C', "Finalizar pedido y pagar");
-        kiosk.setOption('D', "Cancelar pedido");
+        kiosk.setOption('D', "Editar pedido");
+        kiosk.setOption('E', "Cancelar pedido");
     }
 }
