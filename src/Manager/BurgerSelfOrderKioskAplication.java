@@ -10,8 +10,10 @@ package Manager;
 public class BurgerSelfOrderKioskAplication {
 
     /**
+     * Esta clase solo contiene el Main
      * @param args the command line arguments
      */
+
     public static void main(String[] args) {
         KioskManager kioskManager = new KioskManager();
         kioskManager.start();

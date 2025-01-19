@@ -28,17 +28,13 @@ public class MenuScreen implements CarouselScreen {
      */
 
     @Override
-    public KioskScreen show(Context c) {
+    public KioskScreen show(Context context) {
 
-        SimpleKiosk kiosk = c.getKiosk();
-        MenuCard mc = c.getMenuCard();
-        MenuCardSection sc;
-        TranslatorManager t = c.getTranslator();
+        SimpleKiosk kiosk = context.getKiosk();
+        MenuCard menuCard = context.getMenuCard();
+        MenuCardSection menuSection;
+        TranslatorManager translator = context.getTranslator();
         Menu menu = new Menu();
-
-        // Bucle del carrusel, como el utilizado en el carrusel de productos
-        // individuales:
-        // Primer se añade bebida, ppal, complemento
 
         int currentItem = 0;
 
@@ -47,55 +43,53 @@ public class MenuScreen implements CarouselScreen {
             configureScreenButtons(kiosk);
             adjustCarruselButton(kiosk);
 
-            sc = mc.getSection(i); // vamos seccion por seccion
+            menuSection = menuCard.getSection(i); // vamos seccion por seccion
 
             boolean exit = false; // para poder salir del while y pasar a elegir sig producto
 
-            while (exit == false) {
-                products.IndividualProduct currentProduct = sc.getIndividualProduct(currentItem);
+            while (!exit) {
+                products.IndividualProduct currentProduct = menuSection.getIndividualProduct(currentItem);
                 String description = "Product: " + currentProduct.getName();
-                String im = currentProduct.getImageFileName();
-                String title = "Selecciona la " + sc.getSectionName();
+                String productImage = currentProduct.getImageFileName();
+                String title = "Selecciona la " + menuSection.getSectionName();
 
                 kiosk.setDescription(description);
-                kiosk.setImage(im);
+                kiosk.setImage(productImage);
                 kiosk.setTitle(title);
 
                 char response = kiosk.waitEvent(30);
                 switch (response) {
                     // Botón seleccionar
                     case 'A' -> {
-                        menu.addIndProduct(currentProduct); // Añadimos al menu el prod individual
-                        c.getKiosk().clearScreen();
-                        c.getKiosk().setMessageMode();
-                        c.getKiosk().setDescription("Producto añadido al pedido");
+                        menu.addIndProduct(currentProduct); //añadimos a pedido producto individual
+                        context.getKiosk().clearScreen();
+                        context.getKiosk().setMessageMode();
+                        context.getKiosk().setDescription("Producto añadido al pedido");
                         kiosk.waitEvent(1);
                         exit = true; // se sale otra vez al bucle for para elegir siguiente producto
 
                     }
                     // Boton cancelar
                     case 'B' -> {
-                        c.getOrder().cancelOrder();
-                        c.getKiosk().clearScreen();
-                        c.getKiosk().setMessageMode();
-                        c.getKiosk().setDescription("Pedido cancelado");
+                        context.getOrder().cancelOrder();
+                        context.getKiosk().clearScreen();
+                        context.getKiosk().setMessageMode();
+                        context.getKiosk().setDescription("Pedido cancelado");
                         kiosk.waitEvent(1);
                         return new OrderScreen();
                     }
 
                     // Botón anterior
                     case 'G' -> {
-                        if (currentItem - 1 < 0) { // Comprueba si intenta ir al -1 y va al final
-                            currentItem = sc.getProductList().size() - 1;
+                        if (currentItem - 1 < 0) { // Te lleva al final del carrusel al llegar al item -1
+                            currentItem = menuSection.getProductList().size() - 1;
                         } else {
                             currentItem--;
                         }
                     }
                     // Botón siguiente
                     case 'H' -> {
-                        if (currentItem + 1 >= sc.getProductList().size()) { // Comprueba si intenta ir más allá y
-                                                                             // vuelve al
-                                                                             // inicio
+                        if (currentItem + 1 >= menuSection.getProductList().size()) { // Te lleva al inicio del carrusel cuando llegas al final
                             currentItem = 0;
                         } else {
                             currentItem++;
@@ -108,10 +102,8 @@ public class MenuScreen implements CarouselScreen {
             }
 
         }
-
-        menu.setDiscount(); // Una vez elegidos todos los productos, aplicamos descuento (que se lee del
-                            // archivo)
-        c.getOrder().addProduct(menu); // Añadimos al pedido el menu
+        menu.setDiscount(); //Aplicamos descuento
+        context.getOrder().addProduct(menu); /7Añadimos el menu al pedido
         return new OrderScreen();
     }
 
@@ -129,13 +121,12 @@ public class MenuScreen implements CarouselScreen {
      */
 
     @Override
-    public void configureScreenButtons(SimpleKiosk sk) {
-        sk.clearScreen();
-        sk.setMenuMode();
+    public void configureScreenButtons(SimpleKiosk kiosk) {
+        kiosk.clearScreen();
+        kiosk.setMenuMode();
 
-        sk.setOption('A', "Añadir al pedido");
-        sk.setOption('B', "Cancelar pedido");
-        // sk.setOption('C', "Cancelar producto del pedido");
+        kiosk.setOption('A', "Añadir al pedido");
+        kiosk.setOption('B', "Cancelar pedido");
     }
 
 }
