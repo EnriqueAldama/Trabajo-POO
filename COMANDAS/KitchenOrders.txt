@@ -242,3 +242,10 @@ Numero de pedido: 83
 Productos: 
 Menu:1x ANGUS 1x COCA COLA NORMAL 1x ALITAS 
 
+Numero de pedido: 84
+Productos: 
+Menu:1x POLLO 1x FANTA 1x NUGGETS_VEGETALES 
+VEGETAL
+COCA COLA ZERO ZERO
+OREO
+

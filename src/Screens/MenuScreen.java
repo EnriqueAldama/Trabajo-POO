@@ -104,10 +104,10 @@ public class MenuScreen implements CarouselScreen {
 
         } // end for de secciones
 
-        }
         context.getOrder().addProduct(menu);
         return new OrderScreen();
     }
+    
 
     @Override
     public void adjustCarruselButton(SimpleKiosk kiosk) {

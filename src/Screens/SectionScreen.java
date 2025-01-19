@@ -38,18 +38,17 @@ public class SectionScreen implements CarouselScreen {
 
         // Bucle del carrusel
         while (true) { 
-            MenuCardSection currentSection = sections.get(this.currentItem);  
+            MenuCardSection currentSection = menuCard.getSection(this.currentItem);  
             String description = "Sección: " + currentSection.getSectionName();  
             String sectionImage = currentSection.getImageFileName();
             kiosk.setDescription(description);
             kiosk.setImage(sectionImage);
-
+            
             char response = kiosk.waitEvent(30);
             switch (response) {
                 // Botón seleccionar seccion
                 case 'C' -> {
-                    return new ProductScreen(currentItem); // Retornar la pantalla de los productos de la seccion
-                                                           // elegida
+                    return new ProductScreen(currentItem); // Retornar la pantalla de los productos de la seccion elegida
 
                 }
                 // Botón anterior
