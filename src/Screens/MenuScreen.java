@@ -16,6 +16,7 @@ import products.MenuCardSection;
  */
 public class MenuScreen implements CarouselScreen {
 
+    @Override
     public KioskScreen show(Context c) {
 
         SimpleKiosk kiosk = c.getKiosk();

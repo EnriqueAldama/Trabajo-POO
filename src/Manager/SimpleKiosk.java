@@ -1,10 +1,9 @@
 package Manager;
 
-import java.util.ArrayList;
+
 import java.util.List;
-import javax.naming.CommunicationException;
 import sienens.BurgerSelfOrderKiosk;
-import urjc.UrjcBankServer;
+
 
 /**
  *
@@ -13,7 +12,7 @@ import urjc.UrjcBankServer;
 public class SimpleKiosk {
 
     private BurgerSelfOrderKiosk kiosk = new BurgerSelfOrderKiosk();
-    private TranslatorManager translatorManager; // TODO: Ver si es necesaria esta propiedad (no está en el diseño)
+    private final TranslatorManager translatorManager; // TODO: Ver si es necesaria esta propiedad (no está en el diseño)
 
     public SimpleKiosk(TranslatorManager t) {
         this.translatorManager = t;

@@ -12,10 +12,10 @@ import products.Order;
  * @author am.machuca.2023
  */
 public class Context {
-    private SimpleKiosk kiosk;
-    private TranslatorManager translator;
+    private final SimpleKiosk kiosk;
+    private final TranslatorManager translator;
     private Order order;
-    private MenuCard menuCard;
+    private final MenuCard menuCard;
 
     public Context() {
         this.translator = new TranslatorManager();

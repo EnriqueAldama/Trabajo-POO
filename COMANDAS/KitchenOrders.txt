@@ -178,3 +178,24 @@ ANGUS
 Numero de pedido: 68
 Productos: 
 
+Numero de pedido: 69
+Productos: 
+Menu:1x ANGUS 1x COCA COLA NORMAL 1x ALITAS 
+
+Numero de pedido: 70
+Productos: 
+ANGUS
+ALITAS
+
+Numero de pedido: 71
+Productos: 
+COCA COLA ZERO ZERO
+
+Numero de pedido: 72
+Productos: 
+Menu:1x POLLO 1x COCA COLA ZERO ZERO 1x APPLE PIE 
+
+Numero de pedido: 73
+Productos: 
+Menu:1x ANGUS 1x COCA COLA NORMAL 1x ALITAS 
+
