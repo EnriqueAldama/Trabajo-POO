@@ -20,7 +20,8 @@ public class SimpleKiosk {
     }
 
     public void setOption(char a, String s) {
-        String translatedS = translatorManager.translate(s);
+        String translatedS = translatorManager.translate(s); // se traducen los string que se pasan como parametros a
+                                                             // los metodods de Kiosk
         kiosk.setOption(a, translatedS);
     }
 

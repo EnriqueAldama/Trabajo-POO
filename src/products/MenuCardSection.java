@@ -13,7 +13,7 @@ import java.util.List;
 public class MenuCardSection {
     private String sectionName;
     private String imageFileName;
-    private List<IndividualProduct> productList;
+    private List<IndividualProduct> productList; // los IndividualProoducts de la seccion
 
     public MenuCardSection(String sectionName, String imageFileName, List<IndividualProduct> productList) {
         this.sectionName = sectionName;

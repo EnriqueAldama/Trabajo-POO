@@ -85,7 +85,7 @@ public class PaymentScreen implements KioskScreen {
                     } // hay que implementar este metodo
 
                     // AÑADIR AL LISTADO DE COCINA**
-                        writeOrderToFile(order, newOrderNumber);
+                    writeOrderToFile(order, newOrderNumber);
                     // TICKET****
 
                     ArrayList<String> ticketStringList = new ArrayList<>(); // **Encpasulac bien?? */
@@ -106,7 +106,8 @@ public class PaymentScreen implements KioskScreen {
                         bank.doOperation(creditCardNumb, totalAmount);
                         sk.clearScreen();
                         sk.setMessageMode();
-                        sk.setDescription(t.translate("Pago completado con éxito.") +  "\n" + t.translate("Recoja el ticket por favor") + "\n" + t.translate("Número de pedido: ") 
+                        sk.setDescription(t.translate("Pago completado con éxito.") + "\n"
+                                + t.translate("Recoja el ticket por favor") + "\n" + t.translate("Número de pedido: ")
                                 + String.valueOf(newOrderNumber));
                         sk.waitEvent(1);
 
@@ -146,9 +147,8 @@ public class PaymentScreen implements KioskScreen {
 
         String rutaArchivo = "COMANDAS\\numTicket.txt";
 
-        FileReader in = new FileReader(rutaArchivo); // Usamos buffered Reader para no tener que ir leyendo uno a uno
-                                                     // los caracteres
-        BufferedReader bufr = new BufferedReader(in); // default size. Pasamos el fileReader
+        FileReader in = new FileReader(rutaArchivo);
+        BufferedReader bufr = new BufferedReader(in);
         String linea;
         int numTicket = 0;
         linea = bufr.readLine(); // leemos la linea con el numero de ticket
@@ -158,7 +158,7 @@ public class PaymentScreen implements KioskScreen {
             numTicket = 0;
         }
 
-        FileWriter out = new FileWriter(rutaArchivo); // Ahora escribimos la linea con el num ticket actualiz
+        FileWriter out = new FileWriter(rutaArchivo); // Ahora escribimos la linea con el num ticket actualizado
         BufferedWriter bufw = new BufferedWriter(out);
         linea = Integer.toString(numTicket);
         bufw.write(linea);
@@ -180,48 +180,51 @@ public class PaymentScreen implements KioskScreen {
 
     }
 
-    private void writeOrderToFile(Order Order, int orderNumber){
+    private void writeOrderToFile(Order Order, int orderNumber) {
 
         int number = orderNumber;
         File FicheroCocina = new File("COMANDAS\\KitchenOrders.txt");
         if (!FicheroCocina.exists()) {
-            
+
             System.out.println("Listado de cocina no encontrado, creando uno nuevo");
-            try{
+            try {
                 FicheroCocina.createNewFile();
-            }
-            catch(IOException e){
+            } catch (IOException e) {
                 System.out.println("No se puede comunicar el pedido a la cocina, pida ayuda a un empleado");
             }
         }
-        //La siguiente seccion obtiene la hora actual, la de ultima modificacion y establece el limite
+        // La siguiente seccion obtiene la hora actual, la de ultima modificacion y
+        // establece el limite
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime limit = LocalDateTime.now().withHour(5).withMinute(0);
         LocalDateTime ultimaMod = Instant.ofEpochMilli(FicheroCocina.lastModified())
                 .atZone(ZoneId.systemDefault()) // uso la zona horaria por defecto
                 .toLocalDateTime();
-        //Si la ultima edicion fue antes que el instante limite y ahora es despues hemos pasado por la hora de reinicio
+
+        // Si la ultima edicion fue antes que el instante limite y ahora es despues
+        // hemos pasado por la hora de reinicio
         if (ultimaMod.isBefore(limit) && now.isAfter(limit)) {
             String fechaAyer = now.minusDays(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-            File FicheroAntiguo=new File("COMANDAS\\KitchenOrders_"+fechaAyer+".txt");
+            File FicheroAntiguo = new File("COMANDAS\\KitchenOrders_" + fechaAyer + ".txt");
             FicheroCocina.renameTo(FicheroAntiguo);
-            try{
+            try {
                 FicheroCocina.createNewFile();
-            }catch(IOException f){
+            } catch (IOException f) {
                 System.out.println("algo ha salido mal, pida ayuda a un empleado");
+            }
         }
-        }
-        try{
-        BufferedWriter buff = new BufferedWriter(new FileWriter(FicheroCocina, true)); // true para añadir despues de lo
+        try {
+            BufferedWriter buff = new BufferedWriter(new FileWriter(FicheroCocina, true)); // true para añadir despues
+                                                                                           // de lo que haya escrito
 
-        buff.write("Numero de pedido: " + Integer.toString(number));
-        buff.newLine();
-        buff.write("Productos: ");
-        buff.newLine();
-        buff.write(Order.getOrderText());
-        buff.newLine();
-        buff.close();
-        } catch(IOException g){
+            buff.write("Numero de pedido: " + Integer.toString(number));
+            buff.newLine();
+            buff.write("Productos: ");
+            buff.newLine();
+            buff.write(Order.getOrderText());
+            buff.newLine();
+            buff.close();
+        } catch (IOException g) {
             System.out.println("ha habido un error");
         }
     }

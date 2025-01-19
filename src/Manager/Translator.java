@@ -12,27 +12,26 @@ import java.util.Map;
 
 import products.MenuCard;
 
-
 /**
  *
  * @author am.machuca.2023
  */
 public class Translator {
-    private Map<String,String> palabras;
+    private Map<String, String> palabras;
 
-    public Translator(String fileName) {
+    public Translator(String fileName) { // se carga el archivo xml correspondiente al idioma
         this.palabras = loadFromFile(fileName);
     }
-   
-    public String translate(String s){
-       return palabras.getOrDefault(s, s);
-    }   
 
-    private Map<String,String> loadFromFile(String fileName){
+    public String translate(String s) {
+        return palabras.getOrDefault(s, s);
+    }
+
+    private Map<String, String> loadFromFile(String fileName) {
         try {
             try (FileInputStream file = new FileInputStream(fileName)) {
-                XMLDecoder decoder=new XMLDecoder(file);
-                palabras = (Map<String,String>) decoder.readObject();
+                XMLDecoder decoder = new XMLDecoder(file);
+                palabras = (Map<String, String>) decoder.readObject();
                 decoder.close();
             }
             return palabras;

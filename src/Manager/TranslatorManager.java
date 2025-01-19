@@ -14,8 +14,8 @@ import java.util.Map;
  * @author am.machuca.2023
  */
 public class TranslatorManager {
-    private Translator currentDictionary;
-    private Map<String, Translator> dictionaries;
+    private Translator currentDictionary; // El translator activo
+    private Map<String, Translator> dictionaries; // Mapa con traductores de cada idioma
 
     public TranslatorManager() {
         this.dictionaries = new HashMap<>();

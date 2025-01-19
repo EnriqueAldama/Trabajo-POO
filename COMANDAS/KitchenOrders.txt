@@ -149,3 +149,20 @@ Numero de pedido: 61
 Productos: 
 COCA COLA NORMAL
 
+Numero de pedido: 62
+Productos: 
+ANGUS
+VEGETAL
+
+Numero de pedido: 63
+Productos: 
+ALITAS
+
+Numero de pedido: 64
+Productos: 
+ANGUS
+
+Numero de pedido: 65
+Productos: 
+POLLO
+

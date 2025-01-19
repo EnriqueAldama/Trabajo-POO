@@ -14,10 +14,10 @@ import Screens.WelcomeScreen;
 public class KioskManager {
     private Context context;
 
-    public void start(){
+    public void start() {
         this.context = new Context();
         KioskScreen screen = (KioskScreen) new WelcomeScreen();
-        while(true)
-            screen = screen.show(context);
+        while (true)
+            screen = screen.show(context); // se sobreescirbe la pantalla con la proxima que se devuelva en el show
     }
 }

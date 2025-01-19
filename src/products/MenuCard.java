@@ -16,11 +16,12 @@ import java.util.List;
 public class MenuCard {
     private List<MenuCardSection> sectionList;
 
-    public MenuCard(List<MenuCardSection> sectionList) {
+    public MenuCard(List<MenuCardSection> sectionList) { // En el constructor se pasa la lista de secciones. Cada una
+                                                         // contiene los Individualproduct de dicha seccion
         this.sectionList = sectionList;
     }
 
-    public MenuCardSection getSection(int c) {
+    public MenuCardSection getSection(int c) { // getter de las secciones
         return sectionList.get(c);
     }
 
@@ -28,7 +29,7 @@ public class MenuCard {
         return sectionList.size();
     }
 
-    public static MenuCard loadFromDisk() {
+    public static MenuCard loadFromDisk() { // Se lee el archivo xml con los productos
         try {
             MenuCard mc;
             try (FileInputStream file = new FileInputStream("PRODUCTOS/Catalog.xml")) {
