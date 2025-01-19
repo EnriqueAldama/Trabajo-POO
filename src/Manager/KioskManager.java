@@ -14,6 +14,9 @@ import Screens.WelcomeScreen;
 public class KioskManager {
     private Context context;
 
+    /**
+     * El metodo start es al que llamamos con main, iniciara el contexto y el bucle de las pantallas
+     */
     public void start() {
         this.context = new Context();
         KioskScreen screen = (KioskScreen) new WelcomeScreen();
