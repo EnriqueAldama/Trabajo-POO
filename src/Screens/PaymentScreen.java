@@ -25,13 +25,25 @@ import products.Order;
 import urjc.UrjcBankServer;
 
 /**
- *
- * @author Alfa
+ * Pantalla de pago.
+ * Se accede desde la pantalla de pedido y se vuelve a la pantalla de pedido, o
+ * a la pantalla de bienvenida
  */
+
 public class PaymentScreen implements KioskScreen {
 
     @Override // HABRIA QUE AÑADIR UN THROW IOEXCEPTION POR SI NO SE ENCUENTRA FICHEROS Y
               // PONER TRY Y CATCH EN CREACION DE PANTALLA DE PAGO
+
+    /**
+     * Se realiza el pago, se actualiza el numero de pedido, se
+     * imprime ticket y se anota en el listado de cocina
+     * Dependiendo de la opcion elegida se vuelve a pantalla de bienvenida o de
+     * pedido
+     * 
+     * @param Context
+     * @return siguiente pantalla
+     */
 
     public KioskScreen show(Context context) {
 
@@ -49,12 +61,12 @@ public class PaymentScreen implements KioskScreen {
 
         configureScreenButtons(kiosk);
         kiosk.setDescription(
-            orderText +
-            "\n Total: " +
-            String.valueOf(totalAmountFloat) +
-            " € \n" +
-            translator.translate("Introduce la tarjeta de credito para confirmar el pedido o pulsa alguno de los botones inferiores")
-        );
+                orderText +
+                        "\n Total: " +
+                        String.valueOf(totalAmountFloat) +
+                        " € \n" +
+                        translator.translate(
+                                "Introduce la tarjeta de credito para confirmar el pedido o pulsa alguno de los botones inferiores"));
 
         char response = kiosk.waitEvent(30);
 
@@ -81,7 +93,7 @@ public class PaymentScreen implements KioskScreen {
 
                     // NUM PEDIDO
                     try {
-                        newOrderNumber = incrementOrderNumber();                                                                  
+                        newOrderNumber = incrementOrderNumber();
                     } catch (IOException e) {
                         System.out.println("Archivo no encontrado"); // Error de la maquina. Llamar a operario
                         newOrderNumber = -1;
@@ -106,10 +118,10 @@ public class PaymentScreen implements KioskScreen {
                         kiosk.clearScreen();
                         kiosk.setMessageMode();
                         kiosk.setDescription(
-                            translator.translate("Pago completado con éxito.\n")
-                            + translator.translate("Recoja el ticket por favor\n")
-                            + translator.translate("Número de pedido: ")
-                            + String.valueOf(newOrderNumber));
+                                translator.translate("Pago completado con éxito.\n")
+                                        + translator.translate("Recoja el ticket por favor\n")
+                                        + translator.translate("Número de pedido: ")
+                                        + String.valueOf(newOrderNumber));
                         kiosk.waitEvent(1);
 
                     } catch (CommunicationException e) {
@@ -121,7 +133,7 @@ public class PaymentScreen implements KioskScreen {
 
                 }
                 // NO HAY CONEXION CON SERVIDOR
-                else { 
+                else {
                     kiosk.clearScreen();
                     kiosk.setMessageMode();
                     kiosk.setDescription("Error: no se pudo establecer conexion con el servidor");
@@ -137,6 +149,14 @@ public class PaymentScreen implements KioskScreen {
 
         }
     }
+
+    /**
+     * Incrementa el numero de pedido en el archivo en el que se guarda y lo
+     * devuelve
+     * 
+     * @return el numero del pedido
+     * @throws IOException
+     */
 
     private int incrementOrderNumber() throws IOException {
 
@@ -164,6 +184,13 @@ public class PaymentScreen implements KioskScreen {
         return numTicket;
     }
 
+    /**
+     * Se configuran los botones, el modo y el titulo
+     * En este caso, son botones de modificar pedido y cancelar pago
+     * 
+     * @param SimpleKiosk
+     */
+
     private void configureScreenButtons(SimpleKiosk kiosk) {
         kiosk.clearScreen();
         kiosk.setMessageMode();
@@ -171,6 +198,14 @@ public class PaymentScreen implements KioskScreen {
         kiosk.setOption('A', "Modificar pedido");
         kiosk.setOption('B', "Cancelar pago");
     }
+
+    /**
+     * Anota la informacion del pedido en el arhivo de texto correspondiente al
+     * listado de cocina
+     * 
+     * @param Order
+     * @param orderNumber
+     */
 
     private void writeOrderToFile(Order Order, int orderNumber) {
 
@@ -192,12 +227,13 @@ public class PaymentScreen implements KioskScreen {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime limit = LocalDateTime.now().withHour(5).withMinute(0);
         LocalDateTime lastOrder = Instant.ofEpochMilli(kitchenOrders.lastModified())
-            .atZone(ZoneId.systemDefault()) // uso la zona horaria por defecto
-            .toLocalDateTime();
+                .atZone(ZoneId.systemDefault()) // uso la zona horaria por defecto
+                .toLocalDateTime();
 
-        // Si el último pedido fue antes del limite (5AM) y ahora es despues se resetea kitchenOrders
+        // Si el último pedido fue antes del limite (5AM) y ahora es despues se resetea
+        // kitchenOrders
         if (lastOrder.isBefore(limit) && now.isAfter(limit)) {
-            
+
             String fechaAyer = now.minusDays(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             File FicheroAntiguo = new File("COMANDAS\\KitchenOrders_" + fechaAyer + ".txt");
             kitchenOrders.renameTo(FicheroAntiguo);
@@ -210,8 +246,9 @@ public class PaymentScreen implements KioskScreen {
 
         // CUANDO PASE TODOS LOS CHECKS, SE ESCRIBE EL NUEVO PEDIDO
         try {
-            BufferedWriter bufferWriter = new BufferedWriter(new FileWriter(kitchenOrders, true)); // true para añadir despues
-                                                                                           // de lo que haya escrito
+            BufferedWriter bufferWriter = new BufferedWriter(new FileWriter(kitchenOrders, true)); // true para añadir
+                                                                                                   // despues
+            // de lo que haya escrito
 
             bufferWriter.write("Numero de pedido: " + Integer.toString(number));
             bufferWriter.newLine();

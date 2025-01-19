@@ -7,12 +7,16 @@ package Screens;
 import Manager.Context;
 
 /**
- *
- * @author am.machuca.2023
+ * Interfaz de las pantallas del kiosko
  */
 public interface KioskScreen {
-     
-     public KioskScreen show(Context context);
-            
-            
+
+     /**
+      * Contiene el código que se ejecuta al acceder a la pantalla
+      * 
+      * @param Context
+      * @return siguiente pantalla
+      */
+     public KioskScreen show(Context c);
+
 }

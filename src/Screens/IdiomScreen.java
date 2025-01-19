@@ -10,30 +10,47 @@ import Manager.TranslatorManager;
 import java.util.List;
 
 /**
- *
- * @author Alfa
+ * Pantalla de eleccion de idioma. Muestra los idiomas disponibles en forma de
+ * carrusel
  */
 public class IdiomScreen implements CarouselScreen {
     private int currentItem;
+
+    /**
+     * Constructor que inicializa como idioma por defecto al primero en la lista de
+     * idiomas
+     */
 
     public IdiomScreen() {
         this.currentItem = 0;
     }
 
+    /**
+     * Obtiene la lista de idiomas. En el bucle del carrusel,
+     * 
+     * @param Context
+     * @return siguiente pantalla
+     */
+
     @Override
-    public KioskScreen show(Context c){
+    public KioskScreen show(Context c) {
+
         SimpleKiosk kiosk = c.getKiosk();
         TranslatorManager translator = c.getTranslator();
-        List<String> idioms = translator.getIdioms();
+        List<String> idioms = translator.getIdioms(); // se obtiene la lista de iidomas y se guarda en iidoms
         configureScreenButtons(kiosk);
         adjustCarruselButton(kiosk);
+
         // Bucle del carrusel
-        while (true) { 
-            String currentIdiom = idioms.get(currentItem);
-            String description = "Seleccionar el idioma " + currentIdiom;
-            String im = "languages/"+currentIdiom +".png";
+        while (true) {
+            String currentIdiom = idioms.get(currentItem); // elegimos el idioma actual de la lista con el indice
+                                                           // currentItem
+
+            String description = "Seleccionar el idioma " + currentIdiom; // descripcion, imagen a mostrar segun idioma
+            String im = "languages/" + currentIdiom + ".png";
             kiosk.setDescription(description);
             kiosk.setImage(im);
+
             char response = kiosk.waitEvent(30);
             switch (response) {
                 // Botón cambiar idioma
@@ -43,20 +60,20 @@ public class IdiomScreen implements CarouselScreen {
                 }
                 // Botón anterior
                 case 'G' -> {
-                    if(currentItem - 1 < 0) { // Comprueba se intenta ir al -1 y va al final
-                        currentItem = idioms.size()-1;
-                    }
-                    else {
-                        currentItem--;
+                    if (currentItem - 1 < 0) { // Si se sobrepasa el mínimo de la lista, es decir, si se intenta ir al
+                                               // -1, se va al final
+                        currentItem = idioms.size() - 1;
+                    } else {
+                        currentItem--; // Si no, se va al idioma anterior
                     }
                 }
                 // Botón siguiente
                 case 'H' -> {
-                    if(currentItem + 1 >= idioms.size()) { // Comprueba si intenta ir al 5 y vuelve al inicio
+                    if (currentItem + 1 >= idioms.size()) { // Si se sobrepasa el maximo de la lista, es decir,si se
+                                                            // intenta ir al 5, se vuelve al inicio
                         currentItem = 0;
-                    }
-                    else {
-                        currentItem++;
+                    } else {
+                        currentItem++; // Si no, se va al idioma siguiente
                     }
                 }
                 default -> {
@@ -65,18 +82,29 @@ public class IdiomScreen implements CarouselScreen {
             }
         }
     }
-        
+
+    /**
+     * Configuracion de botones de anterior y siguiente del carrusel
+     * 
+     * @param SimpleKiosk
+     */
     @Override
-    public void adjustCarruselButton(SimpleKiosk kiosk){
+    public void adjustCarruselButton(SimpleKiosk kiosk) {
         kiosk.setOption('G', "<");
         kiosk.setOption('H', ">");
     }
-    
+
+    /**
+     * Se configuran los botones y el titulo
+     * En este caso, un unico boton para sleeccionar idioma
+     * 
+     * @param SimpleKiosk
+     */
     @Override
     public void configureScreenButtons(SimpleKiosk kiosk) {
         kiosk.clearScreen();
         kiosk.setMenuMode();
         kiosk.setTitle("Cambiar idioma");
         kiosk.setOption('D', "Seleccionar este idioma");
-    }  
+    }
 }

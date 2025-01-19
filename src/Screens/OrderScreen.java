@@ -9,7 +9,10 @@ import Manager.SimpleKiosk;
 
 /**
  *
- * @author Alfa
+ * Pantalla de pedido
+ * Se accede dsde la pantalla de bienvenida y se puede volver a la pantalla de
+ * bienvenida, pasar a la pantalla
+ * de menu, pasar a la pantalla de seccion o pasar a la pantalla de pago
  */
 public class OrderScreen implements KioskScreen {
 
@@ -26,16 +29,16 @@ public class OrderScreen implements KioskScreen {
                 return new SectionScreen();
             }
             case 'C' -> {
-                if (context.getOrder().getTotalAmount()==0){
+                if (context.getOrder().getTotalAmount() == 0) {
                     kiosk.clearScreen();
                     kiosk.setMessageMode();
                     kiosk.setDescription("Antes de pagar debe añadir algún producto");
                     kiosk.waitEvent(1);
                     return new OrderScreen();
-                } 
-                else return new PaymentScreen();
+                } else
+                    return new PaymentScreen();
             }
-        
+
             case 'D' -> {
                 context.getOrder().cancelOrder();
                 context.getKiosk().clearScreen();

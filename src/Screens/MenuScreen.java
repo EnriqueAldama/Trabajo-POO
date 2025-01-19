@@ -10,11 +10,22 @@ import Manager.TranslatorManager;
 import products.Menu;
 import products.MenuCard;
 import products.MenuCardSection;
+
 /**
- *
- * @author Alfa
+ * Pantalla de creacion de menu
+ * Se accede desde y se vuelve a la pantalla de pedido
  */
 public class MenuScreen implements CarouselScreen {
+
+    /**
+     * Si se selcciona la opcion de añadir menu desde orderScreen, se pasa a esta
+     * pantalla
+     * Mediante un carrusel, posibilita la eleccion de tres productos individuales,
+     * cada uno de una seccion, para formar un menu.
+     * 
+     * @param Context
+     * @return siguiente pantalla
+     */
 
     @Override
     public KioskScreen show(Context context) {
@@ -50,12 +61,12 @@ public class MenuScreen implements CarouselScreen {
                 switch (response) {
                     // Botón seleccionar
                     case 'A' -> {
-                        menu.addIndProduct(currentProduct);
+                        menu.addIndProduct(currentProduct); // añadimos a pedido producto individual
                         context.getKiosk().clearScreen();
                         context.getKiosk().setMessageMode();
                         context.getKiosk().setDescription("Producto añadido al pedido");
                         kiosk.waitEvent(1);
-                        exit = true;
+                        exit = true; // se sale otra vez al bucle for para elegir siguiente producto
 
                     }
                     // Boton cancelar
@@ -78,7 +89,8 @@ public class MenuScreen implements CarouselScreen {
                     }
                     // Botón siguiente
                     case 'H' -> {
-                        if (currentItem + 1 >= menuSection.getProductList().size()) { // Te lleva al inicio del carrusel cuando llegas al final
+                        if (currentItem + 1 >= menuSection.getProductList().size()) { // Te lleva al inicio del carrusel
+                                                                                      // cuando llegas al final
                             currentItem = 0;
                         } else {
                             currentItem++;
@@ -88,7 +100,9 @@ public class MenuScreen implements CarouselScreen {
                         return this; // Mantener la pantalla actual
                     }
                 }
-            }
+            } // end while eleccion producto
+
+        } // end for de secciones
 
         }
         context.getOrder().addProduct(menu);
@@ -100,6 +114,13 @@ public class MenuScreen implements CarouselScreen {
         kiosk.setOption('G', "<");
         kiosk.setOption('H', ">");
     }
+
+    /**
+     * Se configuran los botones.
+     * En este caso, son botones de añadir al pedido y cancelar el pedido
+     * 
+     * @param SimpleKiosk
+     */
 
     @Override
     public void configureScreenButtons(SimpleKiosk kiosk) {

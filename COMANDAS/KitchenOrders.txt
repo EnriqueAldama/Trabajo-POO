@@ -219,3 +219,26 @@ Numero de pedido: 78
 Productos: 
 ALITAS
 
+Numero de pedido: 79
+Productos: 
+ANGUS
+ALITAS
+Menu:1x VEGETAL 1x CERVEZA 1x APPLE PIE 
+
+Numero de pedido: 80
+Productos: 
+ANGUS
+
+Numero de pedido: 81
+Productos: 
+Menu:1x ANGUS 1x COCA COLA NORMAL 1x ALITAS 
+
+Numero de pedido: 82
+Productos: 
+GALLEGA
+Menu:1x ANGUS 1x CERVEZA 1x ENSALADA 
+
+Numero de pedido: 83
+Productos: 
+Menu:1x ANGUS 1x COCA COLA NORMAL 1x ALITAS 
+
