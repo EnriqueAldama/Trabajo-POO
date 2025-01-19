@@ -70,7 +70,7 @@ public class ProductScreen implements CarouselScreen {
 
                     context.getKiosk().clearScreen();
                     context.getKiosk().setMessageMode();
-                    context.getKiosk().setDescription("Pedido cancelado");
+                    context.getKiosk().setDescription("Producto cancelado");
                     kiosk.waitEvent(1);
                     return new OrderScreen();
                 }

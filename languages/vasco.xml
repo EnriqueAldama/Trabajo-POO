@@ -205,6 +205,14 @@
   <string>Cancelar producto</string>
   <string>Produktua ezeztatu</string>
 </void>
+<void method="put">
+  <string>Menú cancelado</string>
+  <string>Menua ezeztatuta</string>
+</void>
+<void method="put">
+  <string>Producto cancelado</string>
+  <string>Produktua ezeztatuta</string>
+</void>
 
  </object>
 </java>

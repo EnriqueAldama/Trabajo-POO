@@ -210,6 +210,14 @@
   <string>Cancelar producto</string>
   <string>Cancel product</string>
 </void>
+<void method="put">
+  <string>Menú cancelado</string>
+  <string>Menu canceled</string>
+</void>
+<void method="put">
+  <string>Producto cancelado</string>
+  <string>Product canceled</string>
+</void>
 
  </object>
 </java>

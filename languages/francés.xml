@@ -209,6 +209,14 @@
   <string>Cancelar producto</string>
   <string>Annuler le produit</string>
 </void>
+<void method="put">
+  <string>Menú cancelado</string>
+  <string>Menu annulé</string>
+</void>
+<void method="put">
+  <string>Producto cancelado</string>
+  <string>Produit annulé</string>
+</void>
 
 
  </object>

@@ -74,7 +74,7 @@ public class MenuScreen implements CarouselScreen {
                         
                         context.getKiosk().clearScreen();
                         context.getKiosk().setMessageMode();
-                        context.getKiosk().setDescription("Pedido cancelado");
+                        context.getKiosk().setDescription("Menu cancelado");
                         kiosk.waitEvent(1);
                         return new OrderScreen();
                     }
